@@ -1,0 +1,56 @@
+saba_farmacia_inicio:
+    pattern:  /farmacia
+    defaults: { _controller: SabaFarmaciaBundle:Default:index }
+
+saba_farmacia_entradas:
+    pattern:  /farmacia/entradas
+    defaults: { _controller: SabaFarmaciaBundle:Entradas:index }
+    
+saba_farmacia_entradas_por_factura:
+    pattern:  /farmacia/entradas/por_factura
+    defaults: { _controller: SabaFarmaciaBundle:Entradas:index }    
+    
+saba_farmacia_entradas_otras:
+    pattern:  /farmacia/entradas/otras
+    defaults: { _controller: SabaFarmaciaBundle:Default:index }    
+
+################################################################################
+#Inicio de la sección de rutas para Salidas
+################################################################################
+saba_farmacia_salidas:
+    pattern:  /farmacia/salidas
+    defaults: { _controller: SabaFarmaciaBundle:Default:index }
+    
+saba_farmacia_salidas_por_receta_buscar:
+    pattern:  /farmacia/salidas/por_receta/{id}
+    defaults: { _controller: SabaFarmaciaBundle:SalidasPorReceta:buscar }
+    requirements:
+        _method: GET
+    
+saba_farmacia_salidas_por_receta_eliminar:
+    pattern:  /farmacia/salidas/por_receta/{id}
+    defaults: { _controller: SabaFarmaciaBundle:SalidasPorReceta:eliminar }
+    requirements:
+        _method: DELETE|GET
+
+saba_farmacia_salidas_por_receta_crear:
+    pattern:  /farmacia/salidas/por_receta
+    defaults: { _controller: SabaFarmaciaBundle:SalidasPorReceta:crear }
+    requirements:
+        _method: POST|GET
+    
+saba_farmacia_salidas_por_receta_actualizar:
+    pattern:  /farmacia/salidas/por_receta/{id}
+    defaults: { _controller: SabaFarmaciaBundle::SalidasPorReceta:actualizar }
+    requirements:
+        _method: PUT|GET
+    
+################################################################################
+#Inicio de la sección de rutas para Salidas
+################################################################################
+
+saba_farmacia_salidas_otras:
+    pattern:  /farmacia/salidas/otras
+    defaults: { _controller: SabaFarmaciaBundle:Default:index }
+    
+    

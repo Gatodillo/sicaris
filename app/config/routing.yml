@@ -1,0 +1,4 @@
+saba_farmacia:
+    resource: "@SabaFarmaciaBundle/Resources/config/routing.yml"
+    prefix:   /
+
