@@ -94,7 +94,7 @@ class SalidaPorReceta {
      * @param \Saba\FarmaciaBundle\Entity\Movimiento $movimientos
      * @return SalidaPorReceta
      */
-    public function addMovimiento(\Saba\FarmaciaBundle\Entity\Movimiento $movimientos)
+    public function addMovimientos(\Saba\FarmaciaBundle\Entity\Movimiento $movimientos)
     {
         $this->movimientos[] = $movimientos;
 

@@ -19,8 +19,12 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class SalidaPorRecetaType  extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options){
-        $builder->add('numero',"number",array("label"=>"Número"))
-                ->add('receta', new RecetaType())
+        $builder->add("numero","number",array("label"=>"Número"))
+                ->add("receta", new RecetaType())
+                ->add("movimientos", 
+                        "collection", 
+                        array("type" => new MovimientoType(),
+                            "allow_add"    => true,) )
                 ->add('guardar', 'submit');
     }
 

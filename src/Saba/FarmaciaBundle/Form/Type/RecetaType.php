@@ -33,4 +33,5 @@ class RecetaType extends AbstractType {
     public function getName()
     {
         return 'receta';
-    }}
+    }
+}

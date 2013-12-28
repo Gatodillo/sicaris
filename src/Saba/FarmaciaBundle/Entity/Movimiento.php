@@ -22,7 +22,45 @@ class Movimiento {
      */
     protected $id;
     
-
+    /**
+     * @ORM\Column(name="fecha_de_registro", type="date")
+     */
+    protected $fechaDeRegistro;
+    
+    /**
+     * @ORM\Column(name="fecha_de_movimiento", type="date")
+     */
+    protected $fechaDeEjecucion;
+    
+    /**
+     * @ORM\Column(name="almacen_origen", type="string")
+     */
+    protected $almacenOrigen;
+    
+    /**
+     * @ORM\Column(name="almacen_destino", type="string")
+     */
+    protected $almacenDestino;
+    
+    /**
+     * @ORM\Column(name="articulo", type="string")
+     */
+    protected $articulo;
+    
+    
+    /**
+     * @ORM\Column(name="cantidad", type="integer")
+     */
+    protected $cantidad;
+    
+    /**
+     * @ORM\Column(name="precio_unitario", type="float")
+     */
+    protected $precioUnitario;
+    
+    
+    
+    
     /**
      * Get id
      *
@@ -31,5 +69,166 @@ class Movimiento {
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set fechaDeRegistro
+     *
+     * @param \DateTime $fechaDeRegistro
+     * @return Movimiento
+     */
+    public function setFechaDeRegistro($fechaDeRegistro)
+    {
+        $this->fechaDeRegistro = $fechaDeRegistro;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaDeRegistro
+     *
+     * @return \DateTime 
+     */
+    public function getFechaDeRegistro()
+    {
+        return $this->fechaDeRegistro;
+    }
+
+    /**
+     * Set fechaDeEjecución
+     *
+     * @param \DateTime $fechaDeEjecución
+     * @return Movimiento
+     */
+    public function setFechaDeEjecucion($fechaDeEjecucion)
+    {
+        $this->fechaDeEjecución = $fechaDeEjecucion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaDeEjecución
+     *
+     * @return \DateTime 
+     */
+    public function getFechaDeEjecucion()
+    {
+        return $this->fechaDeEjecución;
+    }
+
+    /**
+     * Set almacenOrigen
+     *
+     * @param string $almacenOrigen
+     * @return Movimiento
+     */
+    public function setAlmacenOrigen($almacenOrigen)
+    {
+        $this->almacenOrigen = $almacenOrigen;
+
+        return $this;
+    }
+
+    /**
+     * Get almacenOrigen
+     *
+     * @return string 
+     */
+    public function getAlmacenOrigen()
+    {
+        return $this->almacenOrigen;
+    }
+
+    /**
+     * Set almacenDestino
+     *
+     * @param string $almacenDestino
+     * @return Movimiento
+     */
+    public function setAlmacenDestino($almacenDestino)
+    {
+        $this->almacenDestino = $almacenDestino;
+
+        return $this;
+    }
+
+    /**
+     * Get almacenDestino
+     *
+     * @return string 
+     */
+    public function getAlmacenDestino()
+    {
+        return $this->almacenDestino;
+    }
+
+    /**
+     * Set articulo
+     *
+     * @param string $articulo
+     * @return Movimiento
+     */
+    public function setArticulo($articulo)
+    {
+        $this->articulo = $articulo;
+
+        return $this;
+    }
+
+    /**
+     * Get articulo
+     *
+     * @return string 
+     */
+    public function getArticulo()
+    {
+        return $this->articulo;
+    }
+
+    /**
+     * Set cantidad
+     *
+     * @param integer $cantidad
+     * @return Movimiento
+     */
+    public function setCantidad($cantidad)
+    {
+        $this->cantidad = $cantidad;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidad
+     *
+     * @return integer 
+     */
+    public function getCantidad()
+    {
+        return $this->cantidad;
+    }
+
+    /**
+     * Set precioUnitario
+     *
+     * @param float $precioUnitario
+     * @return Movimiento
+     */
+    public function setPrecioUnitario($precioUnitario)
+    {
+        $this->precioUnitario = $precioUnitario;
+
+        return $this;
+    }
+
+    /**
+     * Get precioUnitario
+     *
+     * @return float 
+     */
+    public function getPrecioUnitario()
+    {
+        return $this->precioUnitario;
     }
 }
