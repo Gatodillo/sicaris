@@ -17,13 +17,13 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table{name="recetas"} 
+ * @ORM\Table(name="recetas")
  */
 class Receta {
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     protected $folio;
     
@@ -40,17 +40,17 @@ class Receta {
     protected $recetasHijas;
     
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $medico;
     
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $paciente;
     
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $medicamentos;
     
@@ -61,6 +61,8 @@ class Receta {
     {
         $this->recetasHijas = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+    
 
     /**
      * Get folio
@@ -195,5 +197,21 @@ class Receta {
     public function getRecetasHijas()
     {
         return $this->recetasHijas;
+    }
+
+    /**
+     * Set folio
+     *
+     * @param integer $folio
+     * @return Receta
+     */
+    public function setFolio($folio)
+    {
+        $this->folio = $folio;
+        $this->recetaPadre = $folio;
+        $this->medico = $folio;
+        $this->paciente = $folio;
+
+        return $this;
     }
 }

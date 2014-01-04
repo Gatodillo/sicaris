@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Description of Movimiento
  *
  * @ORM\Entity
- * @ORM\Table{name="movimientos"} 
+ * @ORM\Table(name="movimientos") 
  */
 class Movimiento {
     /**
@@ -28,7 +28,7 @@ class Movimiento {
     protected $fechaDeRegistro;
     
     /**
-     * @ORM\Column(name="fecha_de_movimiento", type="date")
+     * @ORM\Column(name="fecha_de_ejecucion", type="date")
      */
     protected $fechaDeEjecucion;
     
@@ -102,7 +102,7 @@ class Movimiento {
      */
     public function setFechaDeEjecucion($fechaDeEjecucion)
     {
-        $this->fechaDeEjecución = $fechaDeEjecucion;
+        $this->fechaDeEjecucion = $fechaDeEjecucion;
 
         return $this;
     }
@@ -114,7 +114,7 @@ class Movimiento {
      */
     public function getFechaDeEjecucion()
     {
-        return $this->fechaDeEjecución;
+        return $this->fechaDeEjecucion;
     }
 
     /**

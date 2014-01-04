@@ -13,25 +13,25 @@ use Doctrine\ORM\Mapping as ORM;
  * Description of Salida
  *
  * @ORM\Entity
- * @ORM\Table{name="salidas_por_receta"} 
+ * @ORM\Table(name="salidas_por_receta") 
  */
 class SalidaPorReceta {
 
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     protected $numero;
     
     /**
-     * @ORM\OneToOne(targetEntity="Receta")
+     * @ORM\OneToOne(targetEntity="Receta", cascade={"persist"})
      * @ORM\JoinColumn(name="receta_id", referencedColumnName="folio")
      */
     protected $receta;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Movimiento")
+     * @ORM\ManyToMany(targetEntity="Movimiento", cascade={"persist"})
      * @ORM\JoinTable(name="SalidaPorRecetaTieneMovimientos",
      *     joinColumns={@ORM\JoinColumn(name="salidas_por_receta_id",
      *         referencedColumnName="numero")},
@@ -119,5 +119,31 @@ class SalidaPorReceta {
     public function getMovimientos()
     {
         return $this->movimientos;
+    }
+
+    /**
+     * Add movimientos
+     *
+     * @param \Saba\FarmaciaBundle\Entity\Movimiento $movimientos
+     * @return SalidaPorReceta
+     */
+    public function addMovimiento(\Saba\FarmaciaBundle\Entity\Movimiento $movimientos)
+    {
+        $this->movimientos[] = $movimientos;
+
+        return $this;
+    }
+
+    /**
+     * Set numero
+     *
+     * @param integer $numero
+     * @return SalidaPorReceta
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+
+        return $this;
     }
 }

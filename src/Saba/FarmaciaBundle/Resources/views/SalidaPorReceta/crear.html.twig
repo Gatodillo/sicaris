@@ -1,10 +1,27 @@
-{# empty Twig template #}
-{{ form(form) }}
-<h3>RECETA</h3>
-<div class="movimiento">
-    {{ form_row(form.receta.folio) }}
-</div>
-<script src="js/jquery-2.0.3.js">
+{# src/Acme/TaskBundle/Resources/views/Task/new.html.twig #}
+{# ... #}
+{{ form_start(form) }}
+    {# render the task's only field: description #}
+    {{ form_row(form.numero) }}
+    {{ form_row(form.receta) }}
+
+    <ul class="tags" data-prototype="{{ form_widget(form.movimientos.vars.prototype)|e }}">
+        {# iterate over each existing tag and render its only field: name #}
+        {% for movimiento in form.movimientos %}
+            <li>{{ form_row(movimiento.fechaDeRegistro) }}</li>
+            <li>{{ form_row(movimiento.fechaDeEjecucion) }}</li>
+            <li>{{ form_row(movimiento.almacenOrigen) }}</li>
+            <li>{{ form_row(movimiento.almacenDestino) }}</li>
+            <li>{{ form_row(movimiento.articulo) }}</li>
+            <li>{{ form_row(movimiento.cantidad) }}</li>
+            <li>{{ form_row(movimiento.precioUnitario) }}</li>
+        {% endfor %}
+    </ul>
+{{ form_end(form) }}
+
+{# ... #}
+    <script src="{{asset('js/jquery-2.0.3.js')}}"></script>
+    <script>
     var $collectionHolder;
 
     // setup an "add a tag" link
@@ -12,6 +29,8 @@
     var $newLinkLi = $('<li></li>').append($addTagLink);
 
     jQuery(document).ready(function() {
+            alert("HOLA");
+
         // Get the ul that holds the collection of tags
         $collectionHolder = $('ul.tags');
 
@@ -34,6 +53,7 @@
     function addTagForm($collectionHolder, $newLinkLi) {
         // Get the data-prototype explained earlier
         var prototype = $collectionHolder.data('prototype');
+        alert($collectionHolder.data('prototype'));
 
         // get the new index
         var index = $collectionHolder.data('index');
@@ -48,5 +68,6 @@
         // Display the form in the page in an li, before the "Add a tag" link li
         var $newFormLi = $('<li></li>').append(newForm);
         $newLinkLi.before($newFormLi);
+        alert(newForm);
     }
 </script>
