@@ -1,5 +1,6 @@
 {# src/Acme/TaskBundle/Resources/views/Task/new.html.twig #}
 {# ... #}
+{{ knp_menu_render('SabaFarmaciaBundle:Builder:mainMenu') }}
 {{ form_start(form) }}
     {# render the task's only field: description #}
     {{ form_row(form.numero) }}

@@ -19,7 +19,7 @@ saba_farmacia_entradas_otras:
 ################################################################################
 saba_farmacia_salidas:
     pattern:  /farmacia/salidas
-    defaults: { _controller: SabaFarmaciaBundle:Default:index }
+    defaults: { _controller: SabaFarmaciaBundle:Default:index, name:"Saba" }
     
 saba_farmacia_salidas_por_receta_buscar:
     pattern:  /farmacia/salidas/por_receta/{id}

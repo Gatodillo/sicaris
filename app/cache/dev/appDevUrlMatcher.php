@@ -162,7 +162,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             if (0 === strpos($pathinfo, '/farmacia/salidas')) {
                 // saba_farmacia_salidas
                 if ($pathinfo === '/farmacia/salidas') {
-                    return array (  '_controller' => 'Saba\\FarmaciaBundle\\Controller\\DefaultController::indexAction',  '_route' => 'saba_farmacia_salidas',);
+                    return array (  '_controller' => 'Saba\\FarmaciaBundle\\Controller\\DefaultController::indexAction',  'name' => 'Saba',  '_route' => 'saba_farmacia_salidas',);
                 }
 
                 if (0 === strpos($pathinfo, '/farmacia/salidas/por_receta')) {
@@ -215,6 +215,323 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 // saba_farmacia_salidas_otras
                 if ($pathinfo === '/farmacia/salidas/otras') {
                     return array (  '_controller' => 'Saba\\FarmaciaBundle\\Controller\\DefaultController::indexAction',  '_route' => 'saba_farmacia_salidas_otras',);
+                }
+
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/admin')) {
+            // sonata_admin_redirect
+            if (rtrim($pathinfo, '/') === '/admin') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'sonata_admin_redirect');
+                }
+
+                return array (  '_controller' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController::redirectAction',  'route' => 'sonata_admin_dashboard',  'permanent' => 'true',  '_route' => 'sonata_admin_redirect',);
+            }
+
+            // sonata_admin_dashboard
+            if ($pathinfo === '/admin/dashboard') {
+                return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CoreController::dashboardAction',  '_route' => 'sonata_admin_dashboard',);
+            }
+
+            if (0 === strpos($pathinfo, '/admin/core')) {
+                // sonata_admin_retrieve_form_element
+                if ($pathinfo === '/admin/core/get-form-field-element') {
+                    return array (  '_controller' => 'sonata.admin.controller.admin:retrieveFormFieldElementAction',  '_route' => 'sonata_admin_retrieve_form_element',);
+                }
+
+                // sonata_admin_append_form_element
+                if ($pathinfo === '/admin/core/append-form-field-element') {
+                    return array (  '_controller' => 'sonata.admin.controller.admin:appendFormFieldElementAction',  '_route' => 'sonata_admin_append_form_element',);
+                }
+
+                // sonata_admin_short_object_information
+                if (0 === strpos($pathinfo, '/admin/core/get-short-object-description') && preg_match('#^/admin/core/get\\-short\\-object\\-description(?:\\.(?P<_format>html|json))?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'sonata_admin_short_object_information')), array (  '_controller' => 'sonata.admin.controller.admin:getShortObjectDescriptionAction',  '_format' => 'html',));
+                }
+
+                // sonata_admin_set_object_field_value
+                if ($pathinfo === '/admin/core/set-object-field-value') {
+                    return array (  '_controller' => 'sonata.admin.controller.admin:setObjectFieldValueAction',  '_route' => 'sonata_admin_set_object_field_value',);
+                }
+
+            }
+
+            if (0 === strpos($pathinfo, '/admin/s')) {
+                // sonata_admin_search
+                if ($pathinfo === '/admin/search') {
+                    return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CoreController::searchAction',  '_route' => 'sonata_admin_search',);
+                }
+
+                if (0 === strpos($pathinfo, '/admin/saba/farmacia')) {
+                    if (0 === strpos($pathinfo, '/admin/saba/farmacia/salidaporreceta')) {
+                        // admin_saba_farmacia_salidaporreceta_list
+                        if ($pathinfo === '/admin/saba/farmacia/salidaporreceta/list') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.salida_por_receta',  '_sonata_name' => 'admin_saba_farmacia_salidaporreceta_list',  '_route' => 'admin_saba_farmacia_salidaporreceta_list',);
+                        }
+
+                        // admin_saba_farmacia_salidaporreceta_create
+                        if ($pathinfo === '/admin/saba/farmacia/salidaporreceta/create') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.salida_por_receta',  '_sonata_name' => 'admin_saba_farmacia_salidaporreceta_create',  '_route' => 'admin_saba_farmacia_salidaporreceta_create',);
+                        }
+
+                        // admin_saba_farmacia_salidaporreceta_batch
+                        if ($pathinfo === '/admin/saba/farmacia/salidaporreceta/batch') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.salida_por_receta',  '_sonata_name' => 'admin_saba_farmacia_salidaporreceta_batch',  '_route' => 'admin_saba_farmacia_salidaporreceta_batch',);
+                        }
+
+                        // admin_saba_farmacia_salidaporreceta_edit
+                        if (preg_match('#^/admin/saba/farmacia/salidaporreceta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_salidaporreceta_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.salida_por_receta',  '_sonata_name' => 'admin_saba_farmacia_salidaporreceta_edit',));
+                        }
+
+                        // admin_saba_farmacia_salidaporreceta_delete
+                        if (preg_match('#^/admin/saba/farmacia/salidaporreceta/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_salidaporreceta_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.salida_por_receta',  '_sonata_name' => 'admin_saba_farmacia_salidaporreceta_delete',));
+                        }
+
+                        // admin_saba_farmacia_salidaporreceta_show
+                        if (preg_match('#^/admin/saba/farmacia/salidaporreceta/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_salidaporreceta_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.salida_por_receta',  '_sonata_name' => 'admin_saba_farmacia_salidaporreceta_show',));
+                        }
+
+                        // admin_saba_farmacia_salidaporreceta_export
+                        if ($pathinfo === '/admin/saba/farmacia/salidaporreceta/export') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.salida_por_receta',  '_sonata_name' => 'admin_saba_farmacia_salidaporreceta_export',  '_route' => 'admin_saba_farmacia_salidaporreceta_export',);
+                        }
+
+                    }
+
+                    if (0 === strpos($pathinfo, '/admin/saba/farmacia/receta')) {
+                        // admin_saba_farmacia_receta_list
+                        if ($pathinfo === '/admin/saba/farmacia/receta/list') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.receta',  '_sonata_name' => 'admin_saba_farmacia_receta_list',  '_route' => 'admin_saba_farmacia_receta_list',);
+                        }
+
+                        // admin_saba_farmacia_receta_create
+                        if ($pathinfo === '/admin/saba/farmacia/receta/create') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.receta',  '_sonata_name' => 'admin_saba_farmacia_receta_create',  '_route' => 'admin_saba_farmacia_receta_create',);
+                        }
+
+                        // admin_saba_farmacia_receta_batch
+                        if ($pathinfo === '/admin/saba/farmacia/receta/batch') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.receta',  '_sonata_name' => 'admin_saba_farmacia_receta_batch',  '_route' => 'admin_saba_farmacia_receta_batch',);
+                        }
+
+                        // admin_saba_farmacia_receta_edit
+                        if (preg_match('#^/admin/saba/farmacia/receta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_receta_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.receta',  '_sonata_name' => 'admin_saba_farmacia_receta_edit',));
+                        }
+
+                        // admin_saba_farmacia_receta_delete
+                        if (preg_match('#^/admin/saba/farmacia/receta/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_receta_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.receta',  '_sonata_name' => 'admin_saba_farmacia_receta_delete',));
+                        }
+
+                        // admin_saba_farmacia_receta_show
+                        if (preg_match('#^/admin/saba/farmacia/receta/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_receta_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.receta',  '_sonata_name' => 'admin_saba_farmacia_receta_show',));
+                        }
+
+                        // admin_saba_farmacia_receta_export
+                        if ($pathinfo === '/admin/saba/farmacia/receta/export') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.receta',  '_sonata_name' => 'admin_saba_farmacia_receta_export',  '_route' => 'admin_saba_farmacia_receta_export',);
+                        }
+
+                    }
+
+                    if (0 === strpos($pathinfo, '/admin/saba/farmacia/medico')) {
+                        // admin_saba_farmacia_medico_list
+                        if ($pathinfo === '/admin/saba/farmacia/medico/list') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.medico',  '_sonata_name' => 'admin_saba_farmacia_medico_list',  '_route' => 'admin_saba_farmacia_medico_list',);
+                        }
+
+                        // admin_saba_farmacia_medico_create
+                        if ($pathinfo === '/admin/saba/farmacia/medico/create') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.medico',  '_sonata_name' => 'admin_saba_farmacia_medico_create',  '_route' => 'admin_saba_farmacia_medico_create',);
+                        }
+
+                        // admin_saba_farmacia_medico_batch
+                        if ($pathinfo === '/admin/saba/farmacia/medico/batch') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.medico',  '_sonata_name' => 'admin_saba_farmacia_medico_batch',  '_route' => 'admin_saba_farmacia_medico_batch',);
+                        }
+
+                        // admin_saba_farmacia_medico_edit
+                        if (preg_match('#^/admin/saba/farmacia/medico/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_medico_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.medico',  '_sonata_name' => 'admin_saba_farmacia_medico_edit',));
+                        }
+
+                        // admin_saba_farmacia_medico_delete
+                        if (preg_match('#^/admin/saba/farmacia/medico/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_medico_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.medico',  '_sonata_name' => 'admin_saba_farmacia_medico_delete',));
+                        }
+
+                        // admin_saba_farmacia_medico_show
+                        if (preg_match('#^/admin/saba/farmacia/medico/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_medico_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.medico',  '_sonata_name' => 'admin_saba_farmacia_medico_show',));
+                        }
+
+                        // admin_saba_farmacia_medico_export
+                        if ($pathinfo === '/admin/saba/farmacia/medico/export') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.medico',  '_sonata_name' => 'admin_saba_farmacia_medico_export',  '_route' => 'admin_saba_farmacia_medico_export',);
+                        }
+
+                    }
+
+                    if (0 === strpos($pathinfo, '/admin/saba/farmacia/paciente')) {
+                        // admin_saba_farmacia_paciente_list
+                        if ($pathinfo === '/admin/saba/farmacia/paciente/list') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.paciente',  '_sonata_name' => 'admin_saba_farmacia_paciente_list',  '_route' => 'admin_saba_farmacia_paciente_list',);
+                        }
+
+                        // admin_saba_farmacia_paciente_create
+                        if ($pathinfo === '/admin/saba/farmacia/paciente/create') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.paciente',  '_sonata_name' => 'admin_saba_farmacia_paciente_create',  '_route' => 'admin_saba_farmacia_paciente_create',);
+                        }
+
+                        // admin_saba_farmacia_paciente_batch
+                        if ($pathinfo === '/admin/saba/farmacia/paciente/batch') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.paciente',  '_sonata_name' => 'admin_saba_farmacia_paciente_batch',  '_route' => 'admin_saba_farmacia_paciente_batch',);
+                        }
+
+                        // admin_saba_farmacia_paciente_edit
+                        if (preg_match('#^/admin/saba/farmacia/paciente/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_paciente_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.paciente',  '_sonata_name' => 'admin_saba_farmacia_paciente_edit',));
+                        }
+
+                        // admin_saba_farmacia_paciente_delete
+                        if (preg_match('#^/admin/saba/farmacia/paciente/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_paciente_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.paciente',  '_sonata_name' => 'admin_saba_farmacia_paciente_delete',));
+                        }
+
+                        // admin_saba_farmacia_paciente_show
+                        if (preg_match('#^/admin/saba/farmacia/paciente/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_paciente_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.paciente',  '_sonata_name' => 'admin_saba_farmacia_paciente_show',));
+                        }
+
+                        // admin_saba_farmacia_paciente_export
+                        if ($pathinfo === '/admin/saba/farmacia/paciente/export') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.paciente',  '_sonata_name' => 'admin_saba_farmacia_paciente_export',  '_route' => 'admin_saba_farmacia_paciente_export',);
+                        }
+
+                    }
+
+                    if (0 === strpos($pathinfo, '/admin/saba/farmacia/medicamento')) {
+                        // admin_saba_farmacia_medicamento_list
+                        if ($pathinfo === '/admin/saba/farmacia/medicamento/list') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.medicamento',  '_sonata_name' => 'admin_saba_farmacia_medicamento_list',  '_route' => 'admin_saba_farmacia_medicamento_list',);
+                        }
+
+                        // admin_saba_farmacia_medicamento_create
+                        if ($pathinfo === '/admin/saba/farmacia/medicamento/create') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.medicamento',  '_sonata_name' => 'admin_saba_farmacia_medicamento_create',  '_route' => 'admin_saba_farmacia_medicamento_create',);
+                        }
+
+                        // admin_saba_farmacia_medicamento_batch
+                        if ($pathinfo === '/admin/saba/farmacia/medicamento/batch') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.medicamento',  '_sonata_name' => 'admin_saba_farmacia_medicamento_batch',  '_route' => 'admin_saba_farmacia_medicamento_batch',);
+                        }
+
+                        // admin_saba_farmacia_medicamento_edit
+                        if (preg_match('#^/admin/saba/farmacia/medicamento/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_medicamento_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.medicamento',  '_sonata_name' => 'admin_saba_farmacia_medicamento_edit',));
+                        }
+
+                        // admin_saba_farmacia_medicamento_delete
+                        if (preg_match('#^/admin/saba/farmacia/medicamento/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_medicamento_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.medicamento',  '_sonata_name' => 'admin_saba_farmacia_medicamento_delete',));
+                        }
+
+                        // admin_saba_farmacia_medicamento_show
+                        if (preg_match('#^/admin/saba/farmacia/medicamento/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_medicamento_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.medicamento',  '_sonata_name' => 'admin_saba_farmacia_medicamento_show',));
+                        }
+
+                        // admin_saba_farmacia_medicamento_export
+                        if ($pathinfo === '/admin/saba/farmacia/medicamento/export') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.medicamento',  '_sonata_name' => 'admin_saba_farmacia_medicamento_export',  '_route' => 'admin_saba_farmacia_medicamento_export',);
+                        }
+
+                    }
+
+                    if (0 === strpos($pathinfo, '/admin/saba/farmacia/recetatienelineas')) {
+                        // admin_saba_farmacia_recetatienelineas_list
+                        if ($pathinfo === '/admin/saba/farmacia/recetatienelineas/list') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.receta_tiene_lineas',  '_sonata_name' => 'admin_saba_farmacia_recetatienelineas_list',  '_route' => 'admin_saba_farmacia_recetatienelineas_list',);
+                        }
+
+                        // admin_saba_farmacia_recetatienelineas_create
+                        if ($pathinfo === '/admin/saba/farmacia/recetatienelineas/create') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.receta_tiene_lineas',  '_sonata_name' => 'admin_saba_farmacia_recetatienelineas_create',  '_route' => 'admin_saba_farmacia_recetatienelineas_create',);
+                        }
+
+                        // admin_saba_farmacia_recetatienelineas_batch
+                        if ($pathinfo === '/admin/saba/farmacia/recetatienelineas/batch') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.receta_tiene_lineas',  '_sonata_name' => 'admin_saba_farmacia_recetatienelineas_batch',  '_route' => 'admin_saba_farmacia_recetatienelineas_batch',);
+                        }
+
+                        // admin_saba_farmacia_recetatienelineas_edit
+                        if (preg_match('#^/admin/saba/farmacia/recetatienelineas/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_recetatienelineas_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.receta_tiene_lineas',  '_sonata_name' => 'admin_saba_farmacia_recetatienelineas_edit',));
+                        }
+
+                        // admin_saba_farmacia_recetatienelineas_delete
+                        if (preg_match('#^/admin/saba/farmacia/recetatienelineas/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_recetatienelineas_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.receta_tiene_lineas',  '_sonata_name' => 'admin_saba_farmacia_recetatienelineas_delete',));
+                        }
+
+                        // admin_saba_farmacia_recetatienelineas_show
+                        if (preg_match('#^/admin/saba/farmacia/recetatienelineas/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_recetatienelineas_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.receta_tiene_lineas',  '_sonata_name' => 'admin_saba_farmacia_recetatienelineas_show',));
+                        }
+
+                        // admin_saba_farmacia_recetatienelineas_export
+                        if ($pathinfo === '/admin/saba/farmacia/recetatienelineas/export') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.receta_tiene_lineas',  '_sonata_name' => 'admin_saba_farmacia_recetatienelineas_export',  '_route' => 'admin_saba_farmacia_recetatienelineas_export',);
+                        }
+
+                    }
+
+                    if (0 === strpos($pathinfo, '/admin/saba/farmacia/lineadereceta')) {
+                        // admin_saba_farmacia_lineadereceta_list
+                        if ($pathinfo === '/admin/saba/farmacia/lineadereceta/list') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.linea_de_recetas',  '_sonata_name' => 'admin_saba_farmacia_lineadereceta_list',  '_route' => 'admin_saba_farmacia_lineadereceta_list',);
+                        }
+
+                        // admin_saba_farmacia_lineadereceta_create
+                        if ($pathinfo === '/admin/saba/farmacia/lineadereceta/create') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.linea_de_recetas',  '_sonata_name' => 'admin_saba_farmacia_lineadereceta_create',  '_route' => 'admin_saba_farmacia_lineadereceta_create',);
+                        }
+
+                        // admin_saba_farmacia_lineadereceta_batch
+                        if ($pathinfo === '/admin/saba/farmacia/lineadereceta/batch') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.linea_de_recetas',  '_sonata_name' => 'admin_saba_farmacia_lineadereceta_batch',  '_route' => 'admin_saba_farmacia_lineadereceta_batch',);
+                        }
+
+                        // admin_saba_farmacia_lineadereceta_edit
+                        if (preg_match('#^/admin/saba/farmacia/lineadereceta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_lineadereceta_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.linea_de_recetas',  '_sonata_name' => 'admin_saba_farmacia_lineadereceta_edit',));
+                        }
+
+                        // admin_saba_farmacia_lineadereceta_delete
+                        if (preg_match('#^/admin/saba/farmacia/lineadereceta/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_lineadereceta_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.linea_de_recetas',  '_sonata_name' => 'admin_saba_farmacia_lineadereceta_delete',));
+                        }
+
+                        // admin_saba_farmacia_lineadereceta_show
+                        if (preg_match('#^/admin/saba/farmacia/lineadereceta/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_saba_farmacia_lineadereceta_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.linea_de_recetas',  '_sonata_name' => 'admin_saba_farmacia_lineadereceta_show',));
+                        }
+
+                        // admin_saba_farmacia_lineadereceta_export
+                        if ($pathinfo === '/admin/saba/farmacia/lineadereceta/export') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.linea_de_recetas',  '_sonata_name' => 'admin_saba_farmacia_lineadereceta_export',  '_route' => 'admin_saba_farmacia_lineadereceta_export',);
+                        }
+
+                    }
+
                 }
 
             }

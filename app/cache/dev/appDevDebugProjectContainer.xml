@@ -17,6 +17,15 @@
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="SabaFarmaciaBundle">Saba\FarmaciaBundle\SabaFarmaciaBundle</parameter>
+      <parameter key="FOSRestBundle">FOS\RestBundle\FOSRestBundle</parameter>
+      <parameter key="JMSSerializerBundle">JMS\SerializerBundle\JMSSerializerBundle</parameter>
+      <parameter key="NelmioApiDocBundle">Nelmio\ApiDocBundle\NelmioApiDocBundle</parameter>
+      <parameter key="SonataDoctrineORMAdminBundle">Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle</parameter>
+      <parameter key="SonataCoreBundle">Sonata\CoreBundle\SonataCoreBundle</parameter>
+      <parameter key="SonataBlockBundle">Sonata\BlockBundle\SonataBlockBundle</parameter>
+      <parameter key="SonatajQueryBundle">Sonata\jQueryBundle\SonatajQueryBundle</parameter>
+      <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
+      <parameter key="SonataAdminBundle">Sonata\AdminBundle\SonataAdminBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -26,15 +35,15 @@
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
     <parameter key="database_driver">pdo_mysql</parameter>
     <parameter key="database_host">127.0.0.1</parameter>
-    <parameter key="database_port">null</parameter>
+    <parameter key="database_port">3306</parameter>
     <parameter key="database_name">symfony</parameter>
     <parameter key="database_user">root</parameter>
-    <parameter key="database_password">null</parameter>
+    <parameter key="database_password">123victor123</parameter>
     <parameter key="mailer_transport">smtp</parameter>
     <parameter key="mailer_host">127.0.0.1</parameter>
     <parameter key="mailer_user">null</parameter>
     <parameter key="mailer_password">null</parameter>
-    <parameter key="locale">en</parameter>
+    <parameter key="locale">es</parameter>
     <parameter key="secret">ThisTokenIsNotSoSecretChangeIt</parameter>
     <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
     <parameter key="controller_name_converter.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser</parameter>
@@ -93,7 +102,7 @@
     <parameter key="kernel.http_method_override">true</parameter>
     <parameter key="kernel.trusted_hosts" type="collection"/>
     <parameter key="kernel.trusted_proxies" type="collection"/>
-    <parameter key="kernel.default_locale">en</parameter>
+    <parameter key="kernel.default_locale">es</parameter>
     <parameter key="session.class">Symfony\Component\HttpFoundation\Session\Session</parameter>
     <parameter key="session.flashbag.class">Symfony\Component\HttpFoundation\Session\Flash\FlashBag</parameter>
     <parameter key="session.attribute_bag.class">Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag</parameter>
@@ -504,6 +513,272 @@
     <parameter key="sensio_framework_extra.converter.doctrine.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter</parameter>
     <parameter key="sensio_framework_extra.converter.datetime.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DateTimeParamConverter</parameter>
     <parameter key="sensio_framework_extra.view.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener</parameter>
+    <parameter key="fos_rest.serializer.exclusion_strategy.version"></parameter>
+    <parameter key="fos_rest.serializer.exclusion_strategy.groups"></parameter>
+    <parameter key="fos_rest.view_handler.jsonp.callback_param"></parameter>
+    <parameter key="fos_rest.view_handler.jsonp.callback_filter"></parameter>
+    <parameter key="fos_rest.view.exception_wrapper_handler">FOS\RestBundle\View\ExceptionWrapperHandler</parameter>
+    <parameter key="fos_rest.routing.loader.controller.class">FOS\RestBundle\Routing\Loader\RestRouteLoader</parameter>
+    <parameter key="fos_rest.routing.loader.yaml_collection.class">FOS\RestBundle\Routing\Loader\RestYamlCollectionLoader</parameter>
+    <parameter key="fos_rest.routing.loader.xml_collection.class">FOS\RestBundle\Routing\Loader\RestXmlCollectionLoader</parameter>
+    <parameter key="fos_rest.routing.loader.processor.class">FOS\RestBundle\Routing\Loader\RestRouteProcessor</parameter>
+    <parameter key="fos_rest.routing.loader.reader.controller.class">FOS\RestBundle\Routing\Loader\Reader\RestControllerReader</parameter>
+    <parameter key="fos_rest.routing.loader.reader.action.class">FOS\RestBundle\Routing\Loader\Reader\RestActionReader</parameter>
+    <parameter key="fos_rest.format_negotiator.class">FOS\RestBundle\Util\FormatNegotiator</parameter>
+    <parameter key="fos_rest.inflector.class">FOS\RestBundle\Util\Inflector\DoctrineInflector</parameter>
+    <parameter key="fos_rest.request.param_fetcher.class">FOS\RestBundle\Request\ParamFetcher</parameter>
+    <parameter key="fos_rest.request.param_fetcher.reader.class">FOS\RestBundle\Request\ParamReader</parameter>
+    <parameter key="fos_rest.cache_dir">/var/www/html/SICARIS/app/cache/dev/fos_rest</parameter>
+    <parameter key="fos_rest.serializer.serialize_null">false</parameter>
+    <parameter key="fos_rest.formats" type="collection">
+      <parameter key="json">false</parameter>
+      <parameter key="xml">false</parameter>
+      <parameter key="html">true</parameter>
+    </parameter>
+    <parameter key="fos_rest.default_engine">twig</parameter>
+    <parameter key="fos_rest.force_redirects" type="collection">
+      <parameter key="html">302</parameter>
+    </parameter>
+    <parameter key="fos_rest.failed_validation">400</parameter>
+    <parameter key="fos_rest.empty_content">204</parameter>
+    <parameter key="fos_rest.serialize_null">false</parameter>
+    <parameter key="fos_rest.routing.loader.default_format">null</parameter>
+    <parameter key="fos_rest.routing.loader.include_format">true</parameter>
+    <parameter key="fos_rest.exception.codes" type="collection"/>
+    <parameter key="fos_rest.exception.messages" type="collection"/>
+    <parameter key="fos_rest.decoders" type="collection">
+      <parameter key="json">fos_rest.decoder.json</parameter>
+      <parameter key="xml">fos_rest.decoder.xml</parameter>
+    </parameter>
+    <parameter key="fos_rest.mime_types" type="collection"/>
+    <parameter key="fos_rest.converter.request_body.validation_errors_argument">validationErrors</parameter>
+    <parameter key="jms_serializer.metadata.file_locator.class">Metadata\Driver\FileLocator</parameter>
+    <parameter key="jms_serializer.metadata.annotation_driver.class">JMS\Serializer\Metadata\Driver\AnnotationDriver</parameter>
+    <parameter key="jms_serializer.metadata.chain_driver.class">Metadata\Driver\DriverChain</parameter>
+    <parameter key="jms_serializer.metadata.yaml_driver.class">JMS\Serializer\Metadata\Driver\YamlDriver</parameter>
+    <parameter key="jms_serializer.metadata.xml_driver.class">JMS\Serializer\Metadata\Driver\XmlDriver</parameter>
+    <parameter key="jms_serializer.metadata.php_driver.class">JMS\Serializer\Metadata\Driver\PhpDriver</parameter>
+    <parameter key="jms_serializer.metadata.doctrine_type_driver.class">JMS\Serializer\Metadata\Driver\DoctrineTypeDriver</parameter>
+    <parameter key="jms_serializer.metadata.doctrine_phpcr_type_driver.class">JMS\Serializer\Metadata\Driver\DoctrinePHPCRTypeDriver</parameter>
+    <parameter key="jms_serializer.metadata.lazy_loading_driver.class">Metadata\Driver\LazyLoadingDriver</parameter>
+    <parameter key="jms_serializer.metadata.metadata_factory.class">Metadata\MetadataFactory</parameter>
+    <parameter key="jms_serializer.metadata.cache.file_cache.class">Metadata\Cache\FileCache</parameter>
+    <parameter key="jms_serializer.event_dispatcher.class">JMS\Serializer\EventDispatcher\LazyEventDispatcher</parameter>
+    <parameter key="jms_serializer.camel_case_naming_strategy.class">JMS\Serializer\Naming\CamelCaseNamingStrategy</parameter>
+    <parameter key="jms_serializer.serialized_name_annotation_strategy.class">JMS\Serializer\Naming\SerializedNameAnnotationStrategy</parameter>
+    <parameter key="jms_serializer.cache_naming_strategy.class">JMS\Serializer\Naming\CacheNamingStrategy</parameter>
+    <parameter key="jms_serializer.doctrine_object_constructor.class">JMS\Serializer\Construction\DoctrineObjectConstructor</parameter>
+    <parameter key="jms_serializer.unserialize_object_constructor.class">JMS\Serializer\Construction\UnserializeObjectConstructor</parameter>
+    <parameter key="jms_serializer.version_exclusion_strategy.class">JMS\Serializer\Exclusion\VersionExclusionStrategy</parameter>
+    <parameter key="jms_serializer.serializer.class">JMS\Serializer\Serializer</parameter>
+    <parameter key="jms_serializer.twig_extension.class">JMS\Serializer\Twig\SerializerExtension</parameter>
+    <parameter key="jms_serializer.templating.helper.class">JMS\SerializerBundle\Templating\SerializerHelper</parameter>
+    <parameter key="jms_serializer.json_serialization_visitor.class">JMS\Serializer\JsonSerializationVisitor</parameter>
+    <parameter key="jms_serializer.json_serialization_visitor.options">0</parameter>
+    <parameter key="jms_serializer.json_deserialization_visitor.class">JMS\Serializer\JsonDeserializationVisitor</parameter>
+    <parameter key="jms_serializer.xml_serialization_visitor.class">JMS\Serializer\XmlSerializationVisitor</parameter>
+    <parameter key="jms_serializer.xml_deserialization_visitor.class">JMS\Serializer\XmlDeserializationVisitor</parameter>
+    <parameter key="jms_serializer.xml_deserialization_visitor.doctype_whitelist" type="collection"/>
+    <parameter key="jms_serializer.yaml_serialization_visitor.class">JMS\Serializer\YamlSerializationVisitor</parameter>
+    <parameter key="jms_serializer.handler_registry.class">JMS\Serializer\Handler\LazyHandlerRegistry</parameter>
+    <parameter key="jms_serializer.datetime_handler.class">JMS\Serializer\Handler\DateHandler</parameter>
+    <parameter key="jms_serializer.array_collection_handler.class">JMS\Serializer\Handler\ArrayCollectionHandler</parameter>
+    <parameter key="jms_serializer.php_collection_handler.class">JMS\Serializer\Handler\PhpCollectionHandler</parameter>
+    <parameter key="jms_serializer.form_error_handler.class">JMS\Serializer\Handler\FormErrorHandler</parameter>
+    <parameter key="jms_serializer.constraint_violation_handler.class">JMS\Serializer\Handler\ConstraintViolationHandler</parameter>
+    <parameter key="jms_serializer.doctrine_proxy_subscriber.class">JMS\Serializer\EventDispatcher\Subscriber\DoctrineProxySubscriber</parameter>
+    <parameter key="jms_serializer.stopwatch_subscriber.class">JMS\SerializerBundle\Serializer\StopwatchEventSubscriber</parameter>
+    <parameter key="jms_serializer.infer_types_from_doctrine_metadata">true</parameter>
+    <parameter key="nelmio_api_doc.motd.template">NelmioApiDocBundle::Components/motd.html.twig</parameter>
+    <parameter key="nelmio_api_doc.api_name">API documentation</parameter>
+    <parameter key="nelmio_api_doc.sandbox.enabled">true</parameter>
+    <parameter key="nelmio_api_doc.sandbox.endpoint">null</parameter>
+    <parameter key="nelmio_api_doc.sandbox.request_format.method">format_param</parameter>
+    <parameter key="nelmio_api_doc.sandbox.accept_type"></parameter>
+    <parameter key="nelmio_api_doc.sandbox.body_format">form</parameter>
+    <parameter key="nelmio_api_doc.sandbox.request_format.default_format">json</parameter>
+    <parameter key="nelmio_api_doc.formatter.abstract_formatter.class">Nelmio\ApiDocBundle\Formatter\AbstractFormatter</parameter>
+    <parameter key="nelmio_api_doc.formatter.markdown_formatter.class">Nelmio\ApiDocBundle\Formatter\MarkdownFormatter</parameter>
+    <parameter key="nelmio_api_doc.formatter.simple_formatter.class">Nelmio\ApiDocBundle\Formatter\SimpleFormatter</parameter>
+    <parameter key="nelmio_api_doc.formatter.html_formatter.class">Nelmio\ApiDocBundle\Formatter\HtmlFormatter</parameter>
+    <parameter key="nelmio_api_doc.sandbox.authentication">null</parameter>
+    <parameter key="nelmio_api_doc.extractor.api_doc_extractor.class">Nelmio\ApiDocBundle\Extractor\ApiDocExtractor</parameter>
+    <parameter key="nelmio_api_doc.form.extension.description_form_type_extension.class">Nelmio\ApiDocBundle\Form\Extension\DescriptionFormTypeExtension</parameter>
+    <parameter key="nelmio_api_doc.twig.extension.extra_markdown.class">Nelmio\ApiDocBundle\Twig\Extension\MarkdownExtension</parameter>
+    <parameter key="nelmio_api_doc.doc_comment_extractor.class">Nelmio\ApiDocBundle\Util\DocCommentExtractor</parameter>
+    <parameter key="nelmio_api_doc.extractor.handler.fos_rest.class">Nelmio\ApiDocBundle\Extractor\Handler\FosRestHandler</parameter>
+    <parameter key="nelmio_api_doc.extractor.handler.jms_security.class">Nelmio\ApiDocBundle\Extractor\Handler\JmsSecurityExtraHandler</parameter>
+    <parameter key="nelmio_api_doc.extractor.handler.sensio_framework_extra.class">Nelmio\ApiDocBundle\Extractor\Handler\SensioFrameworkExtraHandler</parameter>
+    <parameter key="nelmio_api_doc.extractor.handler.phpdoc.class">Nelmio\ApiDocBundle\Extractor\Handler\PhpDocHandler</parameter>
+    <parameter key="nelmio_api_doc.request_listener.parameter">_doc</parameter>
+    <parameter key="nelmio_api_doc.event_listener.request.class">Nelmio\ApiDocBundle\EventListener\RequestListener</parameter>
+    <parameter key="sonata.admin.manipulator.acl.object.orm.class">Sonata\DoctrineORMAdminBundle\Util\ObjectAclManipulator</parameter>
+    <parameter key="sonata_doctrine_orm_admin.entity_manager">null</parameter>
+    <parameter key="sonata_doctrine_orm_admin.templates" type="collection">
+      <parameter key="types" type="collection">
+        <parameter key="list" type="collection">
+          <parameter key="array">SonataAdminBundle:CRUD:list_array.html.twig</parameter>
+          <parameter key="boolean">SonataAdminBundle:CRUD:list_boolean.html.twig</parameter>
+          <parameter key="date">SonataAdminBundle:CRUD:list_date.html.twig</parameter>
+          <parameter key="time">SonataAdminBundle:CRUD:list_time.html.twig</parameter>
+          <parameter key="datetime">SonataAdminBundle:CRUD:list_datetime.html.twig</parameter>
+          <parameter key="text">SonataAdminBundle:CRUD:base_list_field.html.twig</parameter>
+          <parameter key="textarea">SonataAdminBundle:CRUD:list_string.html.twig</parameter>
+          <parameter key="email">SonataAdminBundle:CRUD:list_string.html.twig</parameter>
+          <parameter key="trans">SonataAdminBundle:CRUD:list_trans.html.twig</parameter>
+          <parameter key="string">SonataAdminBundle:CRUD:base_list_field.html.twig</parameter>
+          <parameter key="smallint">SonataAdminBundle:CRUD:base_list_field.html.twig</parameter>
+          <parameter key="bigint">SonataAdminBundle:CRUD:base_list_field.html.twig</parameter>
+          <parameter key="integer">SonataAdminBundle:CRUD:base_list_field.html.twig</parameter>
+          <parameter key="decimal">SonataAdminBundle:CRUD:base_list_field.html.twig</parameter>
+          <parameter key="identifier">SonataAdminBundle:CRUD:base_list_field.html.twig</parameter>
+          <parameter key="currency">SonataAdminBundle:CRUD:list_currency.html.twig</parameter>
+          <parameter key="percent">SonataAdminBundle:CRUD:list_percent.html.twig</parameter>
+          <parameter key="choice">SonataAdminBundle:CRUD:list_choice.html.twig</parameter>
+          <parameter key="url">SonataAdminBundle:CRUD:list_url.html.twig</parameter>
+        </parameter>
+        <parameter key="show" type="collection">
+          <parameter key="array">SonataAdminBundle:CRUD:show_array.html.twig</parameter>
+          <parameter key="boolean">SonataAdminBundle:CRUD:show_boolean.html.twig</parameter>
+          <parameter key="date">SonataAdminBundle:CRUD:show_date.html.twig</parameter>
+          <parameter key="time">SonataAdminBundle:CRUD:show_time.html.twig</parameter>
+          <parameter key="datetime">SonataAdminBundle:CRUD:show_datetime.html.twig</parameter>
+          <parameter key="text">SonataAdminBundle:CRUD:base_show_field.html.twig</parameter>
+          <parameter key="trans">SonataAdminBundle:CRUD:show_trans.html.twig</parameter>
+          <parameter key="string">SonataAdminBundle:CRUD:base_show_field.html.twig</parameter>
+          <parameter key="smallint">SonataAdminBundle:CRUD:base_show_field.html.twig</parameter>
+          <parameter key="bigint">SonataAdminBundle:CRUD:base_show_field.html.twig</parameter>
+          <parameter key="integer">SonataAdminBundle:CRUD:base_show_field.html.twig</parameter>
+          <parameter key="decimal">SonataAdminBundle:CRUD:base_show_field.html.twig</parameter>
+          <parameter key="currency">SonataAdminBundle:CRUD:base_currency.html.twig</parameter>
+          <parameter key="percent">SonataAdminBundle:CRUD:base_percent.html.twig</parameter>
+          <parameter key="choice">SonataAdminBundle:CRUD:show_choice.html.twig</parameter>
+          <parameter key="url">SonataAdminBundle:CRUD:show_url.html.twig</parameter>
+        </parameter>
+      </parameter>
+      <parameter key="form" type="collection">
+        <parameter>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</parameter>
+      </parameter>
+      <parameter key="filter" type="collection">
+        <parameter>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</parameter>
+      </parameter>
+    </parameter>
+    <parameter key="sonata.core.flashmessage.manager.class">Sonata\CoreBundle\FlashMessage\FlashManager</parameter>
+    <parameter key="sonata.core.twig.extension.flashmessage.class">Sonata\CoreBundle\Twig\Extension\FlashMessageExtension</parameter>
+    <parameter key="sonata.block.service.empty.class">Sonata\BlockBundle\Block\Service\EmptyBlockService</parameter>
+    <parameter key="sonata.block.service.text.class">Sonata\BlockBundle\Block\Service\TextBlockService</parameter>
+    <parameter key="sonata.block.service.rss.class">Sonata\BlockBundle\Block\Service\RssBlockService</parameter>
+    <parameter key="sonata.block.service.menu.class">Sonata\BlockBundle\Block\Service\MenuBlockService</parameter>
+    <parameter key="sonata.block.exception.strategy.manager.class">Sonata\BlockBundle\Exception\Strategy\StrategyManager</parameter>
+    <parameter key="sonata_block.blocks" type="collection">
+      <parameter key="sonata.admin.block.admin_list" type="collection">
+        <parameter key="contexts" type="collection">
+          <parameter>admin</parameter>
+        </parameter>
+        <parameter key="cache">sonata.cache.noop</parameter>
+        <parameter key="settings" type="collection"/>
+      </parameter>
+      <parameter key="sonata.block.service.text" type="collection">
+        <parameter key="contexts" type="collection"/>
+        <parameter key="cache">sonata.cache.noop</parameter>
+        <parameter key="settings" type="collection"/>
+      </parameter>
+      <parameter key="sonata.block.service.rss" type="collection">
+        <parameter key="contexts" type="collection"/>
+        <parameter key="cache">sonata.cache.noop</parameter>
+        <parameter key="settings" type="collection"/>
+      </parameter>
+    </parameter>
+    <parameter key="sonata_block.blocks_by_class" type="collection"/>
+    <parameter key="sonata_block.cache_blocks" type="collection">
+      <parameter key="by_type" type="collection">
+        <parameter key="sonata.admin.block.admin_list">sonata.cache.noop</parameter>
+        <parameter key="sonata.block.service.text">sonata.cache.noop</parameter>
+        <parameter key="sonata.block.service.rss">sonata.cache.noop</parameter>
+      </parameter>
+    </parameter>
+    <parameter key="knp_menu.factory.class">Knp\Menu\Silex\RouterAwareFactory</parameter>
+    <parameter key="knp_menu.helper.class">Knp\Menu\Twig\Helper</parameter>
+    <parameter key="knp_menu.menu_provider.chain.class">Knp\Menu\Provider\ChainProvider</parameter>
+    <parameter key="knp_menu.menu_provider.container_aware.class">Knp\Bundle\MenuBundle\Provider\ContainerAwareProvider</parameter>
+    <parameter key="knp_menu.menu_provider.builder_alias.class">Knp\Bundle\MenuBundle\Provider\BuilderAliasProvider</parameter>
+    <parameter key="knp_menu.renderer_provider.class">Knp\Bundle\MenuBundle\Renderer\ContainerAwareProvider</parameter>
+    <parameter key="knp_menu.renderer.list.class">Knp\Menu\Renderer\ListRenderer</parameter>
+    <parameter key="knp_menu.renderer.list.options" type="collection"/>
+    <parameter key="knp_menu.twig.extension.class">Knp\Menu\Twig\MenuExtension</parameter>
+    <parameter key="knp_menu.renderer.twig.class">Knp\Menu\Renderer\TwigRenderer</parameter>
+    <parameter key="knp_menu.renderer.twig.options" type="collection"/>
+    <parameter key="knp_menu.renderer.twig.template">knp_menu.html.twig</parameter>
+    <parameter key="knp_menu.default_renderer">twig</parameter>
+    <parameter key="sonata.admin.configuration.templates" type="collection">
+      <parameter key="user_block">SonataAdminBundle:Core:user_block.html.twig</parameter>
+      <parameter key="layout">SonataAdminBundle::standard_layout.html.twig</parameter>
+      <parameter key="ajax">SonataAdminBundle::ajax_layout.html.twig</parameter>
+      <parameter key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</parameter>
+      <parameter key="search">SonataAdminBundle:Core:search.html.twig</parameter>
+      <parameter key="list">SonataAdminBundle:CRUD:list.html.twig</parameter>
+      <parameter key="show">SonataAdminBundle:CRUD:show.html.twig</parameter>
+      <parameter key="edit">SonataAdminBundle:CRUD:edit.html.twig</parameter>
+      <parameter key="preview">SonataAdminBundle:CRUD:preview.html.twig</parameter>
+      <parameter key="history">SonataAdminBundle:CRUD:history.html.twig</parameter>
+      <parameter key="acl">SonataAdminBundle:CRUD:acl.html.twig</parameter>
+      <parameter key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</parameter>
+      <parameter key="action">SonataAdminBundle:CRUD:action.html.twig</parameter>
+      <parameter key="select">SonataAdminBundle:CRUD:list__select.html.twig</parameter>
+      <parameter key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</parameter>
+      <parameter key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</parameter>
+      <parameter key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</parameter>
+      <parameter key="delete">SonataAdminBundle:CRUD:delete.html.twig</parameter>
+      <parameter key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</parameter>
+      <parameter key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</parameter>
+      <parameter key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</parameter>
+      <parameter key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</parameter>
+      <parameter key="pager_links">SonataAdminBundle:Pager:links.html.twig</parameter>
+      <parameter key="pager_results">SonataAdminBundle:Pager:results.html.twig</parameter>
+    </parameter>
+    <parameter key="sonata.admin.configuration.admin_services" type="collection"/>
+    <parameter key="sonata.admin.configuration.dashboard_groups" type="collection"/>
+    <parameter key="sonata.admin.configuration.dashboard_blocks" type="collection">
+      <parameter type="collection">
+        <parameter key="position">left</parameter>
+        <parameter key="settings" type="collection"/>
+        <parameter key="type">sonata.admin.block.admin_list</parameter>
+      </parameter>
+    </parameter>
+    <parameter key="sonata.admin.security.acl_user_manager">null</parameter>
+    <parameter key="sonata.admin.configuration.security.information" type="collection"/>
+    <parameter key="sonata.admin.configuration.security.admin_permissions" type="collection">
+      <parameter>CREATE</parameter>
+      <parameter>LIST</parameter>
+      <parameter>DELETE</parameter>
+      <parameter>UNDELETE</parameter>
+      <parameter>EXPORT</parameter>
+      <parameter>OPERATOR</parameter>
+      <parameter>MASTER</parameter>
+    </parameter>
+    <parameter key="sonata.admin.configuration.security.object_permissions" type="collection">
+      <parameter>VIEW</parameter>
+      <parameter>EDIT</parameter>
+      <parameter>DELETE</parameter>
+      <parameter>UNDELETE</parameter>
+      <parameter>OPERATOR</parameter>
+      <parameter>MASTER</parameter>
+      <parameter>OWNER</parameter>
+    </parameter>
+    <parameter key="sonata.admin.security.handler.noop.class">Sonata\AdminBundle\Security\Handler\NoopSecurityHandler</parameter>
+    <parameter key="sonata.admin.security.handler.role.class">Sonata\AdminBundle\Security\Handler\RoleSecurityHandler</parameter>
+    <parameter key="sonata.admin.security.handler.acl.class">Sonata\AdminBundle\Security\Handler\AclSecurityHandler</parameter>
+    <parameter key="sonata.admin.security.mask.builder.class">Sonata\AdminBundle\Security\Acl\Permission\MaskBuilder</parameter>
+    <parameter key="sonata.admin.manipulator.acl.admin.class">Sonata\AdminBundle\Util\AdminAclManipulator</parameter>
+    <parameter key="sonata.admin.object.manipulator.acl.admin.class">Sonata\AdminBundle\Util\AdminObjectAclManipulator</parameter>
+    <parameter key="sonata.admin.extension.map" type="collection">
+      <parameter key="admins" type="collection"/>
+      <parameter key="excludes" type="collection"/>
+      <parameter key="implements" type="collection"/>
+      <parameter key="extends" type="collection"/>
+      <parameter key="instanceof" type="collection"/>
+    </parameter>
+    <parameter key="sonata.admin.configuration.filters.persist">false</parameter>
     <parameter key="web_profiler.controller.profiler.class">Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController</parameter>
     <parameter key="web_profiler.controller.router.class">Symfony\Bundle\WebProfilerBundle\Controller\RouterController</parameter>
     <parameter key="web_profiler.controller.exception.class">Symfony\Bundle\WebProfilerBundle\Controller\ExceptionController</parameter>
@@ -561,10 +836,710 @@
         <parameter>db</parameter>
         <parameter>DoctrineBundle:Collector:db</parameter>
       </parameter>
+      <parameter key="sonata.block.data_collector" type="collection">
+        <parameter>block</parameter>
+        <parameter>SonataBlockBundle:Profiler:block.html.twig</parameter>
+      </parameter>
     </parameter>
     <parameter key="console.command.ids" type="collection"/>
+    <parameter key="nelmio_api_doc.parser.form_type_parser.class">Nelmio\ApiDocBundle\Parser\FormTypeParser</parameter>
+    <parameter key="nelmio_api_doc.parser.validation_parser.class">Nelmio\ApiDocBundle\Parser\ValidationParser</parameter>
+    <parameter key="nelmio_api_doc.parser.jms_metadata_parser.class">Nelmio\ApiDocBundle\Parser\JmsMetadataParser</parameter>
   </parameters>
   <services>
+    <service id="sonata.admin.salida_por_receta" class="Saba\FarmaciaBundle\Admin\SalidaPorRecetaAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="Salidas" label="Por receta"/>
+      <argument>sonata.admin.salida_por_receta</argument>
+      <argument>Saba\FarmaciaBundle\Entity\SalidaPorReceta</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+      <call method="setTranslationDomain">
+        <argument>SabaFarmaciaBundle</argument>
+      </call>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Por receta</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataAdminBundle:Core:user_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+    </service>
+    <service id="sonata.admin.receta" class="Saba\FarmaciaBundle\Admin\RecetaAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="Recetas" label="Receta"/>
+      <argument>sonata.admin.receta</argument>
+      <argument>Saba\FarmaciaBundle\Entity\Receta</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+      <call method="setTranslationDomain">
+        <argument>SabaFarmaciaBundle</argument>
+      </call>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Receta</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataAdminBundle:Core:user_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+    </service>
+    <service id="sonata.admin.medico" class="Saba\FarmaciaBundle\Admin\MedicoAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="Recetas" label="Médicos"/>
+      <argument>sonata.admin.medico</argument>
+      <argument>Saba\FarmaciaBundle\Entity\Medico</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+      <call method="setTranslationDomain">
+        <argument>SabaFarmaciaBundle</argument>
+      </call>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Médicos</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataAdminBundle:Core:user_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+    </service>
+    <service id="sonata.admin.paciente" class="Saba\FarmaciaBundle\Admin\PacienteAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="Recetas" label="Pacientes"/>
+      <argument>sonata.admin.paciente</argument>
+      <argument>Saba\FarmaciaBundle\Entity\Paciente</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+      <call method="setTranslationDomain">
+        <argument>SabaFarmaciaBundle</argument>
+      </call>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Pacientes</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataAdminBundle:Core:user_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+    </service>
+    <service id="sonata.admin.medicamento" class="Saba\FarmaciaBundle\Admin\MedicamentoAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="Recetas" label="Medicamentos"/>
+      <argument>sonata.admin.medicamento</argument>
+      <argument>Saba\FarmaciaBundle\Entity\Medicamento</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+      <call method="setTranslationDomain">
+        <argument>SabaFarmaciaBundle</argument>
+      </call>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Medicamentos</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataAdminBundle:Core:user_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+    </service>
+    <service id="sonata.admin.receta_tiene_lineas" class="Saba\FarmaciaBundle\Admin\RecetaTieneLineasAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="Recetas" label="Lineas por receta"/>
+      <argument>sonata.admin.receta_tiene_lineas</argument>
+      <argument>Saba\FarmaciaBundle\Entity\RecetaTieneLineas</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+      <call method="setTranslationDomain">
+        <argument>SabaFarmaciaBundle</argument>
+      </call>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Lineas por receta</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataAdminBundle:Core:user_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+    </service>
+    <service id="sonata.admin.linea_de_recetas" class="Saba\FarmaciaBundle\Admin\LineaDeRecetaAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="Recetas" label="Lineas"/>
+      <argument>sonata.admin.linea_de_recetas</argument>
+      <argument>Saba\FarmaciaBundle\Entity\LineaDeReceta</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+      <call method="setTranslationDomain">
+        <argument>SabaFarmaciaBundle</argument>
+      </call>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Lineas</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataAdminBundle:Core:user_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+    </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -578,7 +1553,7 @@
     </service>
     <service id="locale_listener" class="Symfony\Component\HttpKernel\EventListener\LocaleListener">
       <tag name="kernel.event_subscriber"/>
-      <argument>en</argument>
+      <argument>es</argument>
       <argument type="service" id="router" on-invalid="ignore"/>
       <argument type="service" id="request_stack"/>
     </service>
@@ -745,7 +1720,7 @@
       <tag name="translation.loader" alias="yml"/>
     </service>
     <service id="translation.loader.xliff" class="Symfony\Component\Translation\Loader\XliffFileLoader">
-      <tag name="translation.loader" alias="xlf" legacy-alias="xliff"/>
+      <tag name="translation.loader" alias="xlf" legacy_alias="xliff" legacy-alias="xliff"/>
     </service>
     <service id="translation.loader.po" class="Symfony\Component\Translation\Loader\PoFileLoader">
       <tag name="translation.loader" alias="po"/>
@@ -940,6 +1915,30 @@
         <argument>0</argument>
       </call>
       <call method="addListenerService">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument>fos_rest.body_listener</argument>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>10</argument>
+      </call>
+      <call method="addListenerService">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument>nelmio_api_doc.event_listener.request</argument>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListenerService">
+        <argument>kernel.response</argument>
+        <argument type="collection">
+          <argument>sonata.block.cache.handler.default</argument>
+          <argument>onKernelResponse</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListenerService">
         <argument>kernel.controller</argument>
         <argument type="collection">
           <argument>acme.demo.listener</argument>
@@ -1123,6 +2122,26 @@
               <argument key="reset">form.type.reset</argument>
               <argument key="currency">form.type.currency</argument>
               <argument key="entity">form.type.entity</argument>
+              <argument key="sonata_type_immutable_array">sonata.core.form.type.array</argument>
+              <argument key="sonata_type_boolean">sonata.core.form.type.boolean</argument>
+              <argument key="sonata_type_collection">sonata.core.form.type.collection</argument>
+              <argument key="sonata_type_translatable_choice">sonata.core.form.type.translatable_choice</argument>
+              <argument key="sonata_type_date_range">sonata.core.form.type.date_range</argument>
+              <argument key="sonata_type_datetime_range">sonata.core.form.type.datetime_range</argument>
+              <argument key="sonata_type_equal">sonata.core.form.type.equal</argument>
+              <argument key="sonata_block_service_choice">sonata.block.form.type.block</argument>
+              <argument key="sonata_type_admin">sonata.admin.form.type.admin</argument>
+              <argument key="sonata_type_model">sonata.admin.form.type.model_choice</argument>
+              <argument key="sonata_type_model_list">sonata.admin.form.type.model_list</argument>
+              <argument key="sonata_type_model_reference">sonata.admin.form.type.model_reference</argument>
+              <argument key="sonata_type_model_hidden">sonata.admin.form.type.model_hidden</argument>
+              <argument key="sonata_type_filter_number">sonata.admin.form.filter.type.number</argument>
+              <argument key="sonata_type_filter_choice">sonata.admin.form.filter.type.choice</argument>
+              <argument key="sonata_type_filter_default">sonata.admin.form.filter.type.default</argument>
+              <argument key="sonata_type_filter_date">sonata.admin.form.filter.type.date</argument>
+              <argument key="sonata_type_filter_date_range">sonata.admin.form.filter.type.daterange</argument>
+              <argument key="sonata_type_filter_datetime">sonata.admin.form.filter.type.datetime</argument>
+              <argument key="sonata_type_filter_datetime_range">sonata.admin.form.filter.type.datetime_range</argument>
             </argument>
             <argument type="collection">
               <argument key="form" type="collection">
@@ -1130,6 +2149,8 @@
                 <argument>form.type_extension.form.validator</argument>
                 <argument>form.type_extension.csrf</argument>
                 <argument>form.type_extension.form.data_collector</argument>
+                <argument>nelmio_api_doc.form.extension.description_form_type_extension</argument>
+                <argument>sonata.admin.form.extension.field</argument>
               </argument>
               <argument key="repeated" type="collection">
                 <argument>form.type_extension.repeated.validator</argument>
@@ -1358,16 +2379,7 @@
     </service>
     <service id="validator" class="Symfony\Component\Validator\Validator">
       <argument type="service" id="validator.mapping.class_metadata_factory"/>
-      <argument type="service">
-        <service class="Symfony\Bundle\FrameworkBundle\Validator\ConstraintValidatorFactory" public="false">
-          <argument type="service" id="service_container"/>
-          <argument type="collection">
-            <argument key="validator.expression">validator.expression</argument>
-            <argument key="security.validator.user_password">security.validator.user_password</argument>
-            <argument key="doctrine.orm.validator.unique">doctrine.orm.validator.unique</argument>
-          </argument>
-        </service>
-      </argument>
+      <argument type="service" id="validator.validator_factory"/>
       <argument type="service" id="translator"/>
       <argument>validators</argument>
       <argument type="collection">
@@ -1402,6 +2414,15 @@
         </service>
       </argument>
       <argument>null</argument>
+    </service>
+    <service id="validator.validator_factory" class="Symfony\Bundle\FrameworkBundle\Validator\ConstraintValidatorFactory" public="false">
+      <argument type="service" id="service_container"/>
+      <argument type="collection">
+        <argument key="validator.expression">validator.expression</argument>
+        <argument key="security.validator.user_password">security.validator.user_password</argument>
+        <argument key="doctrine.orm.validator.unique">doctrine.orm.validator.unique</argument>
+        <argument key="sonata.admin.validator.inline">sonata.admin.validator.inline</argument>
+      </argument>
     </service>
     <service id="validator.expression" class="Symfony\Component\Validator\Constraints\ExpressionValidator">
       <tag name="validator.constraint_validator" alias="validator.expression"/>
@@ -1514,6 +2535,19 @@
           </service>
         </argument>
       </call>
+      <call method="add">
+        <argument type="service">
+          <service class="Sonata\BlockBundle\Profiler\DataCollector\BlockDataCollector" public="false">
+            <tag name="data_collector" id="block" template="SonataBlockBundle:Profiler:block.html.twig"/>
+            <argument type="service" id="sonata.block.templating.helper"/>
+            <argument type="collection">
+              <argument>sonata.page.block.container</argument>
+              <argument>cmf.block.container</argument>
+              <argument>cmf.block.slideshow</argument>
+            </argument>
+          </service>
+        </argument>
+      </call>
     </service>
     <service id="profiler_listener" class="Symfony\Component\HttpKernel\EventListener\ProfilerListener">
       <tag name="kernel.event_subscriber"/>
@@ -1609,6 +2643,18 @@
                 <argument type="service" id="annotation_reader"/>
               </service>
             </argument>
+          </call>
+          <call method="addLoader">
+            <argument type="service" id="fos_rest.routing.loader.controller"/>
+          </call>
+          <call method="addLoader">
+            <argument type="service" id="fos_rest.routing.loader.yaml_collection"/>
+          </call>
+          <call method="addLoader">
+            <argument type="service" id="fos_rest.routing.loader.xml_collection"/>
+          </call>
+          <call method="addLoader">
+            <argument type="service" id="sonata.admin.route_loader"/>
           </call>
         </service>
       </argument>
@@ -2099,11 +3145,62 @@
         </argument>
       </call>
       <call method="addExtension">
+        <argument type="service">
+          <service class="JMS\Serializer\Twig\SerializerExtension" public="false">
+            <tag name="twig.extension"/>
+            <argument type="service" id="fos_rest.serializer"/>
+          </service>
+        </argument>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="nelmio_api_doc.twig.extension.extra_markdown"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="sonata.core.flashmessage.twig.extension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="sonata.core.twig.status_extension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="sonata.core.twig.template_extension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service">
+          <service class="Sonata\BlockBundle\Twig\Extension\BlockExtension" public="false">
+            <tag name="twig.extension"/>
+            <argument type="service" id="sonata.block.templating.helper"/>
+          </service>
+        </argument>
+      </call>
+      <call method="addExtension">
+        <argument type="service">
+          <service class="Knp\Menu\Twig\MenuExtension" public="false">
+            <tag name="twig.extension"/>
+            <argument type="service">
+              <service class="Knp\Menu\Twig\Helper" public="false">
+                <argument type="service" id="knp_menu.renderer_provider"/>
+                <argument type="service" id="knp_menu.menu_provider"/>
+              </service>
+            </argument>
+          </service>
+        </argument>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.twig.extension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.twig.extension.text"/>
+      </call>
+      <call method="addExtension">
         <argument type="service" id="twig.extension.acme.demo"/>
       </call>
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="templating.globals"/>
+      </call>
+      <call method="addGlobal">
+        <argument>sonata_block</argument>
+        <argument type="service" id="sonata.block.twig.global"/>
       </call>
     </service>
     <service id="twig.translation.extractor" class="Symfony\Bridge\Twig\Translation\TwigExtractor">
@@ -2239,13 +3336,13 @@
     <service id="doctrine.dbal.logger.profiling.default" class="Doctrine\DBAL\Logging\DebugStack" public="false"/>
     <service id="doctrine.dbal.default_connection" class="stdClass" factory-method="createConnection" factory-service="doctrine.dbal.connection_factory">
       <argument type="collection">
-        <argument key="dbname">symfony</argument>
-        <argument key="host">127.0.0.1</argument>
-        <argument key="port">null</argument>
-        <argument key="user">root</argument>
-        <argument key="password">null</argument>
-        <argument key="charset">UTF8</argument>
         <argument key="driver">pdo_mysql</argument>
+        <argument key="host">127.0.0.1</argument>
+        <argument key="port">3306</argument>
+        <argument key="dbname">symfony</argument>
+        <argument key="user">root</argument>
+        <argument key="password">123victor123</argument>
+        <argument key="charset">UTF8</argument>
         <argument key="driverOptions" type="collection"/>
       </argument>
       <argument type="service">
@@ -2304,6 +3401,7 @@
           <call method="setEntityNamespaces">
             <argument type="collection">
               <argument key="SabaFarmaciaBundle">Saba\FarmaciaBundle\Entity</argument>
+              <argument key="SonataCoreBundle">Sonata\CoreBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2342,10 +3440,23 @@
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
                         <argument>/var/www/html/SICARIS/src/Saba/FarmaciaBundle/Entity</argument>
+                        <argument>/var/www/html/SICARIS/vendor/sonata-project/core-bundle/Sonata/CoreBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
                   <argument>Saba\FarmaciaBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>/var/www/html/SICARIS/src/Saba/FarmaciaBundle/Entity</argument>
+                        <argument>/var/www/html/SICARIS/vendor/sonata-project/core-bundle/Sonata/CoreBundle/Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>Sonata\CoreBundle\Entity</argument>
                 </call>
               </service>
             </argument>
@@ -2420,6 +3531,1167 @@
       <argument type="service" id="security.authentication.trust_resolver" on-invalid="null"/>
       <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
     </service>
+    <service id="fos_rest.view.exception_wrapper_handler" class="FOS\RestBundle\View\ExceptionWrapperHandler"/>
+    <service id="fos_rest.routing.loader.controller" class="FOS\RestBundle\Routing\Loader\RestRouteLoader">
+      <tag name="routing.loader"/>
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="file_locator"/>
+      <argument type="service" id="controller_name_converter"/>
+      <argument type="service" id="fos_rest.routing.loader.reader.controller"/>
+      <argument>null</argument>
+    </service>
+    <service id="fos_rest.routing.loader.processor" class="FOS\RestBundle\Routing\Loader\RestRouteProcessor"/>
+    <service id="fos_rest.routing.loader.yaml_collection" class="FOS\RestBundle\Routing\Loader\RestYamlCollectionLoader">
+      <tag name="routing.loader"/>
+      <argument type="service" id="file_locator"/>
+      <argument type="service" id="fos_rest.routing.loader.processor"/>
+    </service>
+    <service id="fos_rest.routing.loader.xml_collection" class="FOS\RestBundle\Routing\Loader\RestXmlCollectionLoader">
+      <tag name="routing.loader"/>
+      <argument type="service" id="file_locator"/>
+      <argument type="service" id="fos_rest.routing.loader.processor"/>
+    </service>
+    <service id="fos_rest.routing.loader.reader.controller" class="FOS\RestBundle\Routing\Loader\Reader\RestControllerReader">
+      <argument type="service" id="fos_rest.routing.loader.reader.action"/>
+      <argument type="service" id="annotation_reader"/>
+    </service>
+    <service id="fos_rest.routing.loader.reader.action" class="FOS\RestBundle\Routing\Loader\Reader\RestActionReader">
+      <argument type="service" id="annotation_reader"/>
+      <argument type="service" id="fos_rest.request.param_fetcher.reader"/>
+      <argument type="service" id="fos_rest.inflector.doctrine"/>
+      <argument>true</argument>
+      <argument type="collection">
+        <argument key="json">false</argument>
+        <argument key="xml">false</argument>
+        <argument key="html">true</argument>
+      </argument>
+    </service>
+    <service id="fos_rest.format_negotiator" class="FOS\RestBundle\Util\FormatNegotiator"/>
+    <service id="fos_rest.inflector.doctrine" class="FOS\RestBundle\Util\Inflector\DoctrineInflector"/>
+    <service id="fos_rest.request.param_fetcher" class="FOS\RestBundle\Request\ParamFetcher" scope="request">
+      <argument type="service" id="fos_rest.request.param_fetcher.reader"/>
+      <argument type="service" id="request"/>
+    </service>
+    <service id="fos_rest.request.param_fetcher.reader" class="FOS\RestBundle\Request\ParamReader">
+      <argument type="service" id="annotation_reader"/>
+    </service>
+    <service id="fos_rest.decoder.json" class="FOS\RestBundle\Decoder\JsonDecoder"/>
+    <service id="fos_rest.decoder.jsontoform" class="FOS\RestBundle\Decoder\JsonToFormDecoder"/>
+    <service id="fos_rest.decoder.xml" class="FOS\RestBundle\Decoder\XmlDecoder"/>
+    <service id="fos_rest.decoder_provider" class="FOS\RestBundle\Decoder\ContainerDecoderProvider">
+      <argument type="collection">
+        <argument key="json">fos_rest.decoder.json</argument>
+        <argument key="xml">fos_rest.decoder.xml</argument>
+      </argument>
+      <call method="setContainer">
+        <argument type="service" id="service_container"/>
+      </call>
+    </service>
+    <service id="fos_rest.body_listener" class="FOS\RestBundle\EventListener\BodyListener">
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="10"/>
+      <argument type="service" id="fos_rest.decoder_provider"/>
+    </service>
+    <service id="jms_serializer.doctrine_proxy_subscriber" class="JMS\Serializer\EventDispatcher\Subscriber\DoctrineProxySubscriber">
+      <tag name="jms_serializer.event_subscriber"/>
+    </service>
+    <service id="jms_serializer.stopwatch_subscriber" class="JMS\SerializerBundle\Serializer\StopwatchEventSubscriber">
+      <tag name="jms_serializer.event_subscriber"/>
+      <argument type="service" id="debug.stopwatch"/>
+    </service>
+    <service id="jms_serializer.handler_registry" class="JMS\Serializer\Handler\LazyHandlerRegistry">
+      <argument type="service" id="service_container"/>
+      <argument type="collection">
+        <argument key="2" type="collection">
+          <argument key="DateTime" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.datetime_handler</argument>
+              <argument>deserializeDateTimeFromjson</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.datetime_handler</argument>
+              <argument>deserializeDateTimeFromxml</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.datetime_handler</argument>
+              <argument>deserializeDateTimeFromyml</argument>
+            </argument>
+          </argument>
+          <argument key="ArrayCollection" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+          </argument>
+          <argument key="Doctrine\Common\Collections\ArrayCollection" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+          </argument>
+          <argument key="Doctrine\ORM\PersistentCollection" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+          </argument>
+          <argument key="Doctrine\ODM\MongoDB\PersistentCollection" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+          </argument>
+          <argument key="Doctrine\ODM\PHPCR\PersistentCollection" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>deserializeCollection</argument>
+            </argument>
+          </argument>
+          <argument key="PhpCollection\Sequence" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.php_collection_handler</argument>
+              <argument>deserializeSequence</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.php_collection_handler</argument>
+              <argument>deserializeSequence</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.php_collection_handler</argument>
+              <argument>deserializeSequence</argument>
+            </argument>
+          </argument>
+          <argument key="PhpCollection\Map" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.php_collection_handler</argument>
+              <argument>deserializeMap</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.php_collection_handler</argument>
+              <argument>deserializeMap</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.php_collection_handler</argument>
+              <argument>deserializeMap</argument>
+            </argument>
+          </argument>
+        </argument>
+        <argument key="1" type="collection">
+          <argument key="DateTime" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.datetime_handler</argument>
+              <argument>serializeDateTime</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.datetime_handler</argument>
+              <argument>serializeDateTime</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.datetime_handler</argument>
+              <argument>serializeDateTime</argument>
+            </argument>
+          </argument>
+          <argument key="DateInterval" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.datetime_handler</argument>
+              <argument>serializeDateInterval</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.datetime_handler</argument>
+              <argument>serializeDateInterval</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.datetime_handler</argument>
+              <argument>serializeDateInterval</argument>
+            </argument>
+          </argument>
+          <argument key="ArrayCollection" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+          </argument>
+          <argument key="Doctrine\Common\Collections\ArrayCollection" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+          </argument>
+          <argument key="Doctrine\ORM\PersistentCollection" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+          </argument>
+          <argument key="Doctrine\ODM\MongoDB\PersistentCollection" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+          </argument>
+          <argument key="Doctrine\ODM\PHPCR\PersistentCollection" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.array_collection_handler</argument>
+              <argument>serializeCollection</argument>
+            </argument>
+          </argument>
+          <argument key="PhpCollection\Sequence" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.php_collection_handler</argument>
+              <argument>serializeSequence</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.php_collection_handler</argument>
+              <argument>serializeSequence</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.php_collection_handler</argument>
+              <argument>serializeSequence</argument>
+            </argument>
+          </argument>
+          <argument key="PhpCollection\Map" type="collection">
+            <argument key="json" type="collection">
+              <argument>jms_serializer.php_collection_handler</argument>
+              <argument>serializeMap</argument>
+            </argument>
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.php_collection_handler</argument>
+              <argument>serializeMap</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.php_collection_handler</argument>
+              <argument>serializeMap</argument>
+            </argument>
+          </argument>
+          <argument key="Symfony\Component\Form\Form" type="collection">
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.form_error_handler</argument>
+              <argument>serializeFormToxml</argument>
+            </argument>
+            <argument key="json" type="collection">
+              <argument>jms_serializer.form_error_handler</argument>
+              <argument>serializeFormTojson</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.form_error_handler</argument>
+              <argument>serializeFormToyml</argument>
+            </argument>
+          </argument>
+          <argument key="Symfony\Component\Form\FormError" type="collection">
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.form_error_handler</argument>
+              <argument>serializeFormErrorToxml</argument>
+            </argument>
+            <argument key="json" type="collection">
+              <argument>jms_serializer.form_error_handler</argument>
+              <argument>serializeFormErrorTojson</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.form_error_handler</argument>
+              <argument>serializeFormErrorToyml</argument>
+            </argument>
+          </argument>
+          <argument key="Symfony\Component\Validator\ConstraintViolationList" type="collection">
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.constraint_violation_handler</argument>
+              <argument>serializeListToxml</argument>
+            </argument>
+            <argument key="json" type="collection">
+              <argument>jms_serializer.constraint_violation_handler</argument>
+              <argument>serializeListTojson</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.constraint_violation_handler</argument>
+              <argument>serializeListToyml</argument>
+            </argument>
+          </argument>
+          <argument key="Symfony\Component\Validator\ConstraintViolation" type="collection">
+            <argument key="xml" type="collection">
+              <argument>jms_serializer.constraint_violation_handler</argument>
+              <argument>serializeViolationToxml</argument>
+            </argument>
+            <argument key="json" type="collection">
+              <argument>jms_serializer.constraint_violation_handler</argument>
+              <argument>serializeViolationTojson</argument>
+            </argument>
+            <argument key="yml" type="collection">
+              <argument>jms_serializer.constraint_violation_handler</argument>
+              <argument>serializeViolationToyml</argument>
+            </argument>
+          </argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="jms_serializer.datetime_handler" class="JMS\Serializer\Handler\DateHandler">
+      <tag name="jms_serializer.subscribing_handler"/>
+      <argument>Y-m-d\TH:i:sO</argument>
+      <argument>America/Mexico_City</argument>
+      <argument>true</argument>
+    </service>
+    <service id="jms_serializer.array_collection_handler" class="JMS\Serializer\Handler\ArrayCollectionHandler">
+      <tag name="jms_serializer.subscribing_handler"/>
+    </service>
+    <service id="jms_serializer.php_collection_handler" class="JMS\Serializer\Handler\PhpCollectionHandler">
+      <tag name="jms_serializer.subscribing_handler"/>
+    </service>
+    <service id="jms_serializer.form_error_handler" class="JMS\Serializer\Handler\FormErrorHandler">
+      <tag name="jms_serializer.subscribing_handler"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="jms_serializer.constraint_violation_handler" class="JMS\Serializer\Handler\ConstraintViolationHandler">
+      <tag name="jms_serializer.subscribing_handler"/>
+    </service>
+    <service id="jms_serializer.metadata_factory" class="Metadata\MetadataFactory" public="false">
+      <argument type="service">
+        <service class="Metadata\Driver\LazyLoadingDriver" public="false">
+          <argument type="service" id="service_container"/>
+          <argument>jms_serializer.metadata_driver</argument>
+        </service>
+      </argument>
+      <argument>Metadata\ClassHierarchyMetadata</argument>
+      <argument>true</argument>
+      <call method="setCache">
+        <argument type="service">
+          <service class="Metadata\Cache\FileCache" public="false">
+            <argument>/var/www/html/SICARIS/app/cache/dev/jms_serializer</argument>
+          </service>
+        </argument>
+      </call>
+    </service>
+    <service id="jms_serializer.unserialize_object_constructor" class="JMS\Serializer\Construction\UnserializeObjectConstructor" public="false"/>
+    <service id="jms_serializer.templating.helper.serializer" class="JMS\SerializerBundle\Templating\SerializerHelper">
+      <tag name="templating.helper" alias="jms_serializer"/>
+      <argument type="service" id="fos_rest.serializer"/>
+    </service>
+    <service id="jms_serializer.json_serialization_visitor" class="JMS\Serializer\JsonSerializationVisitor">
+      <tag name="jms_serializer.serialization_visitor" format="json"/>
+      <argument type="service" id="jms_serializer.naming_strategy"/>
+      <call method="setOptions">
+        <argument>0</argument>
+      </call>
+    </service>
+    <service id="jms_serializer.json_deserialization_visitor" class="JMS\Serializer\JsonDeserializationVisitor">
+      <tag name="jms_serializer.deserialization_visitor" format="json"/>
+      <argument type="service" id="jms_serializer.naming_strategy"/>
+      <argument type="service" id="jms_serializer.unserialize_object_constructor"/>
+    </service>
+    <service id="jms_serializer.xml_serialization_visitor" class="JMS\Serializer\XmlSerializationVisitor">
+      <tag name="jms_serializer.serialization_visitor" format="xml"/>
+      <argument type="service" id="jms_serializer.naming_strategy"/>
+    </service>
+    <service id="jms_serializer.xml_deserialization_visitor" class="JMS\Serializer\XmlDeserializationVisitor">
+      <tag name="jms_serializer.deserialization_visitor" format="xml"/>
+      <argument type="service" id="jms_serializer.naming_strategy"/>
+      <argument type="service" id="jms_serializer.unserialize_object_constructor"/>
+      <call method="setDoctypeWhitelist">
+        <argument type="collection"/>
+      </call>
+    </service>
+    <service id="jms_serializer.yaml_serialization_visitor" class="JMS\Serializer\YamlSerializationVisitor">
+      <tag name="jms_serializer.serialization_visitor" format="yml"/>
+      <argument type="service" id="jms_serializer.naming_strategy"/>
+    </service>
+    <service id="nelmio_api_doc.formatter.abstract_formatter" class="Nelmio\ApiDocBundle\Formatter\AbstractFormatter"/>
+    <service id="nelmio_api_doc.formatter.markdown_formatter" class="Nelmio\ApiDocBundle\Formatter\MarkdownFormatter"/>
+    <service id="nelmio_api_doc.formatter.simple_formatter" class="Nelmio\ApiDocBundle\Formatter\SimpleFormatter"/>
+    <service id="nelmio_api_doc.formatter.html_formatter" class="Nelmio\ApiDocBundle\Formatter\HtmlFormatter">
+      <call method="setTemplatingEngine">
+        <argument type="service" id="templating"/>
+      </call>
+      <call method="setMotdTemplate">
+        <argument>NelmioApiDocBundle::Components/motd.html.twig</argument>
+      </call>
+      <call method="setApiName">
+        <argument>API documentation</argument>
+      </call>
+      <call method="setEnableSandbox">
+        <argument>true</argument>
+      </call>
+      <call method="setEndpoint">
+        <argument>null</argument>
+      </call>
+      <call method="setRequestFormatMethod">
+        <argument>format_param</argument>
+      </call>
+      <call method="setDefaultRequestFormat">
+        <argument>json</argument>
+      </call>
+      <call method="setAcceptType">
+        <argument></argument>
+      </call>
+      <call method="setBodyFormat">
+        <argument>form</argument>
+      </call>
+      <call method="setAuthentication">
+        <argument>null</argument>
+      </call>
+    </service>
+    <service id="nelmio_api_doc.doc_comment_extractor" class="Nelmio\ApiDocBundle\Util\DocCommentExtractor"/>
+    <service id="nelmio_api_doc.extractor.api_doc_extractor" class="Nelmio\ApiDocBundle\Extractor\ApiDocExtractor">
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="router"/>
+      <argument type="service" id="annotation_reader"/>
+      <argument type="service" id="nelmio_api_doc.doc_comment_extractor"/>
+      <argument type="collection">
+        <argument type="service">
+          <service class="Nelmio\ApiDocBundle\Extractor\Handler\FosRestHandler" public="false">
+            <tag name="nelmio_api_doc.extractor.handler"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Nelmio\ApiDocBundle\Extractor\Handler\JmsSecurityExtraHandler" public="false">
+            <tag name="nelmio_api_doc.extractor.handler"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Nelmio\ApiDocBundle\Extractor\Handler\SensioFrameworkExtraHandler" public="false">
+            <tag name="nelmio_api_doc.extractor.handler"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Nelmio\ApiDocBundle\Extractor\Handler\PhpDocHandler" public="false">
+            <tag name="nelmio_api_doc.extractor.handler"/>
+            <argument type="service" id="nelmio_api_doc.doc_comment_extractor"/>
+          </service>
+        </argument>
+      </argument>
+      <call method="addParser">
+        <argument type="service" id="nelmio_api_doc.parser.form_type_parser"/>
+      </call>
+      <call method="addParser">
+        <argument type="service" id="nelmio_api_doc.parser.validation_parser"/>
+      </call>
+      <call method="addParser">
+        <argument type="service" id="nelmio_api_doc.parser.jms_metadata_parser"/>
+      </call>
+    </service>
+    <service id="nelmio_api_doc.form.extension.description_form_type_extension" class="Nelmio\ApiDocBundle\Form\Extension\DescriptionFormTypeExtension">
+      <tag name="form.type_extension" alias="form"/>
+    </service>
+    <service id="nelmio_api_doc.twig.extension.extra_markdown" class="Nelmio\ApiDocBundle\Twig\Extension\MarkdownExtension">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="nelmio_api_doc.event_listener.request" class="Nelmio\ApiDocBundle\EventListener\RequestListener">
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <argument type="service" id="nelmio_api_doc.extractor.api_doc_extractor"/>
+      <argument type="service" id="nelmio_api_doc.formatter.html_formatter"/>
+      <argument>_doc</argument>
+    </service>
+    <service id="sonata.admin.manager.orm" class="Sonata\DoctrineORMAdminBundle\Model\ModelManager">
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="sonata.admin.builder.orm_form" class="Sonata\DoctrineORMAdminBundle\Builder\FormContractor">
+      <argument type="service" id="form.factory"/>
+    </service>
+    <service id="sonata.admin.builder.orm_list" class="Sonata\DoctrineORMAdminBundle\Builder\ListBuilder">
+      <argument type="service" id="sonata.admin.guesser.orm_list_chain"/>
+      <argument type="collection">
+        <argument key="array">SonataAdminBundle:CRUD:list_array.html.twig</argument>
+        <argument key="boolean">SonataAdminBundle:CRUD:list_boolean.html.twig</argument>
+        <argument key="date">SonataAdminBundle:CRUD:list_date.html.twig</argument>
+        <argument key="time">SonataAdminBundle:CRUD:list_time.html.twig</argument>
+        <argument key="datetime">SonataAdminBundle:CRUD:list_datetime.html.twig</argument>
+        <argument key="text">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+        <argument key="textarea">SonataAdminBundle:CRUD:list_string.html.twig</argument>
+        <argument key="email">SonataAdminBundle:CRUD:list_string.html.twig</argument>
+        <argument key="trans">SonataAdminBundle:CRUD:list_trans.html.twig</argument>
+        <argument key="string">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+        <argument key="smallint">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+        <argument key="bigint">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+        <argument key="integer">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+        <argument key="decimal">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+        <argument key="identifier">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+        <argument key="currency">SonataAdminBundle:CRUD:list_currency.html.twig</argument>
+        <argument key="percent">SonataAdminBundle:CRUD:list_percent.html.twig</argument>
+        <argument key="choice">SonataAdminBundle:CRUD:list_choice.html.twig</argument>
+        <argument key="url">SonataAdminBundle:CRUD:list_url.html.twig</argument>
+      </argument>
+    </service>
+    <service id="sonata.admin.guesser.orm_list" class="Sonata\DoctrineORMAdminBundle\Guesser\TypeGuesser">
+      <tag name="sonata.admin.guesser.orm_list"/>
+    </service>
+    <service id="sonata.admin.guesser.orm_list_chain" class="Sonata\AdminBundle\Guesser\TypeGuesserChain">
+      <argument type="collection">
+        <argument type="service" id="sonata.admin.guesser.orm_list"/>
+      </argument>
+    </service>
+    <service id="sonata.admin.builder.orm_show" class="Sonata\DoctrineORMAdminBundle\Builder\ShowBuilder">
+      <argument type="service" id="sonata.admin.guesser.orm_show_chain"/>
+      <argument type="collection">
+        <argument key="array">SonataAdminBundle:CRUD:show_array.html.twig</argument>
+        <argument key="boolean">SonataAdminBundle:CRUD:show_boolean.html.twig</argument>
+        <argument key="date">SonataAdminBundle:CRUD:show_date.html.twig</argument>
+        <argument key="time">SonataAdminBundle:CRUD:show_time.html.twig</argument>
+        <argument key="datetime">SonataAdminBundle:CRUD:show_datetime.html.twig</argument>
+        <argument key="text">SonataAdminBundle:CRUD:base_show_field.html.twig</argument>
+        <argument key="trans">SonataAdminBundle:CRUD:show_trans.html.twig</argument>
+        <argument key="string">SonataAdminBundle:CRUD:base_show_field.html.twig</argument>
+        <argument key="smallint">SonataAdminBundle:CRUD:base_show_field.html.twig</argument>
+        <argument key="bigint">SonataAdminBundle:CRUD:base_show_field.html.twig</argument>
+        <argument key="integer">SonataAdminBundle:CRUD:base_show_field.html.twig</argument>
+        <argument key="decimal">SonataAdminBundle:CRUD:base_show_field.html.twig</argument>
+        <argument key="currency">SonataAdminBundle:CRUD:base_currency.html.twig</argument>
+        <argument key="percent">SonataAdminBundle:CRUD:base_percent.html.twig</argument>
+        <argument key="choice">SonataAdminBundle:CRUD:show_choice.html.twig</argument>
+        <argument key="url">SonataAdminBundle:CRUD:show_url.html.twig</argument>
+      </argument>
+    </service>
+    <service id="sonata.admin.guesser.orm_show" class="Sonata\DoctrineORMAdminBundle\Guesser\TypeGuesser">
+      <tag name="sonata.admin.guesser.orm_show"/>
+    </service>
+    <service id="sonata.admin.guesser.orm_show_chain" class="Sonata\AdminBundle\Guesser\TypeGuesserChain">
+      <argument type="collection">
+        <argument type="service" id="sonata.admin.guesser.orm_show"/>
+      </argument>
+    </service>
+    <service id="sonata.admin.builder.orm_datagrid" class="Sonata\DoctrineORMAdminBundle\Builder\DatagridBuilder">
+      <argument type="service" id="form.factory"/>
+      <argument type="service" id="sonata.admin.builder.filter.factory"/>
+      <argument type="service" id="sonata.admin.guesser.orm_datagrid_chain"/>
+      <argument>true</argument>
+    </service>
+    <service id="sonata.admin.guesser.orm_datagrid" class="Sonata\DoctrineORMAdminBundle\Guesser\FilterTypeGuesser">
+      <tag name="sonata.admin.guesser.orm_datagrid"/>
+    </service>
+    <service id="sonata.admin.guesser.orm_datagrid_chain" class="Sonata\AdminBundle\Guesser\TypeGuesserChain">
+      <argument type="collection">
+        <argument type="service" id="sonata.admin.guesser.orm_datagrid"/>
+      </argument>
+    </service>
+    <service id="sonata.admin.orm.filter.type.boolean" class="Sonata\DoctrineORMAdminBundle\Filter\BooleanFilter" scope="prototype">
+      <tag name="sonata.admin.filter.type" alias="doctrine_orm_boolean"/>
+    </service>
+    <service id="sonata.admin.orm.filter.type.callback" class="Sonata\DoctrineORMAdminBundle\Filter\CallbackFilter" scope="prototype">
+      <tag name="sonata.admin.filter.type" alias="doctrine_orm_callback"/>
+    </service>
+    <service id="sonata.admin.orm.filter.type.choice" class="Sonata\DoctrineORMAdminBundle\Filter\ChoiceFilter" scope="prototype">
+      <tag name="sonata.admin.filter.type" alias="doctrine_orm_choice"/>
+    </service>
+    <service id="sonata.admin.orm.filter.type.model" class="Sonata\DoctrineORMAdminBundle\Filter\ModelFilter" scope="prototype">
+      <tag name="sonata.admin.filter.type" alias="doctrine_orm_model"/>
+    </service>
+    <service id="sonata.admin.orm.filter.type.string" class="Sonata\DoctrineORMAdminBundle\Filter\StringFilter" scope="prototype">
+      <tag name="sonata.admin.filter.type" alias="doctrine_orm_string"/>
+    </service>
+    <service id="sonata.admin.orm.filter.type.number" class="Sonata\DoctrineORMAdminBundle\Filter\NumberFilter" scope="prototype">
+      <tag name="sonata.admin.filter.type" alias="doctrine_orm_number"/>
+    </service>
+    <service id="sonata.admin.orm.filter.type.date" class="Sonata\DoctrineORMAdminBundle\Filter\DateFilter" scope="prototype">
+      <tag name="sonata.admin.filter.type" alias="doctrine_orm_date"/>
+    </service>
+    <service id="sonata.admin.orm.filter.type.date_range" class="Sonata\DoctrineORMAdminBundle\Filter\DateRangeFilter" scope="prototype">
+      <tag name="sonata.admin.filter.type" alias="doctrine_orm_date_range"/>
+    </service>
+    <service id="sonata.admin.orm.filter.type.datetime" class="Sonata\DoctrineORMAdminBundle\Filter\DateTimeFilter" scope="prototype">
+      <tag name="sonata.admin.filter.type" alias="doctrine_orm_datetime"/>
+    </service>
+    <service id="sonata.admin.orm.filter.type.time" class="Sonata\DoctrineORMAdminBundle\Filter\TimeFilter" scope="prototype">
+      <tag name="sonata.admin.filter.type" alias="doctrine_orm_time"/>
+    </service>
+    <service id="sonata.admin.orm.filter.type.datetime_range" class="Sonata\DoctrineORMAdminBundle\Filter\DateTimeRangeFilter" scope="prototype">
+      <tag name="sonata.admin.filter.type" alias="doctrine_orm_datetime_range"/>
+    </service>
+    <service id="sonata.admin.orm.filter.type.class" class="Sonata\DoctrineORMAdminBundle\Filter\ClassFilter" scope="prototype">
+      <tag name="sonata.admin.filter.type" alias="doctrine_orm_class"/>
+    </service>
+    <service id="sonata.admin.manipulator.acl.object.orm" class="Sonata\DoctrineORMAdminBundle\Util\ObjectAclManipulator"/>
+    <service id="sonata.core.flashmessage.manager" class="Sonata\CoreBundle\FlashMessage\FlashManager">
+      <tag name="sonata.status.renderer"/>
+      <argument type="service" id="session"/>
+      <argument type="service" id="translator"/>
+      <argument type="collection">
+        <argument key="success" type="collection">
+          <argument key="success" type="collection">
+            <argument key="domain">SonataCoreBundle</argument>
+          </argument>
+          <argument key="sonata_flash_success" type="collection">
+            <argument key="domain">SonataAdminBundle</argument>
+          </argument>
+          <argument key="sonata_user_success" type="collection">
+            <argument key="domain">SonataUserBundle</argument>
+          </argument>
+          <argument key="fos_user_success" type="collection">
+            <argument key="domain">FOSUserBundle</argument>
+          </argument>
+        </argument>
+        <argument key="warning" type="collection">
+          <argument key="warning" type="collection">
+            <argument key="domain">SonataCoreBundle</argument>
+          </argument>
+          <argument key="sonata_flash_info" type="collection">
+            <argument key="domain">SonataAdminBundle</argument>
+          </argument>
+        </argument>
+        <argument key="error" type="collection">
+          <argument key="error" type="collection">
+            <argument key="domain">SonataCoreBundle</argument>
+          </argument>
+          <argument key="sonata_flash_error" type="collection">
+            <argument key="domain">SonataAdminBundle</argument>
+          </argument>
+          <argument key="sonata_user_error" type="collection">
+            <argument key="domain">SonataUserBundle</argument>
+          </argument>
+        </argument>
+      </argument>
+      <argument type="collection">
+        <argument key="success">success</argument>
+        <argument key="warning">warning</argument>
+        <argument key="error">error</argument>
+      </argument>
+    </service>
+    <service id="sonata.core.flashmessage.twig.extension" class="Sonata\CoreBundle\Twig\Extension\FlashMessageExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="sonata.core.flashmessage.manager"/>
+    </service>
+    <service id="sonata.core.form.type.array" class="Sonata\CoreBundle\Form\Type\ImmutableArrayType">
+      <tag name="form.type" alias="sonata_type_immutable_array"/>
+    </service>
+    <service id="sonata.core.form.type.boolean" class="Sonata\CoreBundle\Form\Type\BooleanType">
+      <tag name="form.type" alias="sonata_type_boolean"/>
+    </service>
+    <service id="sonata.core.form.type.collection" class="Sonata\CoreBundle\Form\Type\CollectionType">
+      <tag name="form.type" alias="sonata_type_collection"/>
+    </service>
+    <service id="sonata.core.form.type.translatable_choice" class="Sonata\CoreBundle\Form\Type\TranslatableChoiceType">
+      <tag name="form.type" alias="sonata_type_translatable_choice"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="sonata.core.form.type.date_range" class="Sonata\CoreBundle\Form\Type\DateRangeType">
+      <tag name="form.type" alias="sonata_type_date_range"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="sonata.core.form.type.datetime_range" class="Sonata\CoreBundle\Form\Type\DateTimeRangeType">
+      <tag name="form.type" alias="sonata_type_datetime_range"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="sonata.core.form.type.equal" class="Sonata\CoreBundle\Form\Type\EqualType">
+      <tag name="form.type" alias="sonata_type_equal"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="sonata.core.twig.status_extension" class="Sonata\CoreBundle\Twig\Extension\StatusExtension">
+      <tag name="twig.extension"/>
+      <call method="addStatusService">
+        <argument type="service" id="sonata.core.flashmessage.manager"/>
+      </call>
+    </service>
+    <service id="sonata.core.twig.template_extension" class="Sonata\CoreBundle\Twig\Extension\TemplateExtension">
+      <tag name="twig.extension"/>
+      <argument>true</argument>
+    </service>
+    <service id="sonata.block.service.empty" class="Sonata\BlockBundle\Block\Service\EmptyBlockService">
+      <tag name="sonata.block"/>
+      <argument>sonata.block.empty</argument>
+      <argument type="service" id="templating"/>
+    </service>
+    <service id="sonata.block.service.text" class="Sonata\BlockBundle\Block\Service\TextBlockService">
+      <tag name="sonata.block"/>
+      <argument>sonata.block.text</argument>
+      <argument type="service" id="templating"/>
+    </service>
+    <service id="sonata.block.service.rss" class="Sonata\BlockBundle\Block\Service\RssBlockService">
+      <tag name="sonata.block"/>
+      <argument>sonata.block.rss</argument>
+      <argument type="service" id="templating"/>
+    </service>
+    <service id="sonata.block.service.menu" class="Sonata\BlockBundle\Block\Service\MenuBlockService">
+      <tag name="sonata.block"/>
+      <argument>sonata.block.menu</argument>
+      <argument type="service" id="templating"/>
+      <argument type="service" id="knp_menu.menu_provider"/>
+      <argument type="collection"/>
+    </service>
+    <service id="sonata.block.form.type.block" class="Sonata\BlockBundle\Form\Type\ServiceListType">
+      <tag name="form.type" alias="sonata_block_service_choice"/>
+      <argument type="service" id="sonata.block.manager"/>
+      <argument type="collection">
+        <argument key="admin" type="collection">
+          <argument>sonata.admin.block.admin_list</argument>
+        </argument>
+        <argument key="cms" type="collection">
+          <argument>sonata.block.service.text</argument>
+          <argument>sonata.block.service.rss</argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="sonata.block.manager" class="Sonata\BlockBundle\Block\BlockServiceManager" public="false">
+      <argument type="service" id="service_container"/>
+      <argument>true</argument>
+      <argument type="service" id="logger" on-invalid="ignore"/>
+      <call method="add">
+        <argument>sonata.block.service.empty</argument>
+        <argument>sonata.block.service.empty</argument>
+      </call>
+      <call method="add">
+        <argument>sonata.block.service.text</argument>
+        <argument>sonata.block.service.text</argument>
+      </call>
+      <call method="add">
+        <argument>sonata.block.service.rss</argument>
+        <argument>sonata.block.service.rss</argument>
+      </call>
+      <call method="add">
+        <argument>sonata.block.service.menu</argument>
+        <argument>sonata.block.service.menu</argument>
+      </call>
+      <call method="add">
+        <argument>sonata.admin.block.admin_list</argument>
+        <argument>sonata.admin.block.admin_list</argument>
+      </call>
+      <call method="add">
+        <argument>sonata.admin.block.search_result</argument>
+        <argument>sonata.admin.block.search_result</argument>
+      </call>
+    </service>
+    <service id="sonata.block.context_manager.default" class="Sonata\BlockBundle\Block\BlockContextManager">
+      <argument type="service" id="sonata.block.loader.chain"/>
+      <argument type="service" id="sonata.block.manager"/>
+      <argument type="collection">
+        <argument key="by_type" type="collection">
+          <argument key="sonata.admin.block.admin_list">sonata.cache.noop</argument>
+          <argument key="sonata.block.service.text">sonata.cache.noop</argument>
+          <argument key="sonata.block.service.rss">sonata.cache.noop</argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="sonata.block.renderer.default" class="Sonata\BlockBundle\Block\BlockRenderer">
+      <argument type="service" id="sonata.block.manager"/>
+      <argument type="service" id="sonata.block.exception.strategy.manager"/>
+      <argument type="service" id="logger" on-invalid="ignore"/>
+      <argument>true</argument>
+    </service>
+    <service id="sonata.block.templating.helper" class="Sonata\BlockBundle\Templating\Helper\BlockHelper" public="false">
+      <tag name="templating.helper" alias="sonata_block"/>
+      <argument type="service" id="sonata.block.manager"/>
+      <argument type="collection">
+        <argument key="by_type" type="collection">
+          <argument key="sonata.admin.block.admin_list">sonata.cache.noop</argument>
+          <argument key="sonata.block.service.text">sonata.cache.noop</argument>
+          <argument key="sonata.block.service.rss">sonata.cache.noop</argument>
+        </argument>
+      </argument>
+      <argument type="service" id="sonata.block.renderer.default"/>
+      <argument type="service" id="sonata.block.context_manager.default"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument>null</argument>
+      <argument type="service" id="sonata.block.cache.handler.default" on-invalid="ignore"/>
+      <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>
+    </service>
+    <service id="sonata.block.loader.chain" class="Sonata\BlockBundle\Block\BlockLoaderChain">
+      <argument type="collection">
+        <argument type="service" id="sonata.block.loader.service"/>
+      </argument>
+    </service>
+    <service id="sonata.block.loader.service" class="Sonata\BlockBundle\Block\Loader\ServiceLoader">
+      <tag name="sonata.block.loader"/>
+      <argument type="collection">
+        <argument>sonata.admin.block.admin_list</argument>
+        <argument>sonata.block.service.text</argument>
+        <argument>sonata.block.service.rss</argument>
+      </argument>
+    </service>
+    <service id="sonata.block.twig.global" class="Sonata\BlockBundle\Twig\GlobalVariables">
+      <argument type="service" id="service_container"/>
+      <argument type="collection">
+        <argument key="block_base">SonataBlockBundle:Block:block_base.html.twig</argument>
+      </argument>
+    </service>
+    <service id="sonata.block.cache.handler.default" class="Sonata\BlockBundle\Cache\HttpCacheHandler">
+      <tag name="kernel.event_listener" event="kernel.response" method="onKernelResponse"/>
+    </service>
+    <service id="sonata.block.cache.handler.noop" class="Sonata\BlockBundle\Cache\NoopHttpCacheHandler"/>
+    <service id="sonata.block.exception.strategy.manager" class="Sonata\BlockBundle\Exception\Strategy\StrategyManager">
+      <argument type="service" id="service_container"/>
+      <argument type="collection">
+        <argument key="debug_only">sonata.block.exception.filter.debug_only</argument>
+        <argument key="ignore_block_exception">sonata.block.exception.filter.ignore_block_exception</argument>
+        <argument key="keep_all">sonata.block.exception.filter.keep_all</argument>
+        <argument key="keep_none">sonata.block.exception.filter.keep_none</argument>
+      </argument>
+      <argument type="collection">
+        <argument key="inline">sonata.block.exception.renderer.inline</argument>
+        <argument key="inline_debug">sonata.block.exception.renderer.inline_debug</argument>
+        <argument key="throw">sonata.block.exception.renderer.throw</argument>
+      </argument>
+      <argument type="collection"/>
+      <argument type="collection"/>
+      <call method="setDefaultFilter">
+        <argument>debug_only</argument>
+      </call>
+      <call method="setDefaultRenderer">
+        <argument>throw</argument>
+      </call>
+    </service>
+    <service id="sonata.block.exception.filter.keep_none" class="Sonata\BlockBundle\Exception\Filter\KeepNoneFilter"/>
+    <service id="sonata.block.exception.filter.keep_all" class="Sonata\BlockBundle\Exception\Filter\KeepAllFilter"/>
+    <service id="sonata.block.exception.filter.debug_only" class="Sonata\BlockBundle\Exception\Filter\DebugOnlyFilter">
+      <argument>true</argument>
+    </service>
+    <service id="sonata.block.exception.filter.ignore_block_exception" class="Sonata\BlockBundle\Exception\Filter\IgnoreClassFilter">
+      <argument>Sonata\BlockBundle\Exception\BlockExceptionInterface</argument>
+    </service>
+    <service id="sonata.block.exception.renderer.inline" class="Sonata\BlockBundle\Exception\Renderer\InlineRenderer">
+      <argument type="service" id="templating"/>
+      <argument>SonataBlockBundle:Block:block_exception.html.twig</argument>
+    </service>
+    <service id="sonata.block.exception.renderer.inline_debug" class="Sonata\BlockBundle\Exception\Renderer\InlineDebugRenderer">
+      <argument type="service" id="templating"/>
+      <argument>SonataBlockBundle:Block:block_exception_debug.html.twig</argument>
+      <argument>true</argument>
+      <argument>true</argument>
+    </service>
+    <service id="sonata.block.exception.renderer.throw" class="Sonata\BlockBundle\Exception\Renderer\MonkeyThrowRenderer"/>
+    <service id="knp_menu.factory" class="Knp\Menu\Silex\RouterAwareFactory">
+      <argument type="service" id="router"/>
+    </service>
+    <service id="knp_menu.renderer_provider" class="Knp\Bundle\MenuBundle\Renderer\ContainerAwareProvider">
+      <argument type="service" id="service_container"/>
+      <argument>twig</argument>
+      <argument type="collection">
+        <argument key="list">knp_menu.renderer.list</argument>
+        <argument key="twig">knp_menu.renderer.twig</argument>
+      </argument>
+    </service>
+    <service id="knp_menu.renderer.list" class="Knp\Menu\Renderer\ListRenderer">
+      <tag name="knp_menu.renderer" alias="list"/>
+      <argument type="collection"/>
+      <argument>UTF-8</argument>
+    </service>
+    <service id="knp_menu.renderer.twig" class="Knp\Menu\Renderer\TwigRenderer">
+      <tag name="knp_menu.renderer" alias="twig"/>
+      <argument type="service" id="twig"/>
+      <argument>knp_menu.html.twig</argument>
+      <argument type="collection"/>
+    </service>
+    <service id="sonata.admin.twig.extension" class="Sonata\AdminBundle\Twig\Extension\SonataAdminExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="sonata.admin.pool"/>
+    </service>
+    <service id="sonata.admin.twig.extension.text" class="Twig_Extensions_Extension_Text">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="sonata.admin.pool" class="Sonata\AdminBundle\Admin\Pool">
+      <argument type="service" id="service_container"/>
+      <argument>Sonata Admin</argument>
+      <argument>bundles/sonataadmin/logo_title.png</argument>
+      <argument type="collection">
+        <argument key="html5_validate">true</argument>
+        <argument key="confirm_exit">true</argument>
+        <argument key="use_select2">true</argument>
+        <argument key="pager_links">null</argument>
+      </argument>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataAdminBundle:Core:user_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setAdminServiceIds">
+        <argument type="collection">
+          <argument>sonata.admin.salida_por_receta</argument>
+          <argument>sonata.admin.receta</argument>
+          <argument>sonata.admin.medico</argument>
+          <argument>sonata.admin.paciente</argument>
+          <argument>sonata.admin.medicamento</argument>
+          <argument>sonata.admin.receta_tiene_lineas</argument>
+          <argument>sonata.admin.linea_de_recetas</argument>
+        </argument>
+      </call>
+      <call method="setAdminGroups">
+        <argument type="collection">
+          <argument key="Salidas" type="collection">
+            <argument key="label">Salidas</argument>
+            <argument key="label_catalogue">SonataAdminBundle</argument>
+            <argument key="roles" type="collection"/>
+            <argument key="items" type="collection">
+              <argument>sonata.admin.salida_por_receta</argument>
+            </argument>
+          </argument>
+          <argument key="Recetas" type="collection">
+            <argument key="label">Recetas</argument>
+            <argument key="label_catalogue">SonataAdminBundle</argument>
+            <argument key="roles" type="collection"/>
+            <argument key="items" type="collection">
+              <argument>sonata.admin.receta</argument>
+              <argument>sonata.admin.medico</argument>
+              <argument>sonata.admin.paciente</argument>
+              <argument>sonata.admin.medicamento</argument>
+              <argument>sonata.admin.receta_tiene_lineas</argument>
+              <argument>sonata.admin.linea_de_recetas</argument>
+            </argument>
+          </argument>
+        </argument>
+      </call>
+      <call method="setAdminClasses">
+        <argument type="collection">
+          <argument key="Saba\FarmaciaBundle\Entity\SalidaPorReceta" type="collection">
+            <argument>sonata.admin.salida_por_receta</argument>
+          </argument>
+          <argument key="Saba\FarmaciaBundle\Entity\Receta" type="collection">
+            <argument>sonata.admin.receta</argument>
+          </argument>
+          <argument key="Saba\FarmaciaBundle\Entity\Medico" type="collection">
+            <argument>sonata.admin.medico</argument>
+          </argument>
+          <argument key="Saba\FarmaciaBundle\Entity\Paciente" type="collection">
+            <argument>sonata.admin.paciente</argument>
+          </argument>
+          <argument key="Saba\FarmaciaBundle\Entity\Medicamento" type="collection">
+            <argument>sonata.admin.medicamento</argument>
+          </argument>
+          <argument key="Saba\FarmaciaBundle\Entity\RecetaTieneLineas" type="collection">
+            <argument>sonata.admin.receta_tiene_lineas</argument>
+          </argument>
+          <argument key="Saba\FarmaciaBundle\Entity\LineaDeReceta" type="collection">
+            <argument>sonata.admin.linea_de_recetas</argument>
+          </argument>
+        </argument>
+      </call>
+    </service>
+    <service id="sonata.admin.route_loader" class="Sonata\AdminBundle\Route\AdminPoolLoader">
+      <tag name="routing.loader"/>
+      <argument type="service" id="sonata.admin.pool"/>
+      <argument type="collection">
+        <argument>sonata.admin.salida_por_receta</argument>
+        <argument>sonata.admin.receta</argument>
+        <argument>sonata.admin.medico</argument>
+        <argument>sonata.admin.paciente</argument>
+        <argument>sonata.admin.medicamento</argument>
+        <argument>sonata.admin.receta_tiene_lineas</argument>
+        <argument>sonata.admin.linea_de_recetas</argument>
+      </argument>
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="sonata.admin.helper" class="Sonata\AdminBundle\Admin\AdminHelper">
+      <argument type="service" id="sonata.admin.pool"/>
+    </service>
+    <service id="sonata.admin.builder.filter.factory" class="Sonata\AdminBundle\Filter\FilterFactory">
+      <argument type="service" id="service_container"/>
+      <argument type="collection">
+        <argument key="doctrine_orm_boolean">sonata.admin.orm.filter.type.boolean</argument>
+        <argument key="doctrine_orm_callback">sonata.admin.orm.filter.type.callback</argument>
+        <argument key="doctrine_orm_choice">sonata.admin.orm.filter.type.choice</argument>
+        <argument key="doctrine_orm_model">sonata.admin.orm.filter.type.model</argument>
+        <argument key="doctrine_orm_string">sonata.admin.orm.filter.type.string</argument>
+        <argument key="doctrine_orm_number">sonata.admin.orm.filter.type.number</argument>
+        <argument key="doctrine_orm_date">sonata.admin.orm.filter.type.date</argument>
+        <argument key="doctrine_orm_date_range">sonata.admin.orm.filter.type.date_range</argument>
+        <argument key="doctrine_orm_datetime">sonata.admin.orm.filter.type.datetime</argument>
+        <argument key="doctrine_orm_time">sonata.admin.orm.filter.type.time</argument>
+        <argument key="doctrine_orm_datetime_range">sonata.admin.orm.filter.type.datetime_range</argument>
+        <argument key="doctrine_orm_class">sonata.admin.orm.filter.type.class</argument>
+      </argument>
+    </service>
+    <service id="sonata.admin.label.strategy.bc" class="Sonata\AdminBundle\Translator\BCLabelTranslatorStrategy"/>
+    <service id="sonata.admin.label.strategy.native" class="Sonata\AdminBundle\Translator\NativeLabelTranslatorStrategy"/>
+    <service id="sonata.admin.label.strategy.noop" class="Sonata\AdminBundle\Translator\NoopLabelTranslatorStrategy"/>
+    <service id="sonata.admin.label.strategy.underscore" class="Sonata\AdminBundle\Translator\UnderscoreLabelTranslatorStrategy"/>
+    <service id="sonata.admin.label.strategy.form_component" class="Sonata\AdminBundle\Translator\FormLabelTranslatorStrategy"/>
+    <service id="sonata.admin.controller.admin" class="Sonata\AdminBundle\Controller\HelperController">
+      <argument type="service" id="twig"/>
+      <argument type="service" id="sonata.admin.pool"/>
+      <argument type="service" id="sonata.admin.helper"/>
+      <argument type="service" id="validator"/>
+    </service>
+    <service id="sonata.admin.audit.manager" class="Sonata\AdminBundle\Model\AuditManager">
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="sonata.admin.exporter" class="Sonata\AdminBundle\Export\Exporter"/>
+    <service id="sonata.admin.search.handler" class="Sonata\AdminBundle\Search\SearchHandler">
+      <argument type="service" id="sonata.admin.pool"/>
+    </service>
+    <service id="sonata.admin.event.extension" class="Sonata\AdminBundle\Event\AdminEventExtension">
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="sonata.admin.form.type.admin" class="Sonata\AdminBundle\Form\Type\AdminType">
+      <tag name="form.type" alias="sonata_type_admin"/>
+    </service>
+    <service id="sonata.admin.form.type.model_choice" class="Sonata\AdminBundle\Form\Type\ModelType">
+      <tag name="form.type" alias="sonata_type_model"/>
+    </service>
+    <service id="sonata.admin.form.type.model_list" class="Sonata\AdminBundle\Form\Type\ModelTypeList">
+      <tag name="form.type" alias="sonata_type_model_list"/>
+    </service>
+    <service id="sonata.admin.form.type.model_reference" class="Sonata\AdminBundle\Form\Type\ModelReferenceType">
+      <tag name="form.type" alias="sonata_type_model_reference"/>
+    </service>
+    <service id="sonata.admin.form.type.model_hidden" class="Sonata\AdminBundle\Form\Type\ModelHiddenType">
+      <tag name="form.type" alias="sonata_type_model_hidden"/>
+    </service>
+    <service id="sonata.admin.form.extension.field" class="Sonata\AdminBundle\Form\Extension\Field\Type\FormTypeFieldExtension">
+      <tag name="form.type_extension" alias="form"/>
+      <argument type="collection">
+        <argument key="email">span5</argument>
+        <argument key="textarea">span5</argument>
+        <argument key="text">span5</argument>
+        <argument key="choice">span5</argument>
+        <argument key="integer">span5</argument>
+        <argument key="datetime">sonata-medium-date</argument>
+        <argument key="date">sonata-medium-date</argument>
+      </argument>
+    </service>
+    <service id="sonata.admin.form.filter.type.number" class="Sonata\AdminBundle\Form\Type\Filter\NumberType">
+      <tag name="form.type" alias="sonata_type_filter_number"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="sonata.admin.form.filter.type.choice" class="Sonata\AdminBundle\Form\Type\Filter\ChoiceType">
+      <tag name="form.type" alias="sonata_type_filter_choice"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="sonata.admin.form.filter.type.default" class="Sonata\AdminBundle\Form\Type\Filter\DefaultType">
+      <tag name="form.type" alias="sonata_type_filter_default"/>
+    </service>
+    <service id="sonata.admin.form.filter.type.date" class="Sonata\AdminBundle\Form\Type\Filter\DateType">
+      <tag name="form.type" alias="sonata_type_filter_date"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="sonata.admin.form.filter.type.daterange" class="Sonata\AdminBundle\Form\Type\Filter\DateRangeType">
+      <tag name="form.type" alias="sonata_type_filter_date_range"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="sonata.admin.form.filter.type.datetime" class="Sonata\AdminBundle\Form\Type\Filter\DateTimeType">
+      <tag name="form.type" alias="sonata_type_filter_datetime"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="sonata.admin.form.filter.type.datetime_range" class="Sonata\AdminBundle\Form\Type\Filter\DateTimeRangeType">
+      <tag name="form.type" alias="sonata_type_filter_datetime_range"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="sonata.admin.validator.inline" class="Sonata\AdminBundle\Validator\InlineValidator">
+      <tag name="validator.constraint_validator" alias="sonata.admin.validator.inline"/>
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="validator.validator_factory"/>
+    </service>
+    <service id="sonata.admin.route.path_info" class="Sonata\AdminBundle\Route\PathInfoBuilder">
+      <argument type="service" id="sonata.admin.audit.manager"/>
+    </service>
+    <service id="sonata.admin.route.query_string" class="Sonata\AdminBundle\Route\QueryStringBuilder">
+      <argument type="service" id="sonata.admin.audit.manager"/>
+    </service>
+    <service id="sonata.admin.route.default_generator" class="Sonata\AdminBundle\Route\DefaultRouteGenerator">
+      <argument type="service" id="router"/>
+    </service>
+    <service id="sonata.admin.block.admin_list" class="Sonata\AdminBundle\Block\AdminListBlockService">
+      <tag name="sonata.block"/>
+      <argument>sonata.admin.block.admin_list</argument>
+      <argument type="service" id="templating"/>
+      <argument type="service" id="sonata.admin.pool"/>
+    </service>
+    <service id="sonata.admin.block.search_result" class="Sonata\AdminBundle\Block\AdminSearchBlockService">
+      <tag name="sonata.block"/>
+      <argument>sonata.admin.block.search_result</argument>
+      <argument type="service" id="templating"/>
+      <argument type="service" id="sonata.admin.pool"/>
+      <argument type="service" id="sonata.admin.search.handler"/>
+    </service>
+    <service id="sonata.admin.manipulator.acl.admin" class="Sonata\AdminBundle\Util\AdminAclManipulator">
+      <argument>Sonata\AdminBundle\Security\Acl\Permission\MaskBuilder</argument>
+    </service>
+    <service id="sonata.admin.object.manipulator.acl.admin" class="Sonata\AdminBundle\Util\AdminObjectAclManipulator">
+      <argument type="service" id="form.factory"/>
+      <argument>Sonata\AdminBundle\Security\Acl\Permission\MaskBuilder</argument>
+    </service>
     <service id="twig.extension.acme.demo" class="Acme\DemoBundle\Twig\Extension\DemoExtension" public="false">
       <tag name="twig.extension"/>
       <argument type="service" id="twig.loader"/>
@@ -2480,6 +4752,10 @@
         <argument key="data_collector.doctrine" type="collection">
           <argument>db</argument>
           <argument>DoctrineBundle:Collector:db</argument>
+        </argument>
+        <argument key="sonata.block.data_collector" type="collection">
+          <argument>block</argument>
+          <argument>SonataBlockBundle:Profiler:block.html.twig</argument>
         </argument>
       </argument>
       <argument>bottom</argument>
@@ -2617,6 +4893,20 @@
       <argument>100</argument>
       <argument>true</argument>
     </service>
+    <service id="nelmio_api_doc.parser.form_type_parser" class="Nelmio\ApiDocBundle\Parser\FormTypeParser">
+      <tag name="nelmio_api_doc.extractor.parser"/>
+      <argument type="service" id="form.factory"/>
+    </service>
+    <service id="nelmio_api_doc.parser.validation_parser" class="Nelmio\ApiDocBundle\Parser\ValidationParser">
+      <tag name="nelmio_api_doc.extractor.parser"/>
+      <argument type="service" id="validator.mapping.class_metadata_factory"/>
+    </service>
+    <service id="nelmio_api_doc.parser.jms_metadata_parser" class="Nelmio\ApiDocBundle\Parser\JmsMetadataParser">
+      <tag name="nelmio_api_doc.extractor.parser"/>
+      <argument type="service" id="jms_serializer.metadata_factory"/>
+      <argument type="service" id="jms_serializer.naming_strategy"/>
+      <argument type="service" id="nelmio_api_doc.doc_comment_extractor"/>
+    </service>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
       <argument>/var/www/html/SICARIS/app/cache/dev/sessions</argument>
       <argument>MOCKSESSID</argument>
@@ -2646,6 +4936,8 @@
           <argument key="logout_url">templating.helper.logout_url</argument>
           <argument key="security">templating.helper.security</argument>
           <argument key="assetic">assetic.helper.dynamic</argument>
+          <argument key="jms_serializer">jms_serializer.templating.helper.serializer</argument>
+          <argument key="sonata_block">sonata.block.templating.helper</argument>
         </argument>
       </call>
     </service>
@@ -2728,6 +5020,26 @@
         <argument>SabaFarmacia</argument>
       </call>
       <call method="addPath">
+        <argument>/var/www/html/SICARIS/vendor/nelmio/api-doc-bundle/Nelmio/ApiDocBundle/Resources/views</argument>
+        <argument>NelmioApiDoc</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/html/SICARIS/vendor/sonata-project/doctrine-orm-admin-bundle/Sonata/DoctrineORMAdminBundle/Resources/views</argument>
+        <argument>SonataDoctrineORMAdmin</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/html/SICARIS/vendor/sonata-project/core-bundle/Sonata/CoreBundle/Resources/views</argument>
+        <argument>SonataCore</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/html/SICARIS/vendor/sonata-project/block-bundle/Sonata/BlockBundle/Resources/views</argument>
+        <argument>SonataBlock</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/html/SICARIS/vendor/sonata-project/admin-bundle/Sonata/AdminBundle/Resources/views</argument>
+        <argument>SonataAdmin</argument>
+      </call>
+      <call method="addPath">
         <argument>/var/www/html/SICARIS/src/Acme/DemoBundle/Resources/views</argument>
         <argument>AcmeDemo</argument>
       </call>
@@ -2744,6 +5056,9 @@
       </call>
       <call method="addPath">
         <argument>/var/www/html/SICARIS/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/html/SICARIS/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views</argument>
       </call>
     </service>
     <service id="logger" class="Symfony\Bridge\Monolog\Logger">
@@ -2817,6 +5132,228 @@
         <argument>null</argument>
       </call>
     </service>
+    <service id="fos_rest.serializer" class="JMS\Serializer\Serializer">
+      <argument type="service" id="jms_serializer.metadata_factory"/>
+      <argument type="service" id="jms_serializer.handler_registry"/>
+      <argument type="service" id="jms_serializer.unserialize_object_constructor"/>
+      <argument type="service">
+        <service class="PhpCollection\Map">
+          <argument type="collection">
+            <argument key="json" type="service" id="jms_serializer.json_serialization_visitor"/>
+            <argument key="xml" type="service" id="jms_serializer.xml_serialization_visitor"/>
+            <argument key="yml" type="service" id="jms_serializer.yaml_serialization_visitor"/>
+          </argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="PhpCollection\Map">
+          <argument type="collection">
+            <argument key="json" type="service" id="jms_serializer.json_deserialization_visitor"/>
+            <argument key="xml" type="service" id="jms_serializer.xml_deserialization_visitor"/>
+          </argument>
+        </service>
+      </argument>
+      <argument type="service">
+        <service class="JMS\Serializer\EventDispatcher\LazyEventDispatcher" public="false">
+          <argument type="service" id="service_container"/>
+          <call method="setListeners">
+            <argument type="collection">
+              <argument key="serializer.pre_serialize" type="collection">
+                <argument type="collection">
+                  <argument type="collection">
+                    <argument>jms_serializer.stopwatch_subscriber</argument>
+                    <argument>onPreSerialize</argument>
+                  </argument>
+                  <argument>null</argument>
+                  <argument>null</argument>
+                </argument>
+                <argument type="collection">
+                  <argument type="collection">
+                    <argument>jms_serializer.doctrine_proxy_subscriber</argument>
+                    <argument>onPreSerialize</argument>
+                  </argument>
+                  <argument>null</argument>
+                  <argument>null</argument>
+                </argument>
+              </argument>
+              <argument key="serializer.post_serialize" type="collection">
+                <argument type="collection">
+                  <argument type="collection">
+                    <argument>jms_serializer.stopwatch_subscriber</argument>
+                    <argument>onPostSerialize</argument>
+                  </argument>
+                  <argument>null</argument>
+                  <argument>null</argument>
+                </argument>
+              </argument>
+            </argument>
+          </call>
+        </service>
+      </argument>
+    </service>
+    <service id="fos_rest.view_handler" class="FOS\RestBundle\View\ViewHandler">
+      <argument type="collection">
+        <argument key="json">false</argument>
+        <argument key="xml">false</argument>
+        <argument key="html">true</argument>
+      </argument>
+      <argument>400</argument>
+      <argument>204</argument>
+      <argument>false</argument>
+      <argument type="collection">
+        <argument key="html">302</argument>
+      </argument>
+      <argument>twig</argument>
+      <call method="setContainer">
+        <argument type="service" id="service_container"/>
+      </call>
+    </service>
+    <service id="jms_serializer.metadata_driver" class="JMS\Serializer\Metadata\Driver\DoctrineTypeDriver">
+      <argument type="service">
+        <service class="Metadata\Driver\DriverChain" public="false">
+          <argument type="collection">
+            <argument type="service">
+              <service class="JMS\Serializer\Metadata\Driver\YamlDriver" public="false">
+                <argument type="service">
+                  <service class="Metadata\Driver\FileLocator" public="false">
+                    <argument type="collection">
+                      <argument key="Symfony\Bundle\FrameworkBundle">/var/www/html/SICARIS/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\SecurityBundle">/var/www/html/SICARIS/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\TwigBundle">/var/www/html/SICARIS/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\MonologBundle">/var/www/html/SICARIS/vendor/symfony/monolog-bundle/Symfony/Bundle/MonologBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\SwiftmailerBundle">/var/www/html/SICARIS/vendor/symfony/swiftmailer-bundle/Symfony/Bundle/SwiftmailerBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\AsseticBundle">/var/www/html/SICARIS/vendor/symfony/assetic-bundle/Symfony/Bundle/AsseticBundle/Resources/config/serializer</argument>
+                      <argument key="Doctrine\Bundle\DoctrineBundle">/var/www/html/SICARIS/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\FrameworkExtraBundle">/var/www/html/SICARIS/vendor/sensio/framework-extra-bundle/Sensio/Bundle/FrameworkExtraBundle/Resources/config/serializer</argument>
+                      <argument key="Saba\FarmaciaBundle">/var/www/html/SICARIS/src/Saba/FarmaciaBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\RestBundle">/var/www/html/SICARIS/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
+                      <argument key="JMS\SerializerBundle">/var/www/html/SICARIS/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
+                      <argument key="Nelmio\ApiDocBundle">/var/www/html/SICARIS/vendor/nelmio/api-doc-bundle/Nelmio/ApiDocBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\DoctrineORMAdminBundle">/var/www/html/SICARIS/vendor/sonata-project/doctrine-orm-admin-bundle/Sonata/DoctrineORMAdminBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\CoreBundle">/var/www/html/SICARIS/vendor/sonata-project/core-bundle/Sonata/CoreBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\BlockBundle">/var/www/html/SICARIS/vendor/sonata-project/block-bundle/Sonata/BlockBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\jQueryBundle">/var/www/html/SICARIS/vendor/sonata-project/jquery-bundle/Sonata/jQueryBundle/Resources/config/serializer</argument>
+                      <argument key="Knp\Bundle\MenuBundle">/var/www/html/SICARIS/vendor/knplabs/knp-menu-bundle/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\AdminBundle">/var/www/html/SICARIS/vendor/sonata-project/admin-bundle/Sonata/AdminBundle/Resources/config/serializer</argument>
+                      <argument key="Acme\DemoBundle">/var/www/html/SICARIS/src/Acme/DemoBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\WebProfilerBundle">/var/www/html/SICARIS/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\DistributionBundle">/var/www/html/SICARIS/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\GeneratorBundle">/var/www/html/SICARIS/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/config/serializer</argument>
+                    </argument>
+                  </service>
+                </argument>
+              </service>
+            </argument>
+            <argument type="service">
+              <service class="JMS\Serializer\Metadata\Driver\XmlDriver" public="false">
+                <argument type="service">
+                  <service class="Metadata\Driver\FileLocator" public="false">
+                    <argument type="collection">
+                      <argument key="Symfony\Bundle\FrameworkBundle">/var/www/html/SICARIS/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\SecurityBundle">/var/www/html/SICARIS/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\TwigBundle">/var/www/html/SICARIS/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\MonologBundle">/var/www/html/SICARIS/vendor/symfony/monolog-bundle/Symfony/Bundle/MonologBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\SwiftmailerBundle">/var/www/html/SICARIS/vendor/symfony/swiftmailer-bundle/Symfony/Bundle/SwiftmailerBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\AsseticBundle">/var/www/html/SICARIS/vendor/symfony/assetic-bundle/Symfony/Bundle/AsseticBundle/Resources/config/serializer</argument>
+                      <argument key="Doctrine\Bundle\DoctrineBundle">/var/www/html/SICARIS/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\FrameworkExtraBundle">/var/www/html/SICARIS/vendor/sensio/framework-extra-bundle/Sensio/Bundle/FrameworkExtraBundle/Resources/config/serializer</argument>
+                      <argument key="Saba\FarmaciaBundle">/var/www/html/SICARIS/src/Saba/FarmaciaBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\RestBundle">/var/www/html/SICARIS/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
+                      <argument key="JMS\SerializerBundle">/var/www/html/SICARIS/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
+                      <argument key="Nelmio\ApiDocBundle">/var/www/html/SICARIS/vendor/nelmio/api-doc-bundle/Nelmio/ApiDocBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\DoctrineORMAdminBundle">/var/www/html/SICARIS/vendor/sonata-project/doctrine-orm-admin-bundle/Sonata/DoctrineORMAdminBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\CoreBundle">/var/www/html/SICARIS/vendor/sonata-project/core-bundle/Sonata/CoreBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\BlockBundle">/var/www/html/SICARIS/vendor/sonata-project/block-bundle/Sonata/BlockBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\jQueryBundle">/var/www/html/SICARIS/vendor/sonata-project/jquery-bundle/Sonata/jQueryBundle/Resources/config/serializer</argument>
+                      <argument key="Knp\Bundle\MenuBundle">/var/www/html/SICARIS/vendor/knplabs/knp-menu-bundle/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\AdminBundle">/var/www/html/SICARIS/vendor/sonata-project/admin-bundle/Sonata/AdminBundle/Resources/config/serializer</argument>
+                      <argument key="Acme\DemoBundle">/var/www/html/SICARIS/src/Acme/DemoBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\WebProfilerBundle">/var/www/html/SICARIS/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\DistributionBundle">/var/www/html/SICARIS/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\GeneratorBundle">/var/www/html/SICARIS/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/config/serializer</argument>
+                    </argument>
+                  </service>
+                </argument>
+              </service>
+            </argument>
+            <argument type="service">
+              <service class="JMS\Serializer\Metadata\Driver\PhpDriver" public="false">
+                <argument type="service">
+                  <service class="Metadata\Driver\FileLocator" public="false">
+                    <argument type="collection">
+                      <argument key="Symfony\Bundle\FrameworkBundle">/var/www/html/SICARIS/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\SecurityBundle">/var/www/html/SICARIS/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\TwigBundle">/var/www/html/SICARIS/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\MonologBundle">/var/www/html/SICARIS/vendor/symfony/monolog-bundle/Symfony/Bundle/MonologBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\SwiftmailerBundle">/var/www/html/SICARIS/vendor/symfony/swiftmailer-bundle/Symfony/Bundle/SwiftmailerBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\AsseticBundle">/var/www/html/SICARIS/vendor/symfony/assetic-bundle/Symfony/Bundle/AsseticBundle/Resources/config/serializer</argument>
+                      <argument key="Doctrine\Bundle\DoctrineBundle">/var/www/html/SICARIS/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\FrameworkExtraBundle">/var/www/html/SICARIS/vendor/sensio/framework-extra-bundle/Sensio/Bundle/FrameworkExtraBundle/Resources/config/serializer</argument>
+                      <argument key="Saba\FarmaciaBundle">/var/www/html/SICARIS/src/Saba/FarmaciaBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\RestBundle">/var/www/html/SICARIS/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
+                      <argument key="JMS\SerializerBundle">/var/www/html/SICARIS/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
+                      <argument key="Nelmio\ApiDocBundle">/var/www/html/SICARIS/vendor/nelmio/api-doc-bundle/Nelmio/ApiDocBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\DoctrineORMAdminBundle">/var/www/html/SICARIS/vendor/sonata-project/doctrine-orm-admin-bundle/Sonata/DoctrineORMAdminBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\CoreBundle">/var/www/html/SICARIS/vendor/sonata-project/core-bundle/Sonata/CoreBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\BlockBundle">/var/www/html/SICARIS/vendor/sonata-project/block-bundle/Sonata/BlockBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\jQueryBundle">/var/www/html/SICARIS/vendor/sonata-project/jquery-bundle/Sonata/jQueryBundle/Resources/config/serializer</argument>
+                      <argument key="Knp\Bundle\MenuBundle">/var/www/html/SICARIS/vendor/knplabs/knp-menu-bundle/Knp/Bundle/MenuBundle/Resources/config/serializer</argument>
+                      <argument key="Sonata\AdminBundle">/var/www/html/SICARIS/vendor/sonata-project/admin-bundle/Sonata/AdminBundle/Resources/config/serializer</argument>
+                      <argument key="Acme\DemoBundle">/var/www/html/SICARIS/src/Acme/DemoBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\WebProfilerBundle">/var/www/html/SICARIS/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\DistributionBundle">/var/www/html/SICARIS/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\GeneratorBundle">/var/www/html/SICARIS/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/config/serializer</argument>
+                    </argument>
+                  </service>
+                </argument>
+              </service>
+            </argument>
+            <argument type="service">
+              <service class="JMS\Serializer\Metadata\Driver\AnnotationDriver" public="false">
+                <argument type="service" id="annotation_reader"/>
+              </service>
+            </argument>
+          </argument>
+        </service>
+      </argument>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="jms_serializer.naming_strategy" class="JMS\Serializer\Naming\CacheNamingStrategy">
+      <argument type="service">
+        <service class="JMS\Serializer\Naming\SerializedNameAnnotationStrategy" public="false">
+          <argument type="service">
+            <service class="JMS\Serializer\Naming\CamelCaseNamingStrategy" public="false">
+              <argument>_</argument>
+              <argument>true</argument>
+            </service>
+          </argument>
+        </service>
+      </argument>
+    </service>
+    <service id="jms_serializer.object_constructor" class="JMS\Serializer\Construction\DoctrineObjectConstructor">
+      <argument type="service" id="doctrine"/>
+      <argument type="service" id="jms_serializer.unserialize_object_constructor"/>
+    </service>
+    <service id="sonata.admin.security.handler" class="Sonata\AdminBundle\Security\Handler\NoopSecurityHandler"/>
+    <service id="knp_menu.menu_provider" class="Knp\Menu\Provider\ChainProvider">
+      <argument type="collection">
+        <argument type="service">
+          <service class="Knp\Bundle\MenuBundle\Provider\ContainerAwareProvider" public="false">
+            <tag name="knp_menu.provider"/>
+            <argument type="service" id="service_container"/>
+            <argument type="collection"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Knp\Bundle\MenuBundle\Provider\BuilderAliasProvider" public="false">
+            <tag name="knp_menu.provider"/>
+            <argument type="service" id="kernel"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="knp_menu.factory"/>
+          </service>
+        </argument>
+      </argument>
+    </service>
     <service id="event_dispatcher" alias="debug.event_dispatcher"/>
     <service id="session.storage" alias="session.storage.native"/>
     <service id="debug.templating.engine.twig" alias="templating"/>
@@ -2828,6 +5365,14 @@
     <service id="mailer" alias="swiftmailer.mailer.default"/>
     <service id="database_connection" alias="doctrine.dbal.default_connection"/>
     <service id="doctrine.orm.entity_manager" alias="doctrine.orm.default_entity_manager"/>
+    <service id="fos_rest.router" alias="router"/>
+    <service id="fos_rest.templating" alias="templating"/>
+    <service id="fos_rest.inflector" alias="fos_rest.inflector.doctrine"/>
+    <service id="jms_serializer" alias="fos_rest.serializer"/>
+    <service id="serializer" alias="fos_rest.serializer"/>
+    <service id="sonata.block.context_manager" alias="sonata.block.context_manager.default"/>
+    <service id="sonata.block.cache.handler" alias="sonata.block.cache.handler.default"/>
+    <service id="sonata.block.renderer" alias="sonata.block.renderer.default"/>
     <service id="sensio.distribution.webconfigurator" alias="sensio_distribution.webconfigurator"/>
   </services>
 </container>

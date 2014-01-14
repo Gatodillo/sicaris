@@ -27,8 +27,8 @@ class SalidasPorRecetaController extends Controller {
         $salidaPorReceta = new SalidaPorReceta();
         
         $movimiento = new Movimiento();
-        $movimiento->setFechaDeEjecucion(new \DateTime('1983-01-01'));
-        $movimiento->setFechaDeRegistro(new \DateTime('2000-01-01'));
+        //$movimiento->setFechaDeEjecucion(new \DateTime('1983-01-01'));
+        //$movimiento->setFechaDeRegistro(new \DateTime('2000-01-01'));
         
         $salidaPorReceta->getMovimientos()->add($movimiento);
                 

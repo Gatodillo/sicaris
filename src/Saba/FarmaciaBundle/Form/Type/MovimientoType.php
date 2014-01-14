@@ -15,7 +15,7 @@ class MovimientoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaDeRegistro')
+            ->add('fechaDeRegistro', 'date', array('widget' => 'single_text'))
             ->add('fechaDeEjecucion')
             ->add('almacenOrigen')
             ->add('almacenDestino')

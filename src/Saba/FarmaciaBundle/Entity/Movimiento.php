@@ -43,7 +43,8 @@ class Movimiento {
     protected $almacenDestino;
     
     /**
-     * @ORM\Column(name="articulo", type="string")
+     * @ORM\OneToOne(targetEntity="Medicamento")
+     * @ORM\Joincolumn(name="articulo_id", unique=false)
      */
     protected $articulo;
     
@@ -230,5 +231,9 @@ class Movimiento {
     public function getPrecioUnitario()
     {
         return $this->precioUnitario;
+    }
+    
+    public function __toString() {
+        return (" Artículo: " . $this->getArticulo()->getNombre() . " Cantidad: " . $this->cantidad );
     }
 }

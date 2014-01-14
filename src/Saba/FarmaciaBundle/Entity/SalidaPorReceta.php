@@ -26,7 +26,7 @@ class SalidaPorReceta {
     
     /**
      * @ORM\OneToOne(targetEntity="Receta", cascade={"persist"})
-     * @ORM\JoinColumn(name="receta_id", referencedColumnName="folio")
+     * @ORM\JoinColumn(name="receta_id", referencedColumnName="id")
      */
     protected $receta;
     
@@ -74,7 +74,19 @@ class SalidaPorReceta {
     public function setReceta(\Saba\FarmaciaBundle\Entity\Receta $receta = null)
     {
         $this->receta = $receta;
-
+        foreach ($this->receta->getLineasDeReceta() as $lineasEnReceta){
+            $linea = $lineasEnReceta->getLineaDeReceta();
+            $movimiento = new Movimiento();
+            $movimiento->setAlmacenOrigen("1");
+            $movimiento->setAlmacenDestino("1");
+            $movimiento->setArticulo($linea->getMedicamento());
+            $movimiento->setCantidad($linea->getCantidad());
+            $movimiento->setFechaDeEjecucion(new \DateTime());
+            $movimiento->setFechaDeRegistro(new \DateTime());
+            $movimiento->setFechaDeRegistro(new \DateTime());
+            $movimiento->setPreciounitario(0);
+            $this->getMovimientos()->add($movimiento);
+        }
         return $this;
     }
 

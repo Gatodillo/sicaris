@@ -5,3 +5,81 @@ services:
 #    saba_farmacia.example:
 #        class: %saba_farmacia.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+    sonata.admin.salida_por_receta:
+        class: Saba\FarmaciaBundle\Admin\SalidaPorRecetaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Salidas", label: "Por receta" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\SalidaPorReceta
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+            
+    sonata.admin.receta:
+        class: Saba\FarmaciaBundle\Admin\RecetaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Receta" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\Receta
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+            
+    sonata.admin.medico:    
+        class: Saba\FarmaciaBundle\Admin\MedicoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Médicos" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\Medico
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+            
+    sonata.admin.paciente:    
+        class: Saba\FarmaciaBundle\Admin\PacienteAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Pacientes" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\Paciente
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]            
+            
+    sonata.admin.medicamento:    
+        class: Saba\FarmaciaBundle\Admin\MedicamentoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Medicamentos" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\Medicamento
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]       
+            
+    sonata.admin.receta_tiene_lineas:    
+        class: Saba\FarmaciaBundle\Admin\RecetaTieneLineasAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Lineas por receta" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\RecetaTieneLineas
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]       
+            
+    sonata.admin.linea_de_recetas:    
+        class: Saba\FarmaciaBundle\Admin\LineaDeRecetaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Lineas" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\LineaDeReceta
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]                      
+            
