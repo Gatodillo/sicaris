@@ -52,9 +52,9 @@ class RecetaAdmin extends Admin {
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add("folio", null, array('label' => 'Folio'))    
-            ->addIdentifier("medico.nombre", null, array('label' => 'Médico'))
-            ->addIdentifier("paciente.nombre", null, array('label' => 'Paciente'))
+            ->addIdentifier("folio", null, array('label' => 'Folio'))    
+            ->addIdentifier("medico.cedula", null, array('label' => 'Médico'))
+            ->addIdentifier("paciente.numeroDeAfiliacion", null, array('label' => 'Paciente'))
             ;
     }    
     

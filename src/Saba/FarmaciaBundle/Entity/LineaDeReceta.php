@@ -32,7 +32,7 @@ class LineaDeReceta {
      * 
      */
     /**
-     * @ORM\OneToOne(targetEntity="Medicamento")
+     * @ORM\ManyToOne(targetEntity="Medicamento")
      * @ORM\Joincolumn(name="medicamento_id", unique=false)
      */
     protected $medicamento;

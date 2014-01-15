@@ -44,13 +44,13 @@ class Receta {
     protected $recetasHijas;
     
     /**
-     * @ORM\OneToOne(targetEntity="Medico")
+     * @ORM\ManyToOne(targetEntity="Medico")
      * @ORM\JoinColumn(unique=false)
      */
     protected $medico;
     
     /**
-     * @ORM\OneToOne(targetEntity="Paciente")
+     * @ORM\ManyToOne(targetEntity="Paciente")
      * @ORM\JoinColumn(unique=false)
      */
     protected $paciente;
@@ -268,6 +268,10 @@ class Receta {
         }
         
         return $this;
+    }
+    
+    public function __toString() {
+        return (string)($this->getFolio());
     }
     
    

@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Description of Movimiento
  *
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="movimientos") 
  */
 class Movimiento {
@@ -44,7 +45,7 @@ class Movimiento {
     
     /**
      * @ORM\OneToOne(targetEntity="Medicamento")
-     * @ORM\Joincolumn(name="articulo_id", unique=false)
+     * @ORM\JoinColumn(name="articulo_id", unique=false)
      */
     protected $articulo;
     
@@ -234,6 +235,25 @@ class Movimiento {
     }
     
     public function __toString() {
+        if ( null == $this->getArticulo()){
+            return "";
+        }
         return (" Artículo: " . $this->getArticulo()->getNombre() . " Cantidad: " . $this->cantidad );
+    }
+    
+     /**
+     * @ORM\PrePersist
+     */
+    public function prePersist(){
+        $this;
+        echo $this->getArticulo();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate(){
+        $this;
+        echo $this->getArticulo();
     }
 }

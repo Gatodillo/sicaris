@@ -82,4 +82,15 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]                      
+       
+    sonata.admin.movimientos:
+        class: Saba\FarmaciaBundle\Admin\MovimientosAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Movimientos"}
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\Movimiento
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]                      
             

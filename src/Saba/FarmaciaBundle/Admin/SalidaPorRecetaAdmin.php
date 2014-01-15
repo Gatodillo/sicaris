@@ -26,7 +26,16 @@ class SalidaPorRecetaAdmin extends Admin {
         $formMapper
             ->add('numero', 'text', array('label' => 'Número'))
             ->add("receta", "sonata_type_model_list")
-           
+            ->end()
+            ->with("Movimientos")
+                ->add("movimientos",'sonata_type_collection', array(
+                    'by_reference' => false,
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                    'sortable' => 'position',
+                ))
+            ->end()
            
         ;
     }
@@ -43,11 +52,10 @@ class SalidaPorRecetaAdmin extends Admin {
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('numero')
-            ->add("receta.folio", null, array('label' => 'Receta'))
-             ->add("movimientos")
+            ->addIdentifier('numero', null, array('label' => 'Número'))
+            ->addidentifier("receta", null, array('label' => 'Receta'))
+            ->addIdentifier("movimientos", null, array('label' => 'Movimientos'))
             ;    
-
     }
     
    

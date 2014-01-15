@@ -150,4 +150,10 @@ class Paciente {
     {
         return $this->nombresDePila;
     }
+    
+     public function __toString() {
+        return $this->getNumeroDeAfiliacion() . ". " . $this->getApellidoPaterno()
+                . " " . $this ->getApellidoMaterno()
+                . ", " . $this->getNombresDePila();
+    }
 }

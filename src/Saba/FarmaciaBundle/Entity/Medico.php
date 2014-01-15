@@ -205,4 +205,10 @@ class Medico {
     {
         return $this->especialidad;
     }
+    
+    public function __toString() {
+        return $this->getCedula() . ". " . $this->getApellidoPaterno()
+                . " " . $this ->getApellidoMaterno()
+                . ", " . $this->getNombresDePila();
+    }
 }

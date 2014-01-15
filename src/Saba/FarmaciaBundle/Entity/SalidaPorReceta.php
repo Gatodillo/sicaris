@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Description of Salida
  *
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="salidas_por_receta") 
  */
 class SalidaPorReceta {
@@ -42,9 +43,7 @@ class SalidaPorReceta {
      */
     protected $movimientos;
     
-    public function _construct(){
-        $this->movimientos = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+   
     /**
      * Constructor
      */
@@ -87,7 +86,6 @@ class SalidaPorReceta {
             $movimiento->setPreciounitario(0);
             $this->getMovimientos()->add($movimiento);
         }
-        return $this;
     }
 
     /**
@@ -120,6 +118,8 @@ class SalidaPorReceta {
      */
     public function removeMovimiento(\Saba\FarmaciaBundle\Entity\Movimiento $movimientos)
     {
+        if (null === $movimientos ) return;
+        if ($this->movimientos>-contains($movimientos)) return;
         $this->movimientos->removeElement($movimientos);
     }
 
@@ -158,4 +158,19 @@ class SalidaPorReceta {
 
         return $this;
     }
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist(){
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate(){
+        
+
+    }
+    
 }
