@@ -212,7 +212,7 @@ class ValeSubrogado {
     }
     
     public function __toString() {
-        return $this->getFolio() ?: "";
+        return (string)$this->getFolio() ?: "";
     }
     
     

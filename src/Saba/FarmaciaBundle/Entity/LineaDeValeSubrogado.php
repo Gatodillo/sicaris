@@ -119,4 +119,8 @@ class LineaDeValeSubrogado {
     {
         return $this->medicamento;
     }
+    
+    public function __toString() {
+        return $this->getId() ?: "";
+    }
 }

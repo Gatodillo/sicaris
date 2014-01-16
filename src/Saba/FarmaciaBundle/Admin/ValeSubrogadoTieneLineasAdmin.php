@@ -47,9 +47,8 @@ class ValeSubrogadoTieneLineasAdmin extends Admin {
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add("folio", null, array('label' => 'Folio'))    
-            ->addIdentifier("medico.nombre", null, array('label' => 'Médico'))
-            ->addIdentifier("paciente.nombre", null, array('label' => 'Paciente'))
+            ->addIdentifier("valeSubrogado", null, array('label' => 'Folio'))    
+            ->addIdentifier("lineaDeValeSubrogado", null, array('label' => 'Receta'))
             ;
     }
     

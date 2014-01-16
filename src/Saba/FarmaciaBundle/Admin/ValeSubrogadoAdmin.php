@@ -14,7 +14,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
 /**
- * Description of PorValeSubrogadoAdmin
+ * Description of ValeSubrogadoAdmin
  *
  * @author victor
  */
@@ -24,8 +24,8 @@ class ValeSubrogadoAdmin extends Admin {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('recetaOrigen', 'text', array('label' => 'Receta', 'disabled' => true))    
             ->add('folio', 'text', array('label' => 'Folio'))
+            ->add('recetaOrigen', null, array('label' => 'Receta', 'disabled' => true))    
             ->add("medico", "sonata_type_model_list",array('required' => false))
             ->add("paciente", "sonata_type_model_list",array('required' => false))
             ->end()
@@ -37,7 +37,7 @@ class ValeSubrogadoAdmin extends Admin {
                     'inline' => 'table',
                     'sortable' => 'position',
                 ))
-                ->end()
+            ->end()
             ;
     }
     
@@ -59,13 +59,4 @@ class ValeSubrogadoAdmin extends Admin {
             ->addIdentifier("paciente.numeroDeAfiliacion", null, array('label' => 'Paciente'))
             ;
     }    
-    
-public function preUpdate($receta) {
-        $receta->setLineasDeValeSubrogado($receta->getLineasDeValeSubrogado());
-    }
-    
-    public function prePersist($receta) {
-        $receta->setLineasDeValeSubrogado($receta->getLineasDeValeSubrogado());
-    }
-    
 }
