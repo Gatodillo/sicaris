@@ -15,11 +15,11 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 
 
 /**
- * Description of RecetaTieneLineasAdmin
+ * Description of ValeSubrogadoTieneLineasAdmin
  *
  * @author victor
  */
-class RecetaTieneLineasAdmin extends Admin {
+class ValeSubrogadoTieneLineasAdmin extends Admin {
     
     /*
      * Campos que serán mostrado en los formularios para 
@@ -33,7 +33,7 @@ class RecetaTieneLineasAdmin extends Admin {
         }
 */
         $formMapper
-            ->add('lineaDeReceta', 'sonata_type_admin', array(
+            ->add('lineaDeValeSubrogado', 'sonata_type_admin', array(
                 'required' => false,
             ), array(
                 'edit' => 'inline',
@@ -55,15 +55,15 @@ class RecetaTieneLineasAdmin extends Admin {
     
     public function preUpdate($object) {
         parent::preUpdate($object);
-        foreach($object->getLineasDeReceta() as $lineaDeReceta ){
-           $lineaDeReceta->setReceta($object->getReceta());
+        foreach($object->getLineasDeValeSubrogado() as $lineaDeValeSubrogado ){
+           $lineaDeValeSubrogado->setValeSubrogado($object->getValeSubrogado());
         }
     }
     
     public function prePersist($object) {
         parent::prePersist($object);
-        foreach($object->getLineasDeReceta() as $lineaDeReceta ){
-           $lineaDeReceta->setReceta($object->getReceta());
+        foreach($object->getLineasDeValeSubrogado() as $lineaDeValeSubrogado ){
+           $lineaDeValeSubrogado->setValeSubrogado($object->getValeSubrogado());
         }
     }   
     

@@ -15,11 +15,11 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 
 
 /**
- * Description of LineasDeRecetaAdmin
+ * Description of LineaDeValeSubrogadoAdmin
  *
  * @author victor
  */
-class LineaDeRecetaAdmin extends Admin{
+class LineaDeValeSubrogadoAdmin extends Admin{
     /**
      *  Campos que serán mostrado en los formularios para desplegar o editar 
      * información.
@@ -55,11 +55,11 @@ class LineaDeRecetaAdmin extends Admin{
     
     public function preUpdate($object) {
         parent::preUpdate($object);
-        $receta = $object->getReceta();
+        $receta = $object->getValeSubrogado();
     }
     
     public function prePersist($object) {
         parent::prePersist($object);
-        $receta = $object->getReceta();
+        $receta = $object->getValeSubrogado();
     }      
 }

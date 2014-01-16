@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f69201fb0edc7c6abd8d86dce16ad212",
+    "hash": "60c9822ba94d9f4f3e004198b8cf1dde",
     "packages": [
         {
             "name": "dflydev/markdown",
@@ -756,6 +756,77 @@
                 "rest"
             ],
             "time": "2013-11-28 09:03:02"
+        },
+        {
+            "name": "genemu/form-bundle",
+            "version": "dev-master",
+            "target-dir": "Genemu/Bundle/FormBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/genemu/GenemuFormBundle.git",
+                "reference": "156089856016abde934b92961724b9aa728b7eae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/genemu/GenemuFormBundle/zipball/156089856016abde934b92961724b9aa728b7eae",
+                "reference": "156089856016abde934b92961724b9aa728b7eae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/form": "~2.3",
+                "symfony/framework-bundle": "~2.3"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "1.*",
+                "doctrine/mongodb-odm-bundle": "*",
+                "doctrine/orm": "2.*",
+                "phpunit/phpunit": "3.7.*",
+                "propel/propel-bundle": "*",
+                "symfony/doctrine-bridge": "~2.3",
+                "symfony/finder": "2.*"
+            },
+            "suggest": {
+                "symfony/doctrine-bundle": "In order to use some form types with Doctrine",
+                "symfony/finder": "For an image type",
+                "symfony/mongodb-odm-bundle": "For MongoDB integration",
+                "symfony/twig-bridge": "For integration into Twig templates"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Genemu\\Bundle\\FormBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Olivier Chauvel",
+                    "email": "olivier@generation-multiple.com"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/genemu/GenemuFormBundle/contributors"
+                },
+                {
+                    "name": "Bilal Amarni",
+                    "email": "bilal.amarni@gmail.com"
+                }
+            ],
+            "description": "Extra form types for your Symfony2 projects",
+            "keywords": [
+                "extra form",
+                "form"
+            ],
+            "time": "2013-11-13 16:22:53"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1705,12 +1776,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "ac899038f0073656e5c981de8f31ef01eb778ed1"
+                "reference": "74e5ebed99517c2d78bb3fd714cfa26e390c91bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/ac899038f0073656e5c981de8f31ef01eb778ed1",
-                "reference": "ac899038f0073656e5c981de8f31ef01eb778ed1",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/74e5ebed99517c2d78bb3fd714cfa26e390c91bf",
+                "reference": "74e5ebed99517c2d78bb3fd714cfa26e390c91bf",
                 "shasum": ""
             },
             "require": {
@@ -1777,7 +1848,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-01-11 21:26:12"
+            "time": "2014-01-15 17:37:31"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -1908,12 +1979,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "bcbcfaf6c18f76b460c9f011809904611a8a618a"
+                "reference": "0b5552f60698ac7cc24833d1789182f23797fd85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/bcbcfaf6c18f76b460c9f011809904611a8a618a",
-                "reference": "bcbcfaf6c18f76b460c9f011809904611a8a618a",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/0b5552f60698ac7cc24833d1789182f23797fd85",
+                "reference": "0b5552f60698ac7cc24833d1789182f23797fd85",
                 "shasum": ""
             },
             "require": {
@@ -1957,7 +2028,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2014-01-07 13:42:26"
+            "time": "2014-01-15 17:24:02"
         },
         {
             "name": "sonata-project/easy-extends-bundle",
@@ -2510,6 +2581,64 @@
             "time": "2014-01-05 02:12:11"
         },
         {
+            "name": "thrace/datagrid-bundle",
+            "version": "dev-master",
+            "target-dir": "Thrace/DataGridBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thrace-project/datagrid-bundle.git",
+                "reference": "8bb39da754090e71e397b1d06d2bcf7ea3279cfd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thrace-project/datagrid-bundle/zipball/8bb39da754090e71e397b1d06d2bcf7ea3279cfd",
+                "reference": "8bb39da754090e71e397b1d06d2bcf7ea3279cfd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "~2.3",
+                "symfony/options-resolver": "2.*",
+                "symfony/twig-bundle": "2.*"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "1.*",
+                "doctrine/orm": "2.*",
+                "phpunit/phpunit": "3.7.*@dev",
+                "symfony/doctrine-bridge": "~2.3",
+                "thrace/component-bundle": "*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.*-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Thrace\\DataGridBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nikolay Georgiev",
+                    "email": "symfonist@gmail.com"
+                }
+            ],
+            "description": "This bundle provides easy creating of jqGrid datagrids",
+            "keywords": [
+                "datagrid",
+                "jqgrid",
+                "jquery",
+                "symfony"
+            ],
+            "time": "2014-01-12 16:29:55"
+        },
+        {
             "name": "twig/extensions",
             "version": "v1.0.1",
             "source": {
@@ -2666,7 +2795,9 @@
     "stability-flags": {
         "sonata-project/doctrine-orm-admin-bundle": 20,
         "sonata-project/admin-bundle": 20,
-        "sonata-project/easy-extends-bundle": 20
+        "sonata-project/easy-extends-bundle": 20,
+        "genemu/form-bundle": 20,
+        "thrace/datagrid-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

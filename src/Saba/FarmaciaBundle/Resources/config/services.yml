@@ -86,11 +86,77 @@ services:
     sonata.admin.movimientos:
         class: Saba\FarmaciaBundle\Admin\MovimientosAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Movimientos"}
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Movimientos" }
         arguments:
             - ~
             - Saba\FarmaciaBundle\Entity\Movimiento
             - ~
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]                      
+
+    sonata.admin.almacen:
+        class: Saba\FarmaciaBundle\Admin\AlmacenAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Almacén" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\Almacen
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]   
             
+            
+    sonata.admin.ubicacion:
+        class: Saba\FarmaciaBundle\Admin\UbicacionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Ubicaciones" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\Ubicacion
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]           
+            
+    sonata.admin.productos_por_ubicacion:
+        class: Saba\FarmaciaBundle\Admin\ProductosPorUbicacionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Productos por ubicación" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\ProductosPorUbicacion
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+
+    sonata.admin.vale_subrogado:
+        class: Saba\FarmaciaBundle\Admin\ValeSubrogadoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Vale subrogado" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\ValeSubrogado
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+            
+    sonata.admin.vale_subrogado_tiene_lineas:    
+        class: Saba\FarmaciaBundle\Admin\ValeSubrogadoTieneLineasAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Lineas por vale subrogado" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\ValeSubrogadoTieneLineas
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]       
+            
+    sonata.admin.linea_de_vale_subrogado:    
+        class: Saba\FarmaciaBundle\Admin\LineaDeValeSubrogadoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Líneas de vale subrogado" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\LineaDeValeSubrogado
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]                                  

@@ -10,14 +10,16 @@ namespace Saba\FarmaciaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * Description of LineaDeReceta
+ * Description of ProductosPorUbicacion
  *
- * @ORM\Entity
- * @ORM\Table(name="lineas_de_receta")
+ * @author victor
+ * @IgnoreAnnotation("author")
+ * @ORM\Entity;
+ * @ORM\Table(name="productos_por_ubicacion")
  */
-class LineaDeReceta {
-    
+class ProductosPorUbicacion {
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -25,42 +27,22 @@ class LineaDeReceta {
      */
     protected $id;
     
-    
-    /*
-     *
-     * @ORM\OneToOne(targetEntity="Medicamento")
-     * 
+    /**
+     * @ORM\ManyToOne(targetEntity="Ubicacion", inversedBy="productos");
+     * @ORM\JoinColumn(nullable=false)
      */
+    protected $ubicacion;
+    
     /**
      * @ORM\ManyToOne(targetEntity="Medicamento")
-     * @ORM\JoinColumn(name="medicamento_id", unique=false)
      */
-    protected $medicamento;
+    protected $producto;
     
     /**
      * @ORM\Column(type="integer")
      */
     protected $cantidad;
     
-    /**
-     *
-     * @ORM\Column(type="string")
-     */
-    protected $unidad;
- 
-    
-    /**
-     * Set id
-     *
-     * @param integer $id
-     * @return LineasDeReceta
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Get id
@@ -76,7 +58,7 @@ class LineaDeReceta {
      * Set cantidad
      *
      * @param integer $cantidad
-     * @return LineasDeReceta
+     * @return ProductosPorUbicacion
      */
     public function setCantidad($cantidad)
     {
@@ -96,49 +78,48 @@ class LineaDeReceta {
     }
 
     /**
-     * Set unidad
+     * Set ubicacion
      *
-     * @param string $unidad
-     * @return LineasDeReceta
+     * @param \Saba\FarmaciaBundle\Entity\Ubicacion $ubicacion
+     * @return ProductosPorUbicacion
      */
-    public function setUnidad($unidad)
+    public function setUbicacion(\Saba\FarmaciaBundle\Entity\Ubicacion $ubicacion = null)
     {
-        $this->unidad = $unidad;
+        $this->ubicacion = $ubicacion;
 
         return $this;
     }
 
     /**
-     * Get unidad
+     * Get ubicacion
      *
-     * @return string 
+     * @return \Saba\FarmaciaBundle\Entity\Ubicacion 
      */
-    public function getUnidad()
+    public function getUbicacion()
     {
-        return $this->unidad;
+        return $this->ubicacion;
     }
 
     /**
-     * Set medicamento
+     * Set productos
      *
-     * @param \Saba\FarmaciaBundle\Entity\Medicamento $medicamento
-     * @return LineasDeReceta
+     * @param \Saba\FarmaciaBundle\Entity\Productos $productos
+     * @return ProductosPorUbicacion
      */
-    public function setMedicamento( $medicamento = null)
+    public function setProducto(\Saba\FarmaciaBundle\Entity\Medicamento $producto = null)
     {
-        $this->medicamento = $medicamento;
+        $this->producto = $producto;
 
         return $this;
     }
 
     /**
-     * Get medicamento
+     * Get productos
      *
      * @return \Saba\FarmaciaBundle\Entity\Medicamento 
      */
-    public function getMedicamento()
+    public function getProducto()
     {
-        return $this->medicamento;
+        return $this->producto;
     }
-
 }

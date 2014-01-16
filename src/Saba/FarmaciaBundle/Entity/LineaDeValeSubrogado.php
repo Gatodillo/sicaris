@@ -11,12 +11,12 @@ namespace Saba\FarmaciaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Description of LineaDeReceta
+ * Description of LineaDeValeSubrogado
  *
  * @ORM\Entity
- * @ORM\Table(name="lineas_de_receta")
+ * @ORM\Table(name="lineas_de_vale_subrogado")
  */
-class LineaDeReceta {
+class LineaDeValeSubrogado {
     
     /**
      * @ORM\Id
@@ -25,12 +25,6 @@ class LineaDeReceta {
      */
     protected $id;
     
-    
-    /*
-     *
-     * @ORM\OneToOne(targetEntity="Medicamento")
-     * 
-     */
     /**
      * @ORM\ManyToOne(targetEntity="Medicamento")
      * @ORM\JoinColumn(name="medicamento_id", unique=false)
@@ -43,24 +37,9 @@ class LineaDeReceta {
     protected $cantidad;
     
     /**
-     *
      * @ORM\Column(type="string")
      */
     protected $unidad;
- 
-    
-    /**
-     * Set id
-     *
-     * @param integer $id
-     * @return LineasDeReceta
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Get id
@@ -76,7 +55,7 @@ class LineaDeReceta {
      * Set cantidad
      *
      * @param integer $cantidad
-     * @return LineasDeReceta
+     * @return LineaDeValeSubrogado
      */
     public function setCantidad($cantidad)
     {
@@ -99,7 +78,7 @@ class LineaDeReceta {
      * Set unidad
      *
      * @param string $unidad
-     * @return LineasDeReceta
+     * @return LineaDeValeSubrogado
      */
     public function setUnidad($unidad)
     {
@@ -122,9 +101,9 @@ class LineaDeReceta {
      * Set medicamento
      *
      * @param \Saba\FarmaciaBundle\Entity\Medicamento $medicamento
-     * @return LineasDeReceta
+     * @return LineaDeValeSubrogado
      */
-    public function setMedicamento( $medicamento = null)
+    public function setMedicamento(\Saba\FarmaciaBundle\Entity\Medicamento $medicamento = null)
     {
         $this->medicamento = $medicamento;
 
@@ -140,5 +119,4 @@ class LineaDeReceta {
     {
         return $this->medicamento;
     }
-
 }

@@ -134,3 +134,15 @@ sonata_doctrine_orm_admin:
                 percent:    SonataAdminBundle:CRUD:base_percent.html.twig
                 choice:     SonataAdminBundle:CRUD:show_choice.html.twig
                 url:        SonataAdminBundle:CRUD:show_url.html.twig
+#GenemuFormBundle
+genemu_form:
+    select2:
+        enabled: true
+        configs:
+            placeholder: Select a value
+            width: off
+            allowClear: false
+            minimumInputLength: 0
+    date: ~
+    autocomplete: ~
+    
