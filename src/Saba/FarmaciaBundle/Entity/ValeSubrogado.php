@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="vale_subrogado")
+ * @ORM\HasLifecycleCallbacks
  */
 class ValeSubrogado {
     
@@ -33,8 +34,8 @@ class ValeSubrogado {
     
     /**
      * 
-     * @ORM\ManyToOne(targetEntity="Receta", inversedBy="recetasHijas")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToOne(targetEntity="Receta")
+     * @ORM\JoinColumn(nullable=false)
      */
     protected $recetaOrigen;
     
@@ -206,10 +207,26 @@ class ValeSubrogado {
      */
     public function setLineasDeValeSubrogado(\Doctrine\Common\Collections\ArrayCollection $lineas)
     {
-        $this->lineasDeValeSubrogado = new \Doctrine\Common\Collections\ArrayCollection();
-        foreach ($lineas as $linea){
-            $this->addLineasDeValeSubrogado($linea);
-        }
+        $this->addLineasDeValeSubrogado($linea);
         return $this;
     }
+    
+    public function __toString() {
+        return $this->getFolio() ?: "";
+    }
+    
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist(){
+        print $this->getFolio();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate(){
+        print $this->getFolio();
+    }    
 }

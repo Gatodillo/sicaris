@@ -55,6 +55,7 @@ class RecetaAdmin extends Admin {
             ->addIdentifier("folio", null, array('label' => 'Folio'))    
             ->addIdentifier("medico.cedula", null, array('label' => 'Médico'))
             ->addIdentifier("paciente.numeroDeAfiliacion", null, array('label' => 'Paciente'))
+            ->addIdentifier("valeSubrogado", null, array('label' => 'Vale subrogado'))
             ;
     }    
     

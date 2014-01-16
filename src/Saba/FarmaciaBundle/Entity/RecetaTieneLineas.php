@@ -107,4 +107,7 @@ class RecetaTieneLineas {
         return $this->receta;
     }
    
+    public function __toString() {
+        return (string)$this->getReceta()->getFolio() ?: "";
+    }
 }

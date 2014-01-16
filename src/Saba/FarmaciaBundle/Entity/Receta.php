@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="recetas")
+ * @ORM\HasLifecycleCallbacks
  */
 class Receta {
     
@@ -59,7 +60,13 @@ class Receta {
      * @ORM\OneToMany(targetEntity="RecetaTieneLineas", mappedBy="receta",cascade={"persist"})
      */
     protected $lineasDeReceta;
-    
+
+    /**
+     * @ORM\OneToOne(targetEntity="ValeSubrogado", cascade={"persist"})
+     * @ORM\JoinColumn(name="vale_subrogado_id", nullable=true)
+     */
+    protected $valeSubrogado;
+
     
     /**
      * Constructor
@@ -273,4 +280,42 @@ class Receta {
     public function __toString() {
         return (string)($this->getFolio());
     }
+
+    /**
+     * Set valeSubrogado
+     *
+     * @param \Saba\FarmaciaBundle\Entity\Receta $valeSubrogado
+     * @return Receta
+     */
+    public function setValeSubrogado(\Saba\FarmaciaBundle\Entity\ValeSubrogado $valeSubrogado = null)
+    {
+        $this->valeSubrogado = $valeSubrogado;
+
+        return $this;
+    }
+
+    /**
+     * Get valeSubrogado
+     *
+     * @return \Saba\FarmaciaBundle\Entity\ValeSubrogado 
+     */
+    public function getValeSubrogado()
+    {
+        return $this->valeSubrogado;
+    }
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist(){
+        print $this->getValeSubrogado()->getFolio();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate(){
+        print $this->getValeSubrogado()->getFolio();
+    }
+
 }
