@@ -1205,7 +1205,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -1776,12 +1776,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "74e5ebed99517c2d78bb3fd714cfa26e390c91bf"
+                "reference": "7edddb7497814c3251f0fb60e44c6ee1c3e3c2e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/74e5ebed99517c2d78bb3fd714cfa26e390c91bf",
-                "reference": "74e5ebed99517c2d78bb3fd714cfa26e390c91bf",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/7edddb7497814c3251f0fb60e44c6ee1c3e3c2e1",
+                "reference": "7edddb7497814c3251f0fb60e44c6ee1c3e3c2e1",
                 "shasum": ""
             },
             "require": {
@@ -1848,7 +1848,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-01-15 17:37:31"
+            "time": "2014-01-16 13:06:00"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -2306,21 +2306,20 @@
         },
         {
             "name": "symfony/icu",
-            "version": "v1.2.0",
+            "version": "v1.0.0",
             "target-dir": "Symfony/Component/Icu",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Icu.git",
-                "reference": "7299cd3d8d6602103d1ebff5d0a9917b7bc6de72"
+                "reference": "cac3fdfb111adbe590155f491594636d45129783"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Icu/zipball/7299cd3d8d6602103d1ebff5d0a9917b7bc6de72",
-                "reference": "7299cd3d8d6602103d1ebff5d0a9917b7bc6de72",
+                "url": "https://api.github.com/repos/symfony/Icu/zipball/cac3fdfb111adbe590155f491594636d45129783",
+                "reference": "cac3fdfb111adbe590155f491594636d45129783",
                 "shasum": ""
             },
             "require": {
-                "lib-icu": ">=4.4",
                 "php": ">=5.3.3",
                 "symfony/intl": "~2.3"
             },
@@ -2350,7 +2349,7 @@
                 "icu",
                 "intl"
             ],
-            "time": "2013-06-03 18:32:58"
+            "time": "2013-06-03 18:32:07"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -2587,12 +2586,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thrace-project/datagrid-bundle.git",
-                "reference": "8bb39da754090e71e397b1d06d2bcf7ea3279cfd"
+                "reference": "0c7cb9d0b30c77284503a54dd3e0145686e15d26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thrace-project/datagrid-bundle/zipball/8bb39da754090e71e397b1d06d2bcf7ea3279cfd",
-                "reference": "8bb39da754090e71e397b1d06d2bcf7ea3279cfd",
+                "url": "https://api.github.com/repos/thrace-project/datagrid-bundle/zipball/0c7cb9d0b30c77284503a54dd3e0145686e15d26",
+                "reference": "0c7cb9d0b30c77284503a54dd3e0145686e15d26",
                 "shasum": ""
             },
             "require": {
@@ -2636,7 +2635,7 @@
                 "jquery",
                 "symfony"
             ],
-            "time": "2014-01-12 16:29:55"
+            "time": "2014-01-16 14:54:43"
         },
         {
             "name": "twig/extensions",
