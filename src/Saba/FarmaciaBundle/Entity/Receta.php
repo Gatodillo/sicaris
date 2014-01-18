@@ -308,7 +308,7 @@ class Receta {
      * @ORM\PrePersist
      */
     public function prePersist(){
-        print $this->getValeSubrogado()->getFolio();
+        //print $this->getValeSubrogado()->getFolio();
     }
 
     /**

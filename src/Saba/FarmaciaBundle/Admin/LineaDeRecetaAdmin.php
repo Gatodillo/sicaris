@@ -26,11 +26,7 @@ class LineaDeRecetaAdmin extends Admin{
      */
     public function configureFormFields(FormMapper $formMapper){
         $formMapper
-                //->add('medicamento', 'sonata_type_model_list')
-                ->add('medicamento', 'genemu_jqueryselect2_entity', array(
-                    'class' => 'Saba\FarmaciaBundle\Entity\Medicamento',
-                    'property' => 'nombre',
-                    ))
+                ->add('medicamento', 'sonata_type_model_list', array('label' => 'Mediccamento' ))
                 ->add('cantidad','text')
                 ->add('unidad', 'text', array('label'=>'Unidad'))
                 ;
