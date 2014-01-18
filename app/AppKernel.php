@@ -33,6 +33,7 @@ class AppKernel extends Kernel
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Sonata\jQueryBundle\SonatajQueryBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),            
             
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             
