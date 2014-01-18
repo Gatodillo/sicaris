@@ -8,25 +8,34 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
+            new Saba\FarmaciaBundle\SabaFarmaciaBundle(),
+            
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Saba\FarmaciaBundle\SabaFarmaciaBundle(),
+            
+            new FOS\UserBundle\FOSUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
+            
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Sonata\jQueryBundle\SonatajQueryBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
-            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
         );
 

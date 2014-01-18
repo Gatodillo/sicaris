@@ -134,6 +134,8 @@ sonata_doctrine_orm_admin:
                 percent:    SonataAdminBundle:CRUD:base_percent.html.twig
                 choice:     SonataAdminBundle:CRUD:show_choice.html.twig
                 url:        SonataAdminBundle:CRUD:show_url.html.twig
+            
+                
 #GenemuFormBundle
 genemu_form:
     select2:
@@ -145,6 +147,11 @@ genemu_form:
             minimumInputLength: 0
     date: ~
     autocomplete: ~
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Saba\FarmaciaBundle\Entity\Usuario
 
 sonata_admin:
     security:
@@ -160,3 +167,5 @@ sonata_admin:
         admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
         # permission related to the objects
         object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
+        
+        

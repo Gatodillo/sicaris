@@ -25,7 +25,7 @@ class ValeSubrogadoAdmin extends Admin {
     {
         $formMapper
             ->add('folio', 'text', array('label' => 'Folio'))
-            ->add('recetaOrigen', null, array('label' => 'Receta', 'disabled' => true))    
+            ->add('recetaOrigen.folio', 'text', array('label' => 'Receta', 'disabled' => true))    
             ->add("medico", "sonata_type_model_list",array('required' => false))
             ->add("paciente", "sonata_type_model_list",array('required' => false))
             ->end()
