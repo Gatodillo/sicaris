@@ -26,8 +26,9 @@ class MovimientosAdmin extends Admin{
     public function configureFormFields(FormMapper $form) {
         parent::configureFormFields($form);
         $form->add("articulo")
-             ->add("cantidad")
-             ;   
+                ->add("cantidad")
+                
+            ;   
         
     }
     

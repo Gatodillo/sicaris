@@ -44,7 +44,7 @@ class Movimiento {
     protected $almacenDestino;
     
     /**
-     * @ORM\OneToOne(targetEntity="Medicamento")
+     * @ORM\ManyToOne(targetEntity="Medicamento")
      * @ORM\JoinColumn(name="articulo_id", unique=false)
      */
     protected $articulo;
@@ -245,15 +245,21 @@ class Movimiento {
      * @ORM\PrePersist
      */
     public function prePersist(){
-        $this;
-        echo $this->getArticulo();
+        $this->setAlmacenDestino(1);
+        $this->setAlmacenOrigen(1);
+        $this->setFechaDeEjecucion(new \DateTime);
+        $this->setFechaDeRegistro(new \DateTime);
+        $this->setPrecioUnitario(1.0);
     }
 
     /**
      * @ORM\PreUpdate
      */
     public function preUpdate(){
-        $this;
-        echo $this->getArticulo();
+        $this->setAlmacenDestino(1);
+        $this->setAlmacenOrigen(1);
+        $this->setFechaDeEjecucion(new \DateTime);
+        $this->setFechaDeRegistro(new \DateTime);
+        $this->setPrecioUnitario(1.0);
     }
 }

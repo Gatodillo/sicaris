@@ -32,7 +32,7 @@ class SalidaPorReceta {
     protected $receta;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Movimiento", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Movimiento", cascade={ "persist", "remove"})
      * @ORM\JoinTable(name="SalidaPorRecetaTieneMovimientos",
      *     joinColumns={@ORM\JoinColumn(name="salidas_por_receta_id",
      *         referencedColumnName="numero")},
@@ -60,6 +60,17 @@ class SalidaPorReceta {
      * @return integer 
      */
     public function getNumero()
+    {
+        return $this->numero;
+    }
+    
+    
+    /**
+     * Get numero
+     *
+     * @return integer 
+     */
+    public function getId()
     {
         return $this->numero;
     }
@@ -181,14 +192,14 @@ class SalidaPorReceta {
      * @ORM\PrePersist
      */
     public function prePersist(){
-        $medico = $this->getReceta()->getMedico();
+        //throw new \Exception(__METHOD__);
     }
 
     /**
      * @ORM\PreUpdate
      */
     public function preUpdate(){
-        $medico = $this->getReceta()->getMedico();
+        //throw new \Exception(__METHOD__);
         
     }
     

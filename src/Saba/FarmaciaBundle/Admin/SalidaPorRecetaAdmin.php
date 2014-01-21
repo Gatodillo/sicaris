@@ -28,15 +28,13 @@ class SalidaPorRecetaAdmin extends Admin {
             ->add("receta", "sonata_type_model_list")
             ->end()
             ->with("Movimientos")
-                ->add("movimientos",'sonata_type_collection', array(
-                    'by_reference' => false,
+                ->add("movimientos",'sonata_type_collection',array(
+                    'by_reference' => false
                 ), array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                    'sortable' => 'position',
-                ))
+                            'edit' => 'inline',
+                            'inline' => 'table'
+               ))
             ->end()
-           
         ;
     }
     
@@ -56,6 +54,15 @@ class SalidaPorRecetaAdmin extends Admin {
             ->addidentifier("receta", null, array('label' => 'Receta'))
             ->addIdentifier("movimientos", null, array('label' => 'Movimientos'))
             ;    
+    }
+    
+    public function prePersist($salidaPorReceta){
+       // throw new \Exception(__METHOD__);
+    }
+
+    public function preUpdate($salidaPorReceta){
+        //throw new \Exception(__METHOD__);
+        
     }
     
    
