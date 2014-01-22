@@ -50,6 +50,12 @@ class Paciente {
     protected $nombresDePila;
 
     /**
+     *
+     * @ORM\ManyToOne(targetEntity="Ubicacion")
+     * @ORM\JoinColumn(name="ubicacion_id", nullable=false)
+     */
+    protected $ubicacion;
+    /**
      * Get id
      *
      * @return integer 
@@ -155,5 +161,28 @@ class Paciente {
         return $this->getNumeroDeAfiliacion() . ". " . $this->getApellidoPaterno()
                 . " " . $this ->getApellidoMaterno()
                 . ", " . $this->getNombresDePila();
+    }
+
+    /**
+     * Set ubicacion
+     *
+     * @param \Saba\FarmaciaBundle\Entity\Ubicacion $ubicacion
+     * @return Paciente
+     */
+    public function setUbicacion(\Saba\FarmaciaBundle\Entity\Ubicacion $ubicacion)
+    {
+        $this->ubicacion = $ubicacion;
+
+        return $this;
+    }
+
+    /**
+     * Get ubicacion
+     *
+     * @return \Saba\FarmaciaBundle\Entity\Ubicacion 
+     */
+    public function getUbicacion()
+    {
+        return $this->ubicacion;
     }
 }

@@ -116,4 +116,13 @@ class Ubicacion {
     public function __toString() {
         return $this->getNombre() ?: "";
     }
+    
+    public function getExistenciaDe(Medicamento $medicamento){
+        
+        return 0;
+    }
+    
+    public function updateExistencias(Medicamento $medicamento, $cantidad){
+        return $this;
+    }
 }

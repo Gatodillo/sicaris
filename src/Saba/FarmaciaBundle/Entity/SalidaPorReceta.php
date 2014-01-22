@@ -33,7 +33,7 @@ class SalidaPorReceta {
     
     /**
      * @ORM\ManyToMany(targetEntity="Movimiento", cascade={ "persist", "remove"})
-     * @ORM\JoinTable(name="SalidaPorRecetaTieneMovimientos",
+     * @ORM\JoinTable(name="salida_por_receta_tiene_movimientos",
      *     joinColumns={@ORM\JoinColumn(name="salidas_por_receta_id",
      *         referencedColumnName="numero")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="movimientos_id",
@@ -43,6 +43,18 @@ class SalidaPorReceta {
      */
     protected $movimientos;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="Ubicacion", cascade={"persist"})
+     * @ORM\JoinColumn(name="ubicacion_origen_id", referencedColumnName="id")
+     */
+    protected $ubicacionOrigen;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Ubicacion", cascade={"persist"})
+     * @ORM\JoinColumn(name="ubicacion_destino_id", referencedColumnName="id")
+     */
+    protected $ubicacionDestino;
+    
    
     /**
      * Constructor
@@ -50,8 +62,8 @@ class SalidaPorReceta {
     public function __construct()
     {
         $this->movimientos = new \Doctrine\Common\Collections\ArrayCollection();
-
-
+        $this->ubicacionDestino = new Ubicacion();
+        
     }
 
     /**
@@ -83,41 +95,49 @@ class SalidaPorReceta {
      */
     public function setReceta(\Saba\FarmaciaBundle\Entity\Receta $receta = null)
     {
-        $medico = $receta->getMedico();
-        $paciente = $receta->getPaciente();
-        $valeSubrogado = new ValeSubrogado();
-        $valeSubrogado->setRecetaOrigen($receta);
-        $valeSubrogado->setMedico($medico);
-        $valeSubrogado->setPaciente($paciente);
-        $valeSubrogado->setFolio($receta->getFolio());
-        
-        $lineaDeReceta = null;
-        $lineaDeValeSubrogado = null;
-        $relacionValeSubrogadoTieneLineas = null;
-        
-        foreach ($receta->getLineasDeReceta() as $key => $value){
-            print "$key => $value\n";
-            $lineaDeReceta = $value->getLineaDeReceta(); 
-            $lineaDeValeSubrogado = new LineaDeValeSubrogado();
-            $medicamento = $lineaDeReceta->getMedicamento();
-            $cantidad = $lineaDeReceta->getCantidad();
-            $unidad = $lineaDeReceta->getUnidad();
-            $lineaDeValeSubrogado->setMedicamento($medicamento);
-            $lineaDeValeSubrogado->setCantidad($cantidad);
-            $lineaDeValeSubrogado->setUnidad($unidad);
-            
-            $relacionValeSubrogadoTieneLineas = new ValeSubrogadoTieneLineas();
-            $relacionValeSubrogadoTieneLineas->setValeSubrogado($valeSubrogado);
-            $relacionValeSubrogadoTieneLineas->setLineaDeValeSubrogado($lineaDeValeSubrogado);
-            
-            $valeSubrogado->getLineasDeValeSubrogado()->add($relacionValeSubrogadoTieneLineas);
-        }
-        
-        $receta->setValeSubrogado($valeSubrogado);
-        
+        $receta->getValeSubrogado() == NULL ?:return $this;
         $this->receta = $receta;
+        
+        
+        $medico = $this->getReceta->getMedico();
+        $paciente = $this->getReceta->getPaciente();
+        
+        foreach ($this->getReceta->getLineasDeReceta() as $key => $lineaDeReceta){
+            $medicamentoEnReceta = $lineaDeReceta->getMedicamento();
+            $cantidadEnReceta = $lineaDeReceta->getCantidad();
+            //$unidadDelMedicamentoEnReceta = $lineaDeReceta->getUnidad();
+            $cantidadEnExistencia = $this
+                    ->getUbicacionOrigen()
+                    ->getExistenciaDe($medicamentoEnReceta)
+                    ;
+            if ($cantidadEnExistencia >= $cantidadEnReceta){
+                $this->getUbicacionOrigen()
+                        ->updateExistencias(
+                                $medicamentoEnReceta,
+                                $cantidadEnReceta
+                        );
+                $this->aniadirAMovimientos(
+                        $medicamentoEnReceta,
+                        $cantidadEnReceta
+                        );
+            }else if ($cantidadEnExistencia >= 0){
+                $this->getUbicacionOrigen()
+                        ->updateExistencias(
+                                $medicamentoEnReceta,
+                                $cantidadEnExistencia
+                        );
 
+                $this->aniadirAMovimientos($medicamentoEnReceta, 
+                                $cantidadEnExistencia);
+                $this->aniadirAValeSubrogado(
+                        $medicamentoEnReceta,
+                        $cantidadEnReceta -
+                        $cantidadEnExistencia
+                        );
+            }
+        }
     }
+
 
     /**
      * Get receta
@@ -192,16 +212,98 @@ class SalidaPorReceta {
      * @ORM\PrePersist
      */
     public function prePersist(){
-        //throw new \Exception(__METHOD__);
+
     }
 
     /**
      * @ORM\PreUpdate
      */
     public function preUpdate(){
-        //throw new \Exception(__METHOD__);
-        
+
     }
     
+    public function aniadirAMovimientos(Medicamento $medicamento, $cantidad){
+        $movimiento = new Saba\FarmaciaBundle\Entity\Movimiento();
+        
+        $movimiento->setArticulo($medicamento);
+        $movimiento->setCantidad($cantidad);
+        $this->addMovimiento($movimiento);
+                
+        return $this;
+    }
     
+    public function aniadirAValeSubrogado(Medicamento $medicamento, $cantidad){
+
+        $this->getReceta() == NULL ?: return $this;
+        
+        $valeSubrogado = $this->getReceta()->getValeSubrogado() != NULL
+                ? $this->getReceta()->getValeSubrogado() 
+                : new ValeSubrogado();
+        
+        $valeSubrogado->setRecetaOrigen($this->getReceta());
+        $valeSubrogado->setMedico($this->getReceta()->getMedico());
+        $valeSubrogado->setPaciente($this->getReceta()->getPaciente());
+        $valeSubrogado->setFolio($this->getReceta()->getFolio());
+
+        $lineaDeValeSubrogado = new LineaDeValeSubrogado();
+        $lineaDeValeSubrogado->setMedicamento($medicamentoEnReceta);
+        $lineaDeValeSubrogado->setCantidad($cantidadEnReceta);
+        $lineaDeValeSubrogado->setUnidad($unidadDelMedicamentoEnReceta);
+            
+        $relacionValeSubrogadoTieneLineas = new ValeSubrogadoTieneLineas();
+        $relacionValeSubrogadoTieneLineas->setValeSubrogado($valeSubrogado);
+        $relacionValeSubrogadoTieneLineas->setLineaDeValeSubrogado($lineaDeValeSubrogado);
+            
+        $valeSubrogado->getLineasDeValeSubrogado()->add($relacionValeSubrogadoTieneLineas);
+       
+        $this->getReceta()->setValeSubrogado($valeSubrogado);
+        
+        return $this;
+    }
+
+    /**
+     * Set ubicacionOrigen
+     *
+     * @param \Saba\FarmaciaBundle\Entity\Ubicacion $ubicacionOrigen
+     * @return SalidaPorReceta
+     */
+    public function setUbicacionOrigen(\Saba\FarmaciaBundle\Entity\Ubicacion $ubicacionOrigen = null)
+    {
+        $this->ubicacionOrigen = $ubicacionOrigen;
+
+        return $this;
+    }
+
+    /**
+     * Get ubicacionOrigen
+     *
+     * @return \Saba\FarmaciaBundle\Entity\Ubicacion 
+     */
+    public function getUbicacionOrigen()
+    {
+        return $this->ubicacionOrigen;
+    }
+
+    /**
+     * Set ubicacionDestino
+     *
+     * @param \Saba\FarmaciaBundle\Entity\Ubicacion $ubicacionDestino
+     * @return SalidaPorReceta
+     */
+    public function setUbicacionDestino(\Saba\FarmaciaBundle\Entity\Ubicacion $ubicacionDestino = null)
+    {
+        $this->ubicacionDestino = $ubicacionDestino;
+
+        return $this;
+    }
+
+    /**
+     * Get ubicacionDestino
+     *
+     * @return \Saba\FarmaciaBundle\Entity\Ubicacion 
+     */
+    public function getUbicacionDestino()
+    {
+        return $this->ubicacionDestino;
+    }
 }
