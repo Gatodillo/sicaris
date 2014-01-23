@@ -69,6 +69,12 @@ class Receta {
 
     
     /**
+     * @ORM\ManyToOne(targetEntity="EstadoDeReceta", cascade={ "persist", "remove"})
+     */
+    protected $estado;
+    
+    
+    /**
      * Constructor
      */
     public function __construct()
@@ -309,13 +315,37 @@ class Receta {
      */
     public function prePersist(){
         //print $this->getValeSubrogado()->getFolio();
+        //$this->setEstado(new EstadoDeReceta())->getEstado()->setId(1);
     }
 
     /**
      * @ORM\PreUpdate
      */
     public function preUpdate(){
-        print $this->getValeSubrogado()->getFolio();
+        //print $this->getValeSubrogado()->getFolio();
     }
 
+
+    /**
+     * Set estado
+     *
+     * @param \Saba\FarmaciaBundle\Entity\EstadoDeReceta $estado
+     * @return Receta
+     */
+    public function setEstado(\Saba\FarmaciaBundle\Entity\EstadoDeReceta $estado = null)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return \Saba\FarmaciaBundle\Entity\EstadoDeReceta 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
 }

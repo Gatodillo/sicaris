@@ -27,6 +27,10 @@ class RecetaAdmin extends Admin {
             ->add('folio', 'text', array('label' => 'Folio'))
             ->add("medico", "sonata_type_model_list",array('required' => false))
             ->add("paciente", "sonata_type_model_list",array('required' => false))
+            ->add("estado", "sonata_type_model",array(
+                'required' => false,
+                'label' => 'Situación'
+                ))    
             ->end()
             ->with("Líneas de receta")    
                 ->add("lineasDeReceta", 'sonata_type_collection', array(

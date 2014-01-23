@@ -26,16 +26,9 @@ class SalidaPorRecetaAdmin extends Admin {
         $formMapper
             ->add('numero', 'text', array('label' => 'Número'))
             ->add("receta", "sonata_type_model_list")
-            ->end()
-            ->with("Movimientos")
-                ->add("movimientos",'sonata_type_collection',array(
-                    'by_reference' => false
-                ), array(
-                            'edit' => 'inline',
-                            'inline' => 'table'
-               ))
-            ->end()
-        ;
+            ->add("ubicacionOrigen", "sonata_type_model_list")
+            ->add("ubicacionDestino", "sonata_type_model_list")    
+            ;
     }
     
     // Campos que serán mostrados en los formularios con los filtros

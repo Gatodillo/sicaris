@@ -117,12 +117,24 @@ class Ubicacion {
         return $this->getNombre() ?: "";
     }
     
-    public function getExistenciaDe(Medicamento $medicamento){
-        
+    public function getExistenciaDe(Ubicacion $ubicacion, Medicamento $medicamento){
+        foreach ($this->productos as $productosEnUbicacion ){
+            if ($productosEnUbicacion->getProducto()->getCodigoDeBarras()
+                    === $medicamento->getCodigoDeBarras()){
+                return $productosEnUbicacion->getCantidad();
+            }
+        }
         return 0;
     }
     
     public function updateExistencias(Medicamento $medicamento, $cantidad){
+        foreach ($this->productos as $productosEnUbicacion ){
+            if ($productosEnUbicacion->getProducto()->getCodigoDeBarras()
+                    === $medicamento->getCodigoDeBarras()){
+                $productosEnUbicacion->setCantidad($cantidad);
+                return $this;
+            }
+        }
         return $this;
     }
 }

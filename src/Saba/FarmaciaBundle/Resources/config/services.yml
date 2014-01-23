@@ -160,3 +160,14 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]                                  
+            
+    sonata.admin.estado_de_receta:    
+        class: Saba\FarmaciaBundle\Admin\EstadoDeRecetaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Situación" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\EstadoDeReceta
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]                                              

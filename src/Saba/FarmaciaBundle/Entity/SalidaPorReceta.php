@@ -55,6 +55,7 @@ class SalidaPorReceta {
      */
     protected $ubicacionDestino;
     
+    
    
     /**
      * Constructor
@@ -62,8 +63,6 @@ class SalidaPorReceta {
     public function __construct()
     {
         $this->movimientos = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->ubicacionDestino = new Ubicacion();
-        
     }
 
     /**
@@ -95,20 +94,21 @@ class SalidaPorReceta {
      */
     public function setReceta(\Saba\FarmaciaBundle\Entity\Receta $receta = null)
     {
-        $receta->getValeSubrogado() == NULL ?:return $this;
+        /*if ($receta->getValeSubrogado() == NULL){
+            return $this;
+        }*/
+        
         $this->receta = $receta;
+        $medico = $this->getReceta()->getMedico();
+        $paciente = $this->getReceta()->getPaciente();
         
-        
-        $medico = $this->getReceta->getMedico();
-        $paciente = $this->getReceta->getPaciente();
-        
-        foreach ($this->getReceta->getLineasDeReceta() as $key => $lineaDeReceta){
-            $medicamentoEnReceta = $lineaDeReceta->getMedicamento();
-            $cantidadEnReceta = $lineaDeReceta->getCantidad();
+        foreach ($this->getReceta()->getLineasDeReceta() as $key => $recetaUnionLineasDeReceta){
+            $medicamentoEnReceta = $recetaUnionLineasDeReceta->getLineaDeReceta()->getMedicamento();
+            $cantidadEnReceta = $recetaUnionLineasDeReceta->getLineaDeReceta()->getCantidad();
             //$unidadDelMedicamentoEnReceta = $lineaDeReceta->getUnidad();
             $cantidadEnExistencia = $this
                     ->getUbicacionOrigen()
-                    ->getExistenciaDe($medicamentoEnReceta)
+                    ->getExistenciaDe($this->getUbicacionOrigen(),$medicamentoEnReceta)
                     ;
             if ($cantidadEnExistencia >= $cantidadEnReceta){
                 $this->getUbicacionOrigen()
@@ -120,11 +120,11 @@ class SalidaPorReceta {
                         $medicamentoEnReceta,
                         $cantidadEnReceta
                         );
-            }else if ($cantidadEnExistencia >= 0){
+            }else if ($cantidadEnExistencia > 0){
                 $this->getUbicacionOrigen()
                         ->updateExistencias(
                                 $medicamentoEnReceta,
-                                $cantidadEnExistencia
+                                0
                         );
 
                 $this->aniadirAMovimientos($medicamentoEnReceta, 
@@ -133,6 +133,11 @@ class SalidaPorReceta {
                         $medicamentoEnReceta,
                         $cantidadEnReceta -
                         $cantidadEnExistencia
+                        );
+            }else{
+                $this->aniadirAValeSubrogado(
+                        $medicamentoEnReceta,
+                        $cantidadEnReceta
                         );
             }
         }
@@ -212,18 +217,18 @@ class SalidaPorReceta {
      * @ORM\PrePersist
      */
     public function prePersist(){
-
+//        throw new \Exception();
     }
 
     /**
      * @ORM\PreUpdate
      */
     public function preUpdate(){
-
+//        throw new \Exception();
     }
     
     public function aniadirAMovimientos(Medicamento $medicamento, $cantidad){
-        $movimiento = new Saba\FarmaciaBundle\Entity\Movimiento();
+        $movimiento = new Movimiento();
         
         $movimiento->setArticulo($medicamento);
         $movimiento->setCantidad($cantidad);
@@ -234,7 +239,7 @@ class SalidaPorReceta {
     
     public function aniadirAValeSubrogado(Medicamento $medicamento, $cantidad){
 
-        $this->getReceta() == NULL ?: return $this;
+        if ($this->getReceta() == NULL) return $this;
         
         $valeSubrogado = $this->getReceta()->getValeSubrogado() != NULL
                 ? $this->getReceta()->getValeSubrogado() 
@@ -246,9 +251,9 @@ class SalidaPorReceta {
         $valeSubrogado->setFolio($this->getReceta()->getFolio());
 
         $lineaDeValeSubrogado = new LineaDeValeSubrogado();
-        $lineaDeValeSubrogado->setMedicamento($medicamentoEnReceta);
-        $lineaDeValeSubrogado->setCantidad($cantidadEnReceta);
-        $lineaDeValeSubrogado->setUnidad($unidadDelMedicamentoEnReceta);
+        $lineaDeValeSubrogado->setMedicamento($medicamento);
+        $lineaDeValeSubrogado->setCantidad($cantidad);
+        $lineaDeValeSubrogado->setUnidad("Caja");
             
         $relacionValeSubrogadoTieneLineas = new ValeSubrogadoTieneLineas();
         $relacionValeSubrogadoTieneLineas->setValeSubrogado($valeSubrogado);
