@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
  * Description of SalidaPorRecetaAdmin
@@ -29,7 +30,10 @@ class RecetaAdmin extends Admin {
             ->add("paciente", "sonata_type_model_list",array('required' => false))
             ->add("estado", "sonata_type_model",array(
                 'required' => false,
-                'label' => 'Situación'
+                'label' => 'Situación',
+                'attr' => array(
+                    'class' => 'select2'
+                    ),
                 ))    
             ->end()
             ->with("Líneas de receta")    
@@ -52,14 +56,29 @@ class RecetaAdmin extends Admin {
                 ;
     }
     
-     // Fields to be shown on lists
+    // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier("folio", null, array('label' => 'Folio'))    
+            //->addIdentifier("folio", null, array('label' => 'Folio'))    
+            ->addIdentifier("folio", null, array('route' => array('name' => 'show')))
             ->addIdentifier("medico.cedula", null, array('label' => 'Médico'))
             ->addIdentifier("paciente.numeroDeAfiliacion", null, array('label' => 'Paciente'))
             ->addIdentifier("valeSubrogado", null, array('label' => 'Vale subrogado'))
+            ->add("estado", null, array('label' => 'Situación'))
+            ;
+    }    
+    
+    // Fields to be shown on lists
+    protected function configureShowFields(ShowMapper $listMapper)
+    {
+        $listMapper
+            //->addIdentifier("folio", null, array('label' => 'Folio'))    
+            ->add("folio", null, array('label' => 'Folio'))
+            ->add("medico.cedula", null, array('label' => 'Médico'))
+            ->add("paciente.numeroDeAfiliacion", null, array('label' => 'Paciente'))
+            ->add("valeSubrogado", null, array('label' => 'Vale subrogado'))
+            ->add("estado", null, array('label' => 'Situación'))
             ;
     }    
     

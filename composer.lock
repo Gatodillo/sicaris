@@ -2293,12 +2293,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "5539f2337cca9bd884e1374d1251f9a312225ce4"
+                "reference": "feea02716ba997f863c6b69ab0208978a1b603aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/5539f2337cca9bd884e1374d1251f9a312225ce4",
-                "reference": "5539f2337cca9bd884e1374d1251f9a312225ce4",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/feea02716ba997f863c6b69ab0208978a1b603aa",
+                "reference": "feea02716ba997f863c6b69ab0208978a1b603aa",
                 "shasum": ""
             },
             "require": {
@@ -2313,8 +2313,12 @@
                 "symfony/http-foundation": "~2.2",
                 "symfony/security": "~2.2"
             },
+            "require-dev": {
+                "sonata-project/seo-bundle": "~1.1"
+            },
             "suggest": {
-                "sonata-project/doctrine-orm-admin-bundle": "~2.2"
+                "sonata-project/doctrine-orm-admin-bundle": "~2.2",
+                "sonata-project/seo-bundle": "~1.1"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -2349,7 +2353,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2014-01-17 17:03:22"
+            "time": "2014-01-22 18:40:51"
         },
         {
             "name": "swiftmailer/swiftmailer",
