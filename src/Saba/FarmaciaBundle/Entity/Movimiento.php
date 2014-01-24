@@ -44,7 +44,7 @@ class Movimiento {
     protected $almacenDestino;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Medicamento")
+     * @ORM\ManyToOne(targetEntity="Articulo")
      * @ORM\JoinColumn(name="articulo_id", unique=false)
      */
     protected $articulo;

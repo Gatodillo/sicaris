@@ -9,15 +9,17 @@
 namespace Saba\FarmaciaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+
 /**
+ * TODO: Crear la clase MedicamentoAdmin.
  * Description of Medicamento
  *
  * @author victor
  * @IgnoreAnnotation("author")
  * @ORM\Entity
- * @ORM\Table(name="medicamento")
+ * @ORM\Table(name="medicamentos")
  */
-class Medicamento {
+class Medicamento extends Articulo {
     
     /**
      *
@@ -26,28 +28,16 @@ class Medicamento {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
-    /**
-     *
-     * @ORM\Column(type="string", length=50)
-     */
-    protected $nombreGenerico;
-    
-    /**
-     *
-     * @ORM\Column(type="string")
-     */
-    protected $descripcion;
 
     /**
      * TODO: Crear la entidad Subfamilia y relacionarlas
-     * @ORM\ManyToOne(targetEntity="Subfamilia")
+     * @ORM\ManyToOne(targetEntity="Familia")
      */
     protected $subfamilia;
     
     /**
      * TODO: Crear la entidad Grupo y relacionarlas
-     * @ORM\ManyToOne(targetEntity="Grupo")
+     * @ORM\ManyToOne(targetEntity="GrupoDeMedicamento")
      */
     protected $grupo;
     
@@ -61,7 +51,7 @@ class Medicamento {
      * ORM\OneToMany(targetentity="VariacionesDeMedicamento", mappedBy="medicamento")
      */
     protected $variaciones;
-    
+
     /**
      * Get id
      *
@@ -73,52 +63,77 @@ class Medicamento {
     }
 
     /**
-     * Set nombre
+     * Set subfamilia
      *
-     * @param string $nombre
+     * @param \Saba\FarmaciaBundle\Entity\Familia $subfamilia
      * @return Medicamento
      */
-    public function setNombre($nombre)
+    public function setSubfamilia(\Saba\FarmaciaBundle\Entity\Familia $subfamilia = null)
     {
-        $this->nombre = $nombre;
+        $this->subfamilia = $subfamilia;
 
         return $this;
     }
 
     /**
-     * Get nombre
+     * Get subfamilia
      *
-     * @return string 
+     * @return \Saba\FarmaciaBundle\Entity\Familia 
      */
-    public function getNombre()
+    public function getSubfamilia()
     {
-        return $this->nombre;
+        return $this->subfamilia;
     }
 
     /**
-     * Set codigoDeBarras
+     * Set grupo
      *
-     * @param string $codigoDeBarras
+     * @param \Saba\FarmaciaBundle\Entity\GrupoDeMedicamento $grupo
      * @return Medicamento
      */
-    public function setCodigoDeBarras($codigoDeBarras)
+    public function setGrupo(\Saba\FarmaciaBundle\Entity\GrupoDeMedicamento $grupo = null)
     {
-        $this->codigoDeBarras = $codigoDeBarras;
+        $this->grupo = $grupo;
 
         return $this;
     }
 
     /**
-     * Get codigoDeBarras
+     * Get grupo
      *
-     * @return string 
+     * @return \Saba\FarmaciaBundle\Entity\GrupoDeMedicamento 
      */
-    public function getCodigoDeBarras()
+    public function getGrupo()
     {
-        return $this->codigoDeBarras;
+        return $this->grupo;
+    }
+
+    /**
+     * Set especialidad
+     *
+     * @param \Saba\FarmaciaBundle\Entity\Especialidad $especialidad
+     * @return Medicamento
+     */
+    public function setEspecialidad(\Saba\FarmaciaBundle\Entity\Especialidad $especialidad = null)
+    {
+        $this->especialidad = $especialidad;
+
+        return $this;
+    }
+
+    /**
+     * Get especialidad
+     *
+     * @return \Saba\FarmaciaBundle\Entity\Especialidad 
+     */
+    public function getEspecialidad()
+    {
+        return $this->especialidad;
     }
     
-    public function __toString(){
-        return $this->codigoDeBarras;
+    public function __toString() {
+        return $this->getNombreGenerico() ?: "";
     }
+
+
 }

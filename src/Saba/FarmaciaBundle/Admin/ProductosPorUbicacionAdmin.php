@@ -46,11 +46,11 @@ class ProductosPorUbicacionAdmin extends Admin{
     
     public function preUpdate($object) {
         parent::preUpdate($object);
-        echo $object->getUbicacion();
+        
     }
     
     public function prePersist($object) {
         parent::prePersist($object);
-        echo $object->getUbicacion();
+        
     }  
 }

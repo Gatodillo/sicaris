@@ -47,4 +47,73 @@ class Dependencia
     {
         return $this->id;
     }
+
+    /**
+     * Set clave
+     *
+     * @param integer $clave
+     * @return Dependencia
+     */
+    public function setClave($clave)
+    {
+        $this->clave = $clave;
+
+        return $this;
+    }
+
+    /**
+     * Get clave
+     *
+     * @return integer 
+     */
+    public function getClave()
+    {
+        return $this->clave;
+    }
+
+    /**
+     * Set titular
+     *
+     * @param string $titular
+     * @return Dependencia
+     */
+    public function setTitular($titular)
+    {
+        $this->titular = $titular;
+
+        return $this;
+    }
+
+    /**
+     * Get titular
+     *
+     * @return string 
+     */
+    public function getTitular()
+    {
+        return $this->titular;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return Dependencia
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
 }

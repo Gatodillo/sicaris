@@ -25,7 +25,8 @@ class MedicamentoAdmin extends Admin {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('nombre', 'text', array('label' => 'Nombre'))
+            ->add('nombreGenerico', 'text', array('label' => 'Nombre genérico'))
+            ->add('nombreComercial', 'text', array('label' => 'Nombre comercial'))    
             ->add("codigoDeBarras", 'text', array('label' => 'Código de barras'))
         ;
     }
@@ -34,7 +35,8 @@ class MedicamentoAdmin extends Admin {
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('nombre', null, array('label' => 'Nombre'))
+            ->add('nombreGenerico', null, array('label' => 'Nombre genérico'))
+            ->add('nombreComercial', null, array('label' => 'Nombre comercial'))
             ->add("codigoDeBarras", null, array('label' => 'Código de barras'))
         ;
     }
@@ -43,7 +45,8 @@ class MedicamentoAdmin extends Admin {
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('nombre', null, array('label' => 'Nombre'))
+            ->add('nombreGenerico', null, array('label' => 'Nombre genérico'))
+            ->add('nombreComercial', null, array('label' => 'Nombre comercial'))
             ->add("codigoDeBarras", null, array('label' => 'Código de barras'))
 
         ;

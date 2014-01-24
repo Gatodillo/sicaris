@@ -5,12 +5,12 @@ namespace Saba\FarmaciaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * RutaDeReparto
+ * EnvaseDeMedicamento
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class RutaDeReparto
+class EnvaseDeMedicamento
 {
     /**
      * @var integer
@@ -23,11 +23,11 @@ class RutaDeReparto
 
     /**
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=50)
      */
-    private $descipcion;
-    
-    
+    protected $nombre;
+
+
     /**
      * Get id
      *
@@ -37,27 +37,29 @@ class RutaDeReparto
     {
         return $this->id;
     }
+    
+    
 
     /**
-     * Set descipcion
+     * Set nombre
      *
-     * @param string $descipcion
-     * @return RutaDeReparto
+     * @param string $nombre
+     * @return EnvaseDeMedicamento
      */
-    public function setDescipcion($descipcion)
+    public function setNombre($nombre)
     {
-        $this->descipcion = $descipcion;
+        $this->nombre = $nombre;
 
         return $this;
     }
 
     /**
-     * Get descipcion
+     * Get nombre
      *
      * @return string 
      */
-    public function getDescipcion()
+    public function getNombre()
     {
-        return $this->descipcion;
+        return $this->nombre;
     }
 }
