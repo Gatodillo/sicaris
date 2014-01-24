@@ -27,6 +27,7 @@ class AlmacenAdmin extends Admin{
      */
     public function configureFormFields(FormMapper $form) {
         parent::configureFormFields($form);
+        
         $form
             ->add("nombre")
             ->add("almacenPadre",null, array("label"=>"almacén padre"))

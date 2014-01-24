@@ -31,14 +31,37 @@ class Medicamento {
      *
      * @ORM\Column(type="string", length=50)
      */
-    protected $nombre;
+    protected $nombreGenerico;
     
     /**
      *
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string")
      */
-    protected $codigoDeBarras;
+    protected $descripcion;
 
+    /**
+     * TODO: Crear la entidad Subfamilia y relacionarlas
+     * @ORM\ManyToOne(targetEntity="Subfamilia")
+     */
+    protected $subfamilia;
+    
+    /**
+     * TODO: Crear la entidad Grupo y relacionarlas
+     * @ORM\ManyToOne(targetEntity="Grupo")
+     */
+    protected $grupo;
+    
+    /**
+     * TODO: Crear la entidad Espacialidad y relacionarlas
+     * @ORM\ManyToOne(targetEntity="Especialidad")
+     */
+    protected $especialidad;    
+    
+    /**
+     * ORM\OneToMany(targetentity="VariacionesDeMedicamento", mappedBy="medicamento")
+     */
+    protected $variaciones;
+    
     /**
      * Get id
      *
