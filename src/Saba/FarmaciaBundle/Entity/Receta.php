@@ -399,18 +399,3 @@ class Receta {
         return $this->centroDeCostos;
     }
 }
- /**
-     * Add lineasDeReceta
-     *
-     * @param \Saba\FarmaciaBundle\Entity\RecetaTieneLineas $lineasDeReceta
-     * @return Receta
-
-    public function addLineasDeRecetum(\Saba\FarmaciaBundle\Entity\RecetaTieneLineas $lineaDeReceta)
-    {
-        $lineaDeReceta->setReceta($this);
-        $this->lineasDeReceta[] = $lineaDeReceta;
-
-        return $this;
-    }
-
- */

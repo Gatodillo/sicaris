@@ -178,4 +178,8 @@ class Articulo
     {
         return $this->estaActivo;
     }
+    
+    public function __toString() {
+        return $this->getCodigoDeBarras() . "  " . $this->getDescripcion() ?: "";
+    }
 }

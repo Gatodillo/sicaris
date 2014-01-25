@@ -52,9 +52,10 @@ class RecetaAdminController extends Controller{
 
             // persist if the form was valid and if in preview mode the preview was approved
             if ($isFormValid && (!$this->isInPreviewMode() || $this->isPreviewApproved())) {
-                $mm = $this->getDoctrine()->getRepository('SabaFarmaciaBundle:EstadoDeReceta');
-                $mmm = $mm->find( array( 'id' => 1 ));
-                $object->setEstado($mmm);
+                
+                $repositorio = $this->getDoctrine()->getRepository('SabaFarmaciaBundle:EstadoDeReceta');
+                $estadoDeReceta = $repositorio->find( array( 'id' => 1 ));
+                $object->setEstado($estadoDeReceta);
                 $this->admin->create($object);
 
                 if ($this->isXmlHttpRequest()) {

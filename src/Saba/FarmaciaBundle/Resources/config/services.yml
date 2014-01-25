@@ -16,6 +16,17 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]
+
+    sonata.admin.entradas_por_factura:
+        class: Saba\FarmaciaBundle\Admin\EntradaPorFacturaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entradas", label: "Por factura" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\EntradaPorFactura
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
             
     sonata.admin.receta:
         class: Saba\FarmaciaBundle\Admin\RecetaAdmin
@@ -181,6 +192,41 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]
+
+    sonata.admin.facturas_de_proveedor:
+        class: Saba\FarmaciaBundle\Admin\FacturaDeProveedorAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Facturas de proveedor" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\FacturaDeProveedor
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+
+    sonata.admin.lineas_de_factura_de_proveedor:
+        class: Saba\FarmaciaBundle\Admin\LineaDeFacturaDeProveedorAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Líneas de facturas de proveedor" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\LineaDeFacturaDeProveedor
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+
+    sonata.admin.ordenes_de_compra:
+        class: Saba\FarmaciaBundle\Admin\OrdenDeCompraAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Ordenes de compra" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\OrdenDeCompra
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+
+
 
     sonata.admin.familias:
         class: Saba\FarmaciaBundle\Admin\FamiliaAdmin

@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discriminador", type="string")
+ * @ORM\DiscriminatorMap(
+ *  {"movimiento" = "Movimiento", 
+ * "entradaPorFactura"="MovimientoDeEntradaPorFactura",
+ * })
  * @ORM\Table(name="movimientos") 
  */
 class Movimiento {
@@ -26,42 +32,44 @@ class Movimiento {
     /**
      * @ORM\Column(name="fecha_de_registro", type="date")
      */
-    protected $fechaDeRegistro;
+    private $fechaDeRegistro;
     
     /**
      * @ORM\Column(name="fecha_de_ejecucion", type="date")
      */
-    protected $fechaDeEjecucion;
+    private $fechaDeEjecucion;
     
     /**
      * @ORM\Column(name="almacen_origen", type="string")
      */
-    protected $almacenOrigen;
+    private $almacenOrigen;
     
     /**
      * @ORM\Column(name="almacen_destino", type="string")
      */
-    protected $almacenDestino;
+    private $almacenDestino;
     
     /**
      * @ORM\ManyToOne(targetEntity="Articulo")
      * @ORM\JoinColumn(name="articulo_id", unique=false)
      */
-    protected $articulo;
+    private $articulo;
     
     
     /**
      * @ORM\Column(name="cantidad", type="integer")
      */
-    protected $cantidad;
+    private $cantidad;
     
     /**
      * @ORM\Column(name="precio_unitario", type="float")
      */
-    protected $precioUnitario;
+    private $precioUnitario;
     
-    
-    
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $lote;
     
     /**
      * Get id
@@ -261,5 +269,28 @@ class Movimiento {
         $this->setFechaDeEjecucion(new \DateTime);
         $this->setFechaDeRegistro(new \DateTime);
         $this->setPrecioUnitario(1.0);
+    }
+
+    /**
+     * Set lote
+     *
+     * @param string $lote
+     * @return Movimiento
+     */
+    public function setLote($lote)
+    {
+        $this->lote = $lote;
+
+        return $this;
+    }
+
+    /**
+     * Get lote
+     *
+     * @return string 
+     */
+    public function getLote()
+    {
+        return $this->lote;
     }
 }
