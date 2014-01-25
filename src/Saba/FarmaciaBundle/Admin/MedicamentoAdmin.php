@@ -20,23 +20,55 @@ use Sonata\AdminBundle\Form\FormMapper;
  * @author victor
  */
 class MedicamentoAdmin extends Admin {
-// Campos que serán mostrado en los formularios para 
+    // Campos que serán mostrado en los formularios para 
     // desplegar o editar información.
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('nombreGenerico', 'text', array('label' => 'Nombre genérico'))
-            ->add('nombreComercial', 'text', array('label' => 'Nombre comercial'))    
+            ->add('descripcion',null,array('label'=>'Descripción'))
+            ->add('unidadDeMedida',null,array('label'=>'Unidad de medida'))
             ->add("codigoDeBarras", 'text', array('label' => 'Código de barras'))
+            ->add("grupo", null , array('label' => 'Grupo'))
+            ->add("especialidad", null , array('label' => 'Especialidad'))
+            ->add("subfamilia", 'sonata_type_model_list' , array('label' => 'Subfamilia'))                
+            ->add("variantes", 'sonata_type_collection', array(
+                    'by_reference' => false
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                    'sortable' => 'position',
+                ))
         ;
     }
     
     // Campos que serán mostrados en los formularios con los filtros
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
+        $variantes = $this
+                ->modelManager
+                ->createQuery('SabaFarmaciaBundle:VarianteDeMedicamento', 'vm')
+                ->orderBy('vm.nombreComercial', 'ASC')
+                ->getQuery()
+                ->getResult();
+        
+        $opciones = array();
+        foreach($variantes as $variante){
+            $opciones[$variante->getId()] = $variante->getNombreComercial();
+        }
+        
+        /*->add('variantes', null, array('label' => 'Nombre Comercial'), null, array(
+                'expanded' => true,
+                'multiple' => true,
+                'query_builder' => function (\Doctrine\ORM\EntityRepository $repository) {
+                    return $repository->createQueryBuilder('t')
+                        ->add('orderBy', 't.nombreComercial ASC');
+                    }
+            ))*/
+            
         $datagridMapper
             ->add('nombreGenerico', null, array('label' => 'Nombre genérico'))
-            ->add('nombreComercial', null, array('label' => 'Nombre comercial'))
+            ->add('variantes', null, array('label' => 'Variantes'))    
             ->add("codigoDeBarras", null, array('label' => 'Código de barras'))
         ;
     }
@@ -45,9 +77,8 @@ class MedicamentoAdmin extends Admin {
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('nombreGenerico', null, array('label' => 'Nombre genérico'))
-            ->add('nombreComercial', null, array('label' => 'Nombre comercial'))
-            ->add("codigoDeBarras", null, array('label' => 'Código de barras'))
+            ->addIdentifier('nombreGenerico', null, array('label' => 'Nombre genérico'))
+            ->addIdentifier("codigoDeBarras", null, array('label' => 'Código de barras'))
 
         ;
     }

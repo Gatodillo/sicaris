@@ -54,7 +54,7 @@ class Almacen {
     protected $subalmacenes;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Almacen", inversedBy="subalmacenes")
+     * @ORM\ManyToOne(targetEntity="Almacen", inversedBy="subalmacenes", cascade={"persist"})
      */
     protected $almacenPadre;
     /**

@@ -24,43 +24,39 @@ class Medicamento extends Articulo {
     /**
      *
      * @ORM\Id
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+ 
+   /**
+     * 
+     * @ORM\ManyToOne(targetEntity="Familia", cascade={"persist"})
+     */
+    private $subfamilia;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="GrupoDeMedicamento", cascade={"persist"})
+     */
+    private $grupo;
+    
+    /**
+     * 
+     * @ORM\ManyToOne(targetEntity="Especialidad", cascade={"persist"})
+     */
+    private $especialidad;    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="VarianteDeMedicamento", mappedBy="medicamento", cascade={"persist"})
+     */
+    private $variantes;
 
-    /**
-     * TODO: Crear la entidad Subfamilia y relacionarlas
-     * @ORM\ManyToOne(targetEntity="Familia")
-     */
-    protected $subfamilia;
     
-    /**
-     * TODO: Crear la entidad Grupo y relacionarlas
-     * @ORM\ManyToOne(targetEntity="GrupoDeMedicamento")
-     */
-    protected $grupo;
-    
-    /**
-     * TODO: Crear la entidad Espacialidad y relacionarlas
-     * @ORM\ManyToOne(targetEntity="Especialidad")
-     */
-    protected $especialidad;    
-    
-    /**
-     * ORM\OneToMany(targetentity="VariacionesDeMedicamento", mappedBy="medicamento")
-     */
-    protected $variaciones;
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
+        $this->variantes = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
     /**
      * Set subfamilia
@@ -88,10 +84,10 @@ class Medicamento extends Articulo {
     /**
      * Set grupo
      *
-     * @param \Saba\FarmaciaBundle\Entity\GrupoDeMedicamento $grupo
+     * @param \Saba\FarmaciaBundle\Entity\UnidadDeMedida $grupo
      * @return Medicamento
      */
-    public function setGrupo(\Saba\FarmaciaBundle\Entity\GrupoDeMedicamento $grupo = null)
+    public function setGrupo(\Saba\FarmaciaBundle\Entity\UnidadDeMedida $grupo = null)
     {
         $this->grupo = $grupo;
 
@@ -101,7 +97,7 @@ class Medicamento extends Articulo {
     /**
      * Get grupo
      *
-     * @return \Saba\FarmaciaBundle\Entity\GrupoDeMedicamento 
+     * @return \Saba\FarmaciaBundle\Entity\UnidadDeMedida 
      */
     public function getGrupo()
     {
@@ -135,5 +131,48 @@ class Medicamento extends Articulo {
         return $this->getNombreGenerico() ?: "";
     }
 
+    /**
+     * Add variantes
+     *
+     * @param \Saba\FarmaciaBundle\Entity\VarianteDeMedicamento $variante
+     * @return Medicamento
+     */
+    public function addVariante(\Saba\FarmaciaBundle\Entity\VarianteDeMedicamento $variante)
+    {
+        $variante->setMedicamento($this);
+        $this->variantes[] = $variante;
+
+        return $this;
+    }
+
+    /**
+     * Remove variantes
+     *
+     * @param \Saba\FarmaciaBundle\Entity\VarianteDeMedicamento $variante
+     */
+    public function removeVariante(\Saba\FarmaciaBundle\Entity\VarianteDeMedicamento $variante)
+    {
+        $this->variantes->removeElement($variante);
+    }
+
+    /**
+     * Get variantes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVariantes()
+    {
+        return $this->variantes;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
 }

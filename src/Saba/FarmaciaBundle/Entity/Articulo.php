@@ -22,47 +22,37 @@ class Articulo
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      *
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(name="nombre_generico", type="string", length=50)
      */
-    protected $nombreGenerico;
-    
-    /**
-     *
-     * @ORM\Column(type="string", length=50)
-     */
-    protected $nombreComercial;
+    private $nombreGenerico;
     
     /**
      *
      * @ORM\Column(type="string")
      */
-    protected $descripcion;
+    private $descripcion;
     
     /**
-     * TODO: Crear la entidad UnidadDeMedida y relacionarlas.
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="UnidadDeMedida")
+     * @ORM\JoinColumn(name="unidad_de_medida_id")
      */
-    protected $unidadDeMedida;
+    private $unidadDeMedida;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", name="codigo_de_barras")
      */
-    protected $codigoDeBarras;
+    private $codigoDeBarras;
     
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
+    /**
+     * @ORM\Column(name="esta_activo", type="boolean")
+     */
+    private $estaActivo;
+    
     /**
      * Set nombreGenerico
      *
@@ -155,26 +145,37 @@ class Articulo
         return $this->codigoDeBarras;
     }
 
+
     /**
-     * Set nombreComercial
+     * Get id
      *
-     * @param string $nombreComercial
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set estaActivo
+     *
+     * @param boolean $estaActivo
      * @return Articulo
      */
-    public function setNombreComercial($nombreComercial)
+    public function setEstaActivo($estaActivo)
     {
-        $this->nombreComercial = $nombreComercial;
+        $this->estaActivo = $estaActivo;
 
         return $this;
     }
 
     /**
-     * Get nombreComercial
+     * Get estaActivo
      *
-     * @return string 
+     * @return boolean 
      */
-    public function getNombreComercial()
+    public function getEstaActivo()
     {
-        return $this->nombreComercial;
+        return $this->estaActivo;
     }
 }

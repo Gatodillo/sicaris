@@ -33,7 +33,8 @@ class CentroDeCostos
     private $descripcion;
     
     /**
-     * @ORM\ManytoOne(targetEntity="UnidadResponsableDeCentrosdeCostos")
+     * @ORM\ManyToOne(targetEntity="UnidadResponsableDeCentrosDeCostos", cascade={"persist"})
+     * @ORM\JoinColumn(name="unidad_responsable_id")
      */
     private $unidadResponsable;
     
@@ -44,7 +45,8 @@ class CentroDeCostos
     private $titular;
     
     /**
-     * @ORM\ManyToOne(targetEntity="RutaDereparto")
+     * @ORM\ManyToOne(targetEntity="RutaDeReparto", cascade={"persist"})
+     * @ORM\JoinColumn(name="ruta_de_reparto_id")
      */
     private $rutaDeReparto;
     
@@ -172,5 +174,9 @@ class CentroDeCostos
     public function getRutaDeReparto()
     {
         return $this->rutaDeReparto;
+    }
+    
+    public function __toString() {
+        return $this->getClave() ?: "";
     }
 }

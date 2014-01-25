@@ -25,7 +25,7 @@ class RutaDeReparto
      *
      * @ORM\Column(type="string")
      */
-    private $descipcion;
+    private $descripcion;
     
     
     /**
@@ -41,23 +41,27 @@ class RutaDeReparto
     /**
      * Set descipcion
      *
-     * @param string $descipcion
+     * @param string $descripcion
      * @return RutaDeReparto
      */
-    public function setDescipcion($descipcion)
+    public function setDescripcion($descripcion)
     {
-        $this->descipcion = $descipcion;
+        $this->descripcion = $descripcion;
 
         return $this;
     }
 
     /**
-     * Get descipcion
+     * Get descripcion
      *
      * @return string 
      */
-    public function getDescipcion()
+    public function getDescripcion()
     {
-        return $this->descipcion;
+        return $this->descripcion;
+    }
+    
+    public function __toString() {
+        return $this->getDescripcion() ?: "";
     }
 }

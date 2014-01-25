@@ -32,7 +32,7 @@ class LineaDeReceta {
      * 
      */
     /**
-     * @ORM\ManyToOne(targetEntity="Medicamento")
+     * @ORM\ManyToOne(targetEntity="Medicamento", cascade={"persist"})
      * @ORM\JoinColumn(name="medicamento_id", unique=false)
      */
     protected $medicamento;
@@ -44,10 +44,15 @@ class LineaDeReceta {
     
     /**
      *
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="UnidadDeMedida")
      */
     protected $unidad;
  
+    /**
+     * @ORM\ManyToOne(targetEntity="Receta", inversedBy="lineasDeReceta")
+     * 
+     */
+    protected $receta;
     
     /**
      * Set id
@@ -141,4 +146,27 @@ class LineaDeReceta {
         return $this->medicamento;
     }
 
+
+    /**
+     * Set receta
+     *
+     * @param \Saba\FarmaciaBundle\Entity\Receta $receta
+     * @return LineaDeReceta
+     */
+    public function setReceta(\Saba\FarmaciaBundle\Entity\Receta $receta = null)
+    {
+        $this->receta = $receta;
+
+        return $this;
+    }
+
+    /**
+     * Get receta
+     *
+     * @return \Saba\FarmaciaBundle\Entity\Receta 
+     */
+    public function getReceta()
+    {
+        return $this->receta;
+    }
 }

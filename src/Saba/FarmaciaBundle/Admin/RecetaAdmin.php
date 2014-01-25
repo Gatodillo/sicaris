@@ -26,9 +26,14 @@ class RecetaAdmin extends Admin {
     {
         $formMapper
             ->add('folio', 'text', array('label' => 'Folio'))
+            ->add('recetaPadre', null, 
+                    array('label' => 'Receta padre',
+                        'required' => false))                
+            ->add("centroDeCostos",null,array('label' => 'Centro de Costos', 'required' => false))
             ->add("medico", "sonata_type_model_list",array('required' => false))
             ->add("paciente", "sonata_type_model_list",array('required' => false))
-            ->add("estado", "sonata_type_model",array(
+            ->add("tipoDeReceta", "sonata_type_model_list",array('label' => "Tipo"))    
+            ->add("estado", null,array(
                 'required' => false,
                 'label' => 'Situación',
                 'attr' => array(
@@ -44,7 +49,7 @@ class RecetaAdmin extends Admin {
                     'inline' => 'table',
                     'sortable' => 'position',
                 ))
-                ->end()
+            ->end()
             ;
     }
     
@@ -84,6 +89,16 @@ class RecetaAdmin extends Admin {
     
 public function preUpdate($receta) {
         $receta->setLineasDeReceta($receta->getLineasDeReceta());
+        
+        $query = $this->getModelManager()->createQuery($this->getClass(), 'entity'); 
+        $query->select ('estado')
+            ->from("Saba\FarmaciaBundle\Entity\EstadoDeReceta", "estado")
+            ->where("estado.id=:id")
+            ->setParameter("id",1);
+        
+        //->execute()
+        //$mmm = $query->getSingleResult();
+        //$receta->setEstado($mmm);
     }
     
     public function prePersist($receta) {

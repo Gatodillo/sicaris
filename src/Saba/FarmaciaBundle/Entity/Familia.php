@@ -5,7 +5,7 @@ namespace Saba\FarmaciaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TODO: Crear la clase FamiliaAdmin.
+ * 
  * Familia
  *
  * @ORM\Table(name="familias_de_medicamentos")
@@ -41,7 +41,7 @@ class Familia
     protected $estaActiva;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Familia", inversedBy="subfamilias")
+     * @ORM\ManyToOne(targetEntity="Familia", inversedBy="subfamilias", cascade={"persist"})
      * @ORM\JoinColumn(name="familia_padre_id", nullable=true)
      */
     protected $familiaPadre;

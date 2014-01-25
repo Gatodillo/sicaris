@@ -26,7 +26,7 @@ class LineaDeValeSubrogado {
     protected $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Medicamento")
+     * @ORM\ManyToOne(targetEntity="Medicamento", cascade={"persist"})
      * @ORM\JoinColumn(name="medicamento_id", unique=false)
      */
     protected $medicamento;

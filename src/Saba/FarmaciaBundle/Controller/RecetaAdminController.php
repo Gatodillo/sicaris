@@ -28,8 +28,7 @@ class RecetaAdminController extends Controller{
     public function createAction()
     {
         
-        $mm = $this->getDoctrine()->getRepository('SabaFarmaciaBundle:EstadoDeReceta');
-        $mmm = $mm->find(1);
+       
         
         // the key used to lookup the template
         $templateKey = 'edit';
@@ -37,10 +36,9 @@ class RecetaAdminController extends Controller{
         if (false === $this->admin->isGranted('CREATE')) {
             throw new AccessDeniedException();
         }
-
         
         $object = $this->admin->getNewInstance();
-
+        
         $this->admin->setSubject($object);
 
         /** @var $form \Symfony\Component\Form\Form */
@@ -54,6 +52,9 @@ class RecetaAdminController extends Controller{
 
             // persist if the form was valid and if in preview mode the preview was approved
             if ($isFormValid && (!$this->isInPreviewMode() || $this->isPreviewApproved())) {
+                $mm = $this->getDoctrine()->getRepository('SabaFarmaciaBundle:EstadoDeReceta');
+                $mmm = $mm->find( array( 'id' => 1 ));
+                $object->setEstado($mmm);
                 $this->admin->create($object);
 
                 if ($this->isXmlHttpRequest()) {

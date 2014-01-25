@@ -5,7 +5,6 @@ namespace Saba\FarmaciaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TODO: Crear la clase GrupoDeMedicamentoAdmin
  * Grupo
  *
  * @ORM\Table(name="grupos_de_medicamento")
@@ -28,17 +27,17 @@ class GrupoDeMedicamento
     protected $clave;
     
     /**
-     * @ORM\Column(name="descripcion", type="string")
+     * @ORM\Column(name="descripcion", type="string", nullable=true)
      */
     protected $descripcion;
     
     /**
-     * @ORM\Column(name="esta_en_cuadro", type="boolean")
+     * @ORM\Column(name="esta_en_cuadro", type="boolean", nullable=true)
      */
     protected $estaEnCuadro;    
     
     /**
-     * @ORM\Column(name="esta_activo", type="boolean")
+     * @ORM\Column(name="esta_activo", type="boolean",nullable=true)
      */
     protected $estaActivo;        
             
@@ -56,7 +55,7 @@ class GrupoDeMedicamento
      * Set clave
      *
      * @param string $clave
-     * @return GrupoDeMedicamento
+     * @return UnidadDeMedida
      */
     public function setClave($clave)
     {
@@ -79,7 +78,7 @@ class GrupoDeMedicamento
      * Set descripcion
      *
      * @param string $descripcion
-     * @return GrupoDeMedicamento
+     * @return UnidadDeMedida
      */
     public function setDescripcion($descripcion)
     {
@@ -102,7 +101,7 @@ class GrupoDeMedicamento
      * Set estaEnCuadro
      *
      * @param boolean $estaEnCuadro
-     * @return GrupoDeMedicamento
+     * @return UnidadDeMedida
      */
     public function setEstaEnCuadro($estaEnCuadro)
     {
@@ -125,7 +124,7 @@ class GrupoDeMedicamento
      * Set estaActivo
      *
      * @param boolean $estaActivo
-     * @return GrupoDeMedicamento
+     * @return UnidadDeMedida
      */
     public function setEstaActivo($estaActivo)
     {

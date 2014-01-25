@@ -42,7 +42,7 @@ class Receta {
     /**
      * @ORM\OneToMany(targetEntity="Receta", mappedBy="recetaPadre")
      */
-    protected $recetasHijas;
+    protected $subrecetas;
     
     /**
      * @ORM\ManyToOne(targetEntity="Medico")
@@ -56,8 +56,9 @@ class Receta {
      */
     protected $paciente;
     
+    
     /**
-     * @ORM\OneToMany(targetEntity="RecetaTieneLineas", mappedBy="receta",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="LineaDeReceta", mappedBy="receta",cascade={"persist"})
      */
     protected $lineasDeReceta;
 
@@ -73,13 +74,24 @@ class Receta {
      */
     protected $estado;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="TipoDeReceta", cascade={ "persist", "remove"})
+     */
+    protected $tipoDeReceta;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="CentroDeCostos", cascade={ "persist", "remove"})
+     * @ORM\JoinColumn(name="centro_de_costos_id")
+     */
+    protected $centroDeCostos;
+    
     
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->recetasHijas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->subrecetas = new \Doctrine\Common\Collections\ArrayCollection();
         $this->lineasDeReceta = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -158,9 +170,9 @@ class Receta {
      * @param \Saba\FarmaciaBundle\Entity\Receta $recetasHijas
      * @return Receta
      */
-    public function addRecetasHija(\Saba\FarmaciaBundle\Entity\Receta $recetasHijas)
+    public function addSubreceta(\Saba\FarmaciaBundle\Entity\Receta $recetasHija)
     {
-        $this->recetasHijas[] = $recetasHijas;
+        $this->subrecetas[] = $recetasHija;
 
         return $this;
     }
@@ -170,19 +182,19 @@ class Receta {
      *
      * @param \Saba\FarmaciaBundle\Entity\Receta $recetasHijas
      */
-    public function removeRecetasHija(\Saba\FarmaciaBundle\Entity\Receta $recetasHijas)
+    public function removeSubreceta(\Saba\FarmaciaBundle\Entity\Receta $recetasHija)
     {
-        $this->recetasHijas->removeElement($recetasHijas);
+        $this->subrecetas->removeElement($recetasHija);
     }
 
     /**
-     * Get recetasHijas
+     * Get subrecetas
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getRecetasHijas()
+    public function getSubrecetas()
     {
-        return $this->recetasHijas;
+        return $this->subrecetas;
     }
 
     /**
@@ -231,26 +243,18 @@ class Receta {
         return $this->paciente;
     }
 
-    /**
-     * Add lineasDeReceta
-     *
-     * @param \Saba\FarmaciaBundle\Entity\RecetaTieneLineas $lineasDeReceta
-     * @return Receta
-     */
-    public function addLineasDeRecetum(\Saba\FarmaciaBundle\Entity\RecetaTieneLineas $lineaDeReceta)
-    {
-        $lineaDeReceta->setReceta($this);
-        $this->lineasDeReceta[] = $lineaDeReceta;
 
-        return $this;
-    }
-    
-    
     public function addLineasDeReceta($lineaDeReceta)
     {
         $lineaDeReceta->setReceta($this);
         $this->lineasDeReceta[] = $lineaDeReceta;
+    }
 
+    
+    public function addLineasDeRecetum($lineaDeReceta)
+    {
+        $lineaDeReceta->setReceta($this);
+        $this->lineasDeReceta[] = $lineaDeReceta;
     }
     
     /**
@@ -258,7 +262,7 @@ class Receta {
      *
      * @param \Saba\FarmaciaBundle\Entity\RecetaTieneLineas $lineasDeReceta
      */
-    public function removeLineasDeRecetum(\Saba\FarmaciaBundle\Entity\RecetaTieneLineas $lineasDeReceta)
+    public function removeLineasDeRecetum(LineaDeReceta $lineasDeReceta)
     {
         $this->lineasDeReceta->removeElement($lineasDeReceta);
     }
@@ -277,7 +281,7 @@ class Receta {
         $this->lineasDeReceta = new \Doctrine\Common\Collections\ArrayCollection();
         
         foreach($lineasDeReceta as $linea){
-            $this->addLineasDeReceta($linea);
+            $this->addLineasDeRecetum($linea);
         }
         
         return $this;
@@ -348,4 +352,65 @@ class Receta {
     {
         return $this->estado;
     }
+
+    /**
+     * Set tipoDeReceta
+     *
+     * @param \Saba\FarmaciaBundle\Entity\TipoDeReceta $tipoDeReceta
+     * @return Receta
+     */
+    public function setTipoDeReceta(\Saba\FarmaciaBundle\Entity\TipoDeReceta $tipoDeReceta = null)
+    {
+        $this->tipoDeReceta = $tipoDeReceta;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoDeReceta
+     *
+     * @return \Saba\FarmaciaBundle\Entity\TipoDeReceta 
+     */
+    public function getTipoDeReceta()
+    {
+        return $this->tipoDeReceta;
+    }
+
+    /**
+     * Set centroDeCostos
+     *
+     * @param \Saba\FarmaciaBundle\Entity\CentroDeCostos $centroDeCostos
+     * @return Receta
+     */
+    public function setCentroDeCostos(\Saba\FarmaciaBundle\Entity\CentroDeCostos $centroDeCostos = null)
+    {
+        $this->centroDeCostos = $centroDeCostos;
+
+        return $this;
+    }
+
+    /**
+     * Get centroDeCostos
+     *
+     * @return \Saba\FarmaciaBundle\Entity\CentroDeCostos 
+     */
+    public function getCentroDeCostos()
+    {
+        return $this->centroDeCostos;
+    }
 }
+ /**
+     * Add lineasDeReceta
+     *
+     * @param \Saba\FarmaciaBundle\Entity\RecetaTieneLineas $lineasDeReceta
+     * @return Receta
+
+    public function addLineasDeRecetum(\Saba\FarmaciaBundle\Entity\RecetaTieneLineas $lineaDeReceta)
+    {
+        $lineaDeReceta->setReceta($this);
+        $this->lineasDeReceta[] = $lineaDeReceta;
+
+        return $this;
+    }
+
+ */

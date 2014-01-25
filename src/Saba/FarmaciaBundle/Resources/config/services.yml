@@ -94,6 +94,17 @@ services:
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]                      
 
+    sonata.admin.tipos_de_receta:
+        class: Saba\FarmaciaBundle\Admin\TipoDeRecetaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Tipos de receta" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\TipoDeReceta
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+            
     sonata.admin.almacen:
         class: Saba\FarmaciaBundle\Admin\AlmacenAdmin
         tags:
@@ -104,6 +115,28 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]   
+
+    sonata.admin.centros_de_costos:
+        class: Saba\FarmaciaBundle\Admin\CentroDeCostosAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Centro de costos" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\CentroDeCostos
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]   
+            
+    sonata.admin.rutas_de_reparto:
+        class: Saba\FarmaciaBundle\Admin\RutaDeRepartoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Rutas de reparto" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\RutaDeReparto
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]               
             
     sonata.admin.ubicacion:
         class: Saba\FarmaciaBundle\Admin\UbicacionAdmin
@@ -138,6 +171,17 @@ services:
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]
 
+    sonata.admin.unidades_de_medida:
+        class: Saba\FarmaciaBundle\Admin\UnidadDeMedidaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Unidades de medida" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\UnidadDeMedida
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+
     sonata.admin.familias:
         class: Saba\FarmaciaBundle\Admin\FamiliaAdmin
         tags:
@@ -148,6 +192,39 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]
+
+    sonata.admin.especialidades:
+        class: Saba\FarmaciaBundle\Admin\EspecialidadAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Especialidades" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\Especialidad
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]            
+
+    sonata.admin.grupos_de_medicamentos:
+        class: Saba\FarmaciaBundle\Admin\GrupoDeMedicamentoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Grupos de medicamentos" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\GrupoDeMedicamento
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+            
+    sonata.admin.variantes_de_medicamentos:
+        class: Saba\FarmaciaBundle\Admin\VarianteDeMedicamentoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Variantes de medicamentos" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\VarianteDeMedicamento
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]            
             
     sonata.admin.vale_subrogado:
         class: Saba\FarmaciaBundle\Admin\ValeSubrogadoAdmin

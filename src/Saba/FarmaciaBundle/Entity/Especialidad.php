@@ -33,7 +33,7 @@ class Especialidad
     protected $descripcion;
     
     /**
-     * @ORM\Column(name="esta_activo", type="boolean")
+     * @ORM\Column(name="esta_activo", type="boolean",nullable=true)
      */
     protected $estaActivo; 
     
@@ -115,5 +115,9 @@ class Especialidad
     public function getEstaActivo()
     {
         return $this->estaActivo;
+    }
+    
+    public function __toString() {
+        return $this->getClave() ?: "";
     }
 }

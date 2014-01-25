@@ -5,15 +5,14 @@ namespace Saba\FarmaciaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * EnvaseDeMedicamento
+ * Grupo
  *
- * @ORM\Table()
+ * @ORM\Table(name="tipo_de_receta")
  * @ORM\Entity
  */
-class EnvaseDeMedicamento
+class TipoDeReceta
 {
     /**
-     * TODO: Crear la clase envase de medicamento
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -23,12 +22,15 @@ class EnvaseDeMedicamento
     private $id;
 
     /**
-     *
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(name="nombre", type="string", length=50)
      */
     protected $nombre;
-
-
+    
+    /**
+     * @ORM\Column(name="esta_activo", type="boolean",nullable=true)
+     */
+    protected $estaActivo;        
+            
     /**
      * Get id
      *
@@ -38,14 +40,35 @@ class EnvaseDeMedicamento
     {
         return $this->id;
     }
-    
-    
+
+   /**
+     * Set estaActivo
+     *
+     * @param boolean $estaActivo
+     * @return UnidadDeMedida
+     */
+    public function setEstaActivo($estaActivo)
+    {
+        $this->estaActivo = $estaActivo;
+
+        return $this;
+    }
+
+    /**
+     * Get estaActivo
+     *
+     * @return boolean 
+     */
+    public function getEstaActivo()
+    {
+        return $this->estaActivo;
+    }
 
     /**
      * Set nombre
      *
      * @param string $nombre
-     * @return EnvaseDeMedicamento
+     * @return UnidadDeMedida
      */
     public function setNombre($nombre)
     {

@@ -148,4 +148,8 @@ class UnidadResponsableDeCentrosDeCostos
     {
         return $this->dependencia;
     }
+    
+    public function __toString() {
+        return $this->getClave() ?: "";
+    }
 }

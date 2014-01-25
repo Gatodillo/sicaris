@@ -5,13 +5,13 @@ namespace Saba\FarmaciaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TODO: Crear la clase VariacionesDeMedicamentoAdmin.
+ * TODO: Crear la clase VarianteDeMedicamento.
  * VariacionesDeMedicamento
  *
- * @ORM\Table(name="variaciones_de_medicamento")
+ * @ORM\Table(name="variantes_de_medicamento")
  * @ORM\Entity
  */
-class VariacionesDeMedicamento
+class VarianteDeMedicamento
 {
     /**
      * @var integer
@@ -23,9 +23,9 @@ class VariacionesDeMedicamento
     private $id;
 
     /**
-     * ORM\ManyToOne(targetentity="Medicamento", inversedBy="variaciones")
+     * @ORM\ManyToOne(targetEntity="Medicamento", inversedBy="variantes")
      */
-    protected $variaciones;
+    protected $medicamento;
     
     /**
      * @ORM\Column(type="string")
@@ -34,6 +34,7 @@ class VariacionesDeMedicamento
     
     /**
      * @ORM\ManyToOne(targetEntity="FormaFarmaceutica")
+     * @ORM\JoinColumn(name="forma_farmaceutica_id")
      */
     protected $formaFarmaceutica;
     
@@ -44,23 +45,26 @@ class VariacionesDeMedicamento
     
     /**
      * TODO: Catálogo de unidades del SI.
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", name="unidad_internacional")
      */
     protected $unidadInternacional;
     
     /**
      * TODO: Crear entidad EnvaseDeMedicamento y relacionarlas.
      * @ORM\ManyToOne(targetEntity="EnvaseDeMedicamento")
+     * @ORM\JoinColumn(name="envase_primario_de_medicamento_id",nullable=true)
      */
     protected $envasePrimario;
     
     /**
      * @ORM\ManyToOne(targetEntity="EnvaseDeMedicamento")
+      @ORM\JoinColumn(name="envase_secundario_de_medicamento_id",nullable=true)
      */
     protected $envaseSecundario;
     
     /**
      * @ORM\ManyToOne(targetEntity="EnvaseDeMedicamento")
+     * @ORM\JoinColumn(name="envase_adicional_de_medicamento_id",nullable=true)
      */
     protected $envaseAdicional;
     
@@ -75,33 +79,10 @@ class VariacionesDeMedicamento
     }
 
     /**
-     * Set nombreComercial
-     *
-     * @param string $nombreComercial
-     * @return VariacionesDeMedicamento
-     */
-    public function setNombreComercial($nombreComercial)
-    {
-        $this->nombreComercial = $nombreComercial;
-
-        return $this;
-    }
-
-    /**
-     * Get nombreComercial
-     *
-     * @return string 
-     */
-    public function getNombreComercial()
-    {
-        return $this->nombreComercial;
-    }
-
-    /**
      * Set concentracion
      *
      * @param integer $concentracion
-     * @return VariacionesDeMedicamento
+     * @return VarianteDeMedicamento
      */
     public function setConcentracion($concentracion)
     {
@@ -124,7 +105,7 @@ class VariacionesDeMedicamento
      * Set unidadInternacional
      *
      * @param string $unidadInternacional
-     * @return VariacionesDeMedicamento
+     * @return VarianteDeMedicamento
      */
     public function setUnidadInternacional($unidadInternacional)
     {
@@ -147,7 +128,7 @@ class VariacionesDeMedicamento
      * Set formaFarmaceutica
      *
      * @param \Saba\FarmaciaBundle\Entity\FormaFarmaceutica $formaFarmaceutica
-     * @return VariacionesDeMedicamento
+     * @return VarianteDeMedicamento
      */
     public function setFormaFarmaceutica(\Saba\FarmaciaBundle\Entity\FormaFarmaceutica $formaFarmaceutica = null)
     {
@@ -170,7 +151,7 @@ class VariacionesDeMedicamento
      * Set envasePrimario
      *
      * @param \Saba\FarmaciaBundle\Entity\EnvaseDeMedicamento $envasePrimario
-     * @return VariacionesDeMedicamento
+     * @return VarianteDeMedicamento
      */
     public function setEnvasePrimario(\Saba\FarmaciaBundle\Entity\EnvaseDeMedicamento $envasePrimario = null)
     {
@@ -193,7 +174,7 @@ class VariacionesDeMedicamento
      * Set envaseSecundario
      *
      * @param \Saba\FarmaciaBundle\Entity\EnvaseDeMedicamento $envaseSecundario
-     * @return VariacionesDeMedicamento
+     * @return VarianteDeMedicamento
      */
     public function setEnvaseSecundario(\Saba\FarmaciaBundle\Entity\EnvaseDeMedicamento $envaseSecundario = null)
     {
@@ -216,7 +197,7 @@ class VariacionesDeMedicamento
      * Set envaseAdicional
      *
      * @param \Saba\FarmaciaBundle\Entity\EnvaseDeMedicamento $envaseAdicional
-     * @return VariacionesDeMedicamento
+     * @return VarianteDeMedicamento
      */
     public function setEnvaseAdicional(\Saba\FarmaciaBundle\Entity\EnvaseDeMedicamento $envaseAdicional = null)
     {
@@ -233,5 +214,55 @@ class VariacionesDeMedicamento
     public function getEnvaseAdicional()
     {
         return $this->envaseAdicional;
+    }
+    
+    public function __toString() {
+        return $this->getNombreComercial() ?: "";
+    }
+
+    /**
+     * Set nombreComercial
+     *
+     * @param string $nombreComercial
+     * @return VarianteDeMedicamento
+     */
+    public function setNombreComercial($nombreComercial)
+    {
+        $this->nombreComercial = $nombreComercial;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreComercial
+     *
+     * @return string 
+     */
+    public function getNombreComercial()
+    {
+        return $this->nombreComercial;
+    }
+
+    /**
+     * Set medicamento
+     *
+     * @param \Saba\FarmaciaBundle\Entity\Medicamento $medicamento
+     * @return VarianteDeMedicamento
+     */
+    public function setMedicamento(\Saba\FarmaciaBundle\Entity\Medicamento $medicamento = null)
+    {
+        $this->medicamento = $medicamento;
+
+        return $this;
+    }
+
+    /**
+     * Get medicamento
+     *
+     * @return \Saba\FarmaciaBundle\Entity\Medicamento 
+     */
+    public function getMedicamento()
+    {
+        return $this->medicamento;
     }
 }

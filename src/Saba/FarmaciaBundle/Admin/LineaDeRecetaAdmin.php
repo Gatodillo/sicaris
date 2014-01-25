@@ -26,9 +26,9 @@ class LineaDeRecetaAdmin extends Admin{
      */
     public function configureFormFields(FormMapper $formMapper){
         $formMapper
-                ->add('medicamento', 'sonata_type_model_list', array('label' => 'Mediccamento' ))
+                ->add('medicamento', 'sonata_type_model_list', array('label' => 'Medicamento' ))
                 ->add('cantidad','text')
-                ->add('unidad', 'text', array('label'=>'Unidad'))
+                ->add('unidad', null, array('label'=>'Unidad'))
                 ;
     }
     
@@ -48,14 +48,4 @@ class LineaDeRecetaAdmin extends Admin{
                 ->add('unidad', null, array('label'=>'Unidad'))
                 ;
     }
-    
-    public function preUpdate($object) {
-        parent::preUpdate($object);
-        $receta = $object->getReceta();
-    }
-    
-    public function prePersist($object) {
-        parent::prePersist($object);
-        $receta = $object->getReceta();
-    }      
 }
