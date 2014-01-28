@@ -116,4 +116,9 @@ class Dependencia
     {
         return $this->descripcion;
     }
+    
+    public function __toString() {
+        return (string)$this->getClave() . " " . $this->getTitular()
+                . " " . $this->getDescripcion();
+    }
 }

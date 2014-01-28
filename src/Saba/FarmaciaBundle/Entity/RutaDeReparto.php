@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * RutaDeReparto
  *
- * @ORM\Table()
+ * @ORM\Table(name="rutas_de_reparto")
  * @ORM\Entity
  */
 class RutaDeReparto

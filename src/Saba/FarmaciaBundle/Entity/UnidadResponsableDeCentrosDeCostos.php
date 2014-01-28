@@ -20,7 +20,7 @@ class UnidadResponsableDeCentrosDeCostos
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * TODO: Validar la especificación de este atributo.

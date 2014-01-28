@@ -32,6 +32,7 @@ class MedicamentoAdmin extends Admin {
             ->add("grupo", null , array('label' => 'Grupo'))
             ->add("especialidad", null , array('label' => 'Especialidad'))
             ->add("subfamilia", 'sonata_type_model_list' , array('label' => 'Subfamilia'))                
+            ->add('estaActivo',null,array('label'=>'Activo'))
             ->add("variantes", 'sonata_type_collection', array(
                     'by_reference' => false
                 ), array(
@@ -70,6 +71,7 @@ class MedicamentoAdmin extends Admin {
             ->add('nombreGenerico', null, array('label' => 'Nombre genérico'))
             ->add('variantes', null, array('label' => 'Variantes'))    
             ->add("codigoDeBarras", null, array('label' => 'Código de barras'))
+            ->add('estaActivo',null,array('label'=>'Activo'))                
         ;
     }
     
@@ -79,6 +81,7 @@ class MedicamentoAdmin extends Admin {
         $listMapper
             ->addIdentifier('nombreGenerico', null, array('label' => 'Nombre genérico'))
             ->addIdentifier("codigoDeBarras", null, array('label' => 'Código de barras'))
+            ->add('estaActivo',null,array('label'=>'Activo'))                
 
         ;
     }

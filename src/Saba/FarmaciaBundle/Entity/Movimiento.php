@@ -18,6 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorMap(
  *  {"movimiento" = "Movimiento", 
  * "entradaPorFactura"="MovimientoDeEntradaPorFactura",
+ * "entradaPorDonacion" = "MovimientoDeEntradaPorDonacion"
  * })
  * @ORM\Table(name="movimientos") 
  */

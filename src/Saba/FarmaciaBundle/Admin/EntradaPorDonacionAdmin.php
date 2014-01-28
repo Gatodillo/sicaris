@@ -15,11 +15,11 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
- * Description of EntradaPorFacturaAdmin
+ * Description of EntradaPorDonacionAdmin
  *
  * @author victor
  */
-class EntradaPorFacturaAdmin extends Admin{
+class EntradaPorDonacionAdmin extends Admin{
     
     
     /*
@@ -28,9 +28,8 @@ class EntradaPorFacturaAdmin extends Admin{
     public function configureFormFields(FormMapper $form) {
         parent::configureFormFields($form);
         $form
-            ->add('numero', null, array('label' => 'Número'))
             ->add('nea', null, array('label' => 'NEA'))
-            ->add('orden', null, array('label' => 'Orden de compra'))
+            ->add('oficio', null, array('label' => 'Folio del oficio'))
             ;
     }
     
@@ -40,9 +39,8 @@ class EntradaPorFacturaAdmin extends Admin{
     public function configureShowFields(ShowMapper $filter) {
         parent::configureShowFields($filter);
         $filter
-            ->add('numero', null, array('label' => 'Número'))
             ->add('nea', null, array('label' => 'NEA'))
-            ->add('orden', null, array('label' => 'Número'))
+            ->add('oficio', null, array('label' => 'Folio del oficio'))
             ;
     }
     
@@ -52,9 +50,8 @@ class EntradaPorFacturaAdmin extends Admin{
     public function configureDatagridFilters(DatagridMapper $filter) {
         parent::configureDatagridFilters($filter);
         $filter
-            ->add('numero', null, array('label' => 'Número'))
             ->add('nea', null, array('label' => 'NEA'))
-            ->add('orden', null, array('label' => 'Número'))
+            ->add('oficio', null, array('label' => 'Folio del oficio'))
             ;
     }
     
@@ -64,14 +61,11 @@ class EntradaPorFacturaAdmin extends Admin{
     public function configureListFields(ListMapper $list) {
         parent::configureListFields($list);
         $list
-            ->add('numero', null, 
-                    array('label' => 'Número',
-                        'route' => array('name' => 'show')))
             ->add('nea', null, 
                     array('label' => 'NEA',
                         'route' => array('name' => 'show')))
-            ->add('orden', null, 
-                    array('label' => 'Orden',
+            ->add('oficio', null, 
+                    array('label' => 'Folio del oficio',
                         'route' => array('name' => 'show')))
             ;
     }

@@ -30,7 +30,7 @@ class CentroDeCostosAdmin extends Admin{
                 ->add('clave', null, array('label'=>'Clave'))
                 ->add('descripcion', null, array('label'=>'Descripción'))
                 ->add('titular',null,array('label'=>'Titular'))
-                ->add('rutaDeReparto',null,array('label'=>'Unidad responsable'))
+                ->add('unidadResponsable',null,array('label'=>'Unidad responsable'))
                 ->add('rutaDeReparto',null,array('label'=>'Ruta de reparto'))
                 ;
     }
@@ -46,7 +46,7 @@ class CentroDeCostosAdmin extends Admin{
                 ->add('descripcion', null, array('label'=>'Descripción'))
                 ->add('titular',null,array('label'=>'Titular'))
                 ->add('unidadResponsable',null,array('label'=>'Unidad responsable'))
-                ->add('unidadResponsable',null,array('label'=>'Ruta de reparto'))
+                ->add('rutaDeReparto',null,array('label'=>'Ruta de reparto'))
                 ;
     }
 

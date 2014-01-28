@@ -27,6 +27,17 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]
+
+    sonata.admin.entradas_por_donacion:
+        class: Saba\FarmaciaBundle\Admin\EntradaPorDonacionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entradas", label: "Por donación" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\EntradaPorDonacion
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
             
     sonata.admin.receta:
         class: Saba\FarmaciaBundle\Admin\RecetaAdmin
@@ -116,6 +127,40 @@ services:
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]
             
+    sonata.admin.unidades_responsables_de_centros_de_costos:
+        class: Saba\FarmaciaBundle\Admin\UnidadResponsableDeCentrosDeCostosAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Unidades responsables de CC" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\UnidadResponsableDeCentrosDeCostos
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]   
+
+    sonata.admin.unidades_medicas:
+        class: Saba\FarmaciaBundle\Admin\UnidadMedicaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Unidades medicas" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\UnidadMedica
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]               
+            
+    sonata.admin.dependencias:
+        class: Saba\FarmaciaBundle\Admin\DependenciaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Dependencias" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\Dependencia
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]   
+            
+            
     sonata.admin.almacen:
         class: Saba\FarmaciaBundle\Admin\AlmacenAdmin
         tags:
@@ -204,6 +249,17 @@ services:
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]
 
+    sonata.admin.oficios_por_donacion:
+        class: Saba\FarmaciaBundle\Admin\OficioPorDonacionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Oficios por donación" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\OficioPorDonacion
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+
     sonata.admin.lineas_de_factura_de_proveedor:
         class: Saba\FarmaciaBundle\Admin\LineaDeFacturaDeProveedorAdmin
         tags:
@@ -215,6 +271,17 @@ services:
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]
 
+    sonata.admin.lineas_de_oficio_por_donacion:
+        class: Saba\FarmaciaBundle\Admin\LineaDeOficioPorDonacionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Almacén", label: "Líneas de oficio por donacion" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\LineaDeOficioPorDonacion
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+            
     sonata.admin.ordenes_de_compra:
         class: Saba\FarmaciaBundle\Admin\OrdenDeCompraAdmin
         tags:

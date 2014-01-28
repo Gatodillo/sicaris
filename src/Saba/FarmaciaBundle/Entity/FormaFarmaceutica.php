@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * TODO: Crear la clase FormaFarmaceuticaAdmin.
  * FormaFarmaceutica
  *
- * @ORM\Table()
+ * @ORM\Table(name="formas_farmaceuticas")
  * @ORM\Entity
  */
 class FormaFarmaceutica

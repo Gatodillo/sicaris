@@ -29,8 +29,8 @@ class MedicoAdmin extends Admin {
             ->add("apellidoPaterno", 'text', array('label' => 'Apellido paterno'))
             ->add("apellidoMaterno", 'text', array('label' => 'Apellido materno'))
             ->add("nombresdePila", 'text', array('label' => 'Nombre(s)'))    
-            ->add("centroDeCostos", 'text', array('label' => 'CC'))
-            ->add("especialidad", 'text', array('label' => 'Especialidad'))            
+            ->add("centroDeCostos", null, array('label' => 'Centro de Costos'))
+            ->add("especialidad", null, array('label' => 'Especialidad'))            
         ;
     }
     

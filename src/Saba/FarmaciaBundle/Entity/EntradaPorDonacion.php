@@ -11,14 +11,14 @@ namespace Saba\FarmaciaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Description of EntradaPorFactura
+ * Description of EntradaPorDonacion
  *
  * @author victor
  * @IgnoreAnnotation("author")
- * @ORM\Table(name="entradas_por_factura")
+ * @ORM\Table(name="entradas_por_donacion")
  * @ORM\Entity
  */
-class EntradaPorFactura {
+class EntradaPorDonacion {
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -26,10 +26,6 @@ class EntradaPorFactura {
      */
     protected $id;
     
-    /**
-     * @ORM\Column(type="integer")
-     */
-    protected $numero;
     
     /**
      * @ORM\Column(type="integer")
@@ -37,13 +33,13 @@ class EntradaPorFactura {
     protected $nea;
     
     /**
-     * @ORM\ManyToOne(targetEntity="OrdenDeCompra")
-     * @ORM\JoinColumn(name="orden_de_compra_id")
+     * @ORM\ManyToOne(targetEntity="OficioPorDonacion")
+     * @ORM\JoinColumn(name="oficio_por_donacion_id")
      */
-    protected $orden;
+    protected $oficio;
     
     /**
-     * @ORM\OneToMany(targetEntity="MovimientoDeEntradaPorFactura", mappedBy="numeroDeEntrada")
+     * @ORM\OneToMany(targetEntity="MovimientoDeEntradaPorDonacion", mappedBy="nea")
      */
     protected $movimientos;
     /**
@@ -52,6 +48,10 @@ class EntradaPorFactura {
     public function __construct()
     {
         $this->movimientos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString() {
+        return (string)$this->getNea() ?: "";
     }
 
     /**
@@ -65,33 +65,10 @@ class EntradaPorFactura {
     }
 
     /**
-     * Set numero
-     *
-     * @param integer $numero
-     * @return EntradaPorFactura
-     */
-    public function setNumero($numero)
-    {
-        $this->numero = $numero;
-
-        return $this;
-    }
-
-    /**
-     * Get numero
-     *
-     * @return integer 
-     */
-    public function getNumero()
-    {
-        return $this->numero;
-    }
-
-    /**
      * Set nea
      *
      * @param integer $nea
-     * @return EntradaPorFactura
+     * @return EntradaPorDonacion
      */
     public function setNea($nea)
     {
@@ -111,35 +88,35 @@ class EntradaPorFactura {
     }
 
     /**
-     * Set orden
+     * Set oficio
      *
-     * @param \Saba\FarmaciaBundle\Entity\ordenDeCompra $orden
-     * @return EntradaPorFactura
+     * @param \Saba\FarmaciaBundle\Entity\OficioPorDonacion $oficio
+     * @return EntradaPorDonacion
      */
-    public function setOrden(\Saba\FarmaciaBundle\Entity\ordenDeCompra $orden = null)
+    public function setOficio(\Saba\FarmaciaBundle\Entity\OficioPorDonacion $oficio = null)
     {
-        $this->orden = $orden;
+        $this->oficio = $oficio;
 
         return $this;
     }
 
     /**
-     * Get orden
+     * Get oficio
      *
-     * @return \Saba\FarmaciaBundle\Entity\ordenDeCompra 
+     * @return \Saba\FarmaciaBundle\Entity\OficioPorDonacion 
      */
-    public function getOrden()
+    public function getOficio()
     {
-        return $this->orden;
+        return $this->oficio;
     }
 
     /**
      * Add movimientos
      *
-     * @param \Saba\FarmaciaBundle\Entity\MovimientoDeEntradaPorFactura $movimientos
-     * @return EntradaPorFactura
+     * @param \Saba\FarmaciaBundle\Entity\MovimientoDeEntradaPorDonacion $movimientos
+     * @return EntradaPorDonacion
      */
-    public function addMovimiento(\Saba\FarmaciaBundle\Entity\MovimientoDeEntradaPorFactura $movimientos)
+    public function addMovimiento(\Saba\FarmaciaBundle\Entity\MovimientoDeEntradaPorDonacion $movimientos)
     {
         $this->movimientos[] = $movimientos;
 
@@ -149,9 +126,9 @@ class EntradaPorFactura {
     /**
      * Remove movimientos
      *
-     * @param \Saba\FarmaciaBundle\Entity\MovimientoDeEntradaPorFactura $movimientos
+     * @param \Saba\FarmaciaBundle\Entity\MovimientoDeEntradaPorDonacion $movimientos
      */
-    public function removeMovimiento(\Saba\FarmaciaBundle\Entity\MovimientoDeEntradaPorFactura $movimientos)
+    public function removeMovimiento(\Saba\FarmaciaBundle\Entity\MovimientoDeEntradaPorDonacion $movimientos)
     {
         $this->movimientos->removeElement($movimientos);
     }
@@ -164,9 +141,5 @@ class EntradaPorFactura {
     public function getMovimientos()
     {
         return $this->movimientos;
-    }
-    
-    public function __toString() {
-        return (string)$this->getNea() ?: "";
     }
 }

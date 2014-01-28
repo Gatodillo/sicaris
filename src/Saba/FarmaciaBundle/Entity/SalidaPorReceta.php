@@ -102,9 +102,9 @@ class SalidaPorReceta {
         $medico = $this->getReceta()->getMedico();
         $paciente = $this->getReceta()->getPaciente();
         
-        foreach ($this->getReceta()->getLineasDeReceta() as $key => $recetaUnionLineasDeReceta){
-            $medicamentoEnReceta = $recetaUnionLineasDeReceta->getLineaDeReceta()->getMedicamento();
-            $cantidadEnReceta = $recetaUnionLineasDeReceta->getLineaDeReceta()->getCantidad();
+        foreach ($this->getReceta()->getLineasDeReceta() as $key => $lineasDeReceta){
+            $medicamentoEnReceta = $lineasDeReceta->getMedicamento();
+            $cantidadEnReceta = $lineasDeReceta->getCantidad();
             //$unidadDelMedicamentoEnReceta = $lineaDeReceta->getUnidad();
             $cantidadEnExistencia = $this
                     ->getUbicacionOrigen()

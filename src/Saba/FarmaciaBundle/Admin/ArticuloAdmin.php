@@ -30,6 +30,7 @@ class ArticuloAdmin extends Admin{
                 ->add('descripcion',null,array('label'=>'Descripción'))
                 ->add('unidadDeMedida',null,array('label'=>'Unidad de medida'))
                 ->add('codigoDeBarras',null,array('label'=>'Código de barras'))
+                ->add('estaActivo',null,array('label'=>'Activo'))
                 ;
     }
     
@@ -43,6 +44,7 @@ class ArticuloAdmin extends Admin{
                 ->add('descripcion',null,array('label'=>'Descripción'))
                 ->add('unidadDeMedida',null,array('label'=>'Unidad de medida'))
                 ->add('codigoDeBarras',null,array('label'=>'Código de barras'))
+                ->add('estaActivo',null,array('label'=>'Activo'))
                 ;
     }
 
@@ -55,12 +57,13 @@ class ArticuloAdmin extends Admin{
         $list->add('nombreGenerico', null, 
                 array('label'=>'Nombre genérico',
                     'route'=> array('name'=>'show')))
-                ->add('descripcion',null,array('label'=>'Descripción',
+                ->addIdentifier('descripcion',null,array('label'=>'Descripción',
                     'route'=> array('name'=>'show')))
-                ->add('unidadDeMedida',null,array('label'=>'Unidad de medida',
+                ->addIdentifier('unidadDeMedida',null,array('label'=>'Unidad de medida',
                     'route'=> array('name'=>'show')))
-                ->add('codigoDeBarras',null,array('label'=>'Código de barras',
+                ->addIdentifier('codigoDeBarras',null,array('label'=>'Código de barras',
                     'route'=> array('name'=>'show')))
+                ->addIdentifier('estaActivo',null,array('label'=>'Activo'))
                 ;
     }
     

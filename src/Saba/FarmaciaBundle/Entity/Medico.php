@@ -48,12 +48,14 @@ class Medico {
     protected $nombresDePila;
     
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\ManyToOne(targetEntity="CentroDeCostos", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="centro_de_costos_id")
      */
     protected $centroDeCostos;
     
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\ManyToOne(targetEntity="Especialidad", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="especialidad_id")
      */
     protected $especialidad;
     
@@ -160,10 +162,12 @@ class Medico {
         return $this->nombresDePila;
     }
 
+   
+
     /**
-     * Set centroDeCosto
+     * Set centroDeCostos
      *
-     * @param string $centroDeCosto
+     * @param string $centroDeCostos
      * @return Medico
      */
     public function setCentroDeCostos($centroDeCostos)
@@ -174,7 +178,7 @@ class Medico {
     }
 
     /**
-     * Get centroDeCosto
+     * Get centroDeCostos
      *
      * @return string 
      */
@@ -207,8 +211,9 @@ class Medico {
     }
     
     public function __toString() {
-        return $this->getCedula() . ". " . $this->getApellidoPaterno()
-                . " " . $this ->getApellidoMaterno()
-                . ", " . $this->getNombresDePila();
+        return $this->getCedula() + " "
+                + $this->getApellidoPaterno() + " "
+                + $this->getApellidoMaterno() + ", "
+                + $this->getNombresDePila();
     }
 }

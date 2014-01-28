@@ -52,7 +52,7 @@ class Paciente {
     /**
      *
      * @ORM\ManyToOne(targetEntity="Ubicacion")
-     * @ORM\JoinColumn(name="ubicacion_id", nullable=false)
+     * @ORM\JoinColumn(name="ubicacion_id", nullable=true)
      */
     protected $ubicacion;
     /**
