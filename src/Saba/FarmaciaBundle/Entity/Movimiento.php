@@ -18,7 +18,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorMap(
  *  {"movimiento" = "Movimiento", 
  * "entradaPorFactura"="MovimientoDeEntradaPorFactura",
- * "entradaPorDonacion" = "MovimientoDeEntradaPorDonacion"
+ * "entradaPorDonacion" = "MovimientoDeEntradaPorDonacion",
+ * "salidaPorReceta" = "MovimientoDeSalidaPorReceta",
+ * "otrasEntradas" = "MovimientoDeOtrasEntradas"
  * })
  * @ORM\Table(name="movimientos") 
  */
@@ -68,7 +70,7 @@ class Movimiento {
     private $precioUnitario;
     
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $lote;
     
@@ -247,7 +249,7 @@ class Movimiento {
         if ( null == $this->getArticulo()){
             return "";
         }
-        return (" Artículo: " . $this->getArticulo()->getNombre() . " Cantidad: " . $this->cantidad );
+        return (" Artículo: " . $this->getArticulo()->getNombreGenerico() . " Cantidad: " . $this->cantidad );
     }
     
      /**

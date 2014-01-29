@@ -211,9 +211,9 @@ class Medico {
     }
     
     public function __toString() {
-        return $this->getCedula() + " "
+        return (string)($this->getCedula() + " "
                 + $this->getApellidoPaterno() + " "
                 + $this->getApellidoMaterno() + ", "
-                + $this->getNombresDePila();
+                + $this->getNombresDePila());
     }
 }

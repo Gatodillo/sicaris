@@ -128,7 +128,7 @@ class Medicamento extends Articulo {
     }
     
     public function __toString() {
-        return $this->getNombreGenerico() ?: "";
+        return ($this->getNombreGenerico() . " " . $this->getCodigoDeBarras()) ?: "";
     }
 
     /**

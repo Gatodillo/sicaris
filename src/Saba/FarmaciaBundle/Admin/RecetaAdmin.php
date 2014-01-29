@@ -39,11 +39,12 @@ class RecetaAdmin extends Admin {
                 'attr' => array(
                     'class' => 'select2'
                     ),
-                ))    
+                ))
+            ->add('valeSubrogado', null, array('label' => 'Vale subrogado', 'disabled' => true))    
             ->end()
             ->with("Líneas de receta")    
                 ->add("lineasDeReceta", 'sonata_type_collection', array(
-                    'by_reference' => false
+                    'by_reference' => false,
                 ), array(
                     'edit' => 'inline',
                     'inline' => 'table',

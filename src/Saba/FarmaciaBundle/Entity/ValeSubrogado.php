@@ -34,10 +34,9 @@ class ValeSubrogado {
     
     /**
      * 
-     * @ORM\OneToOne(targetEntity="Receta")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(name="receta_origen_id");
      */
-    protected $recetaOrigen;
+    protected $receta;
     
     /**
      * @ORM\ManyToOne(targetEntity="Medico")
@@ -52,16 +51,16 @@ class ValeSubrogado {
     protected $paciente;
     
     /**
-     * @ORM\OneToMany(targetEntity="ValeSubrogadoTieneLineas", mappedBy="valeSubrogado",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="LineaDeValeSubrogado", mappedBy="valeSubrogado",cascade={"persist", "remove"})
      */
-    protected $lineasDeValeSubrogado;
+    protected $lineas;
     
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->lineasDeValeSubrogado = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->lineas = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -98,26 +97,26 @@ class ValeSubrogado {
     }
 
     /**
-     * Set recetaOrigen
+     * Set receta
      *
-     * @param \Saba\FarmaciaBundle\Entity\Receta $recetaOrigen
+     * @param \Saba\FarmaciaBundle\Entity\Receta $receta
      * @return ValeSubrogado
      */
-    public function setRecetaOrigen(\Saba\FarmaciaBundle\Entity\Receta $recetaOrigen = null)
+    public function setReceta($receta = null)
     {
-        $this->recetaOrigen = $recetaOrigen;
+        $this->receta = $receta;
 
         return $this;
     }
 
     /**
-     * Get recetaOrigen
+     * Get receta
      *
      * @return \Saba\FarmaciaBundle\Entity\Receta 
      */
-    public function getRecetaOrigen()
+    public function getReceta()
     {
-        return $this->recetaOrigen;
+        return $this->receta;
     }
 
     /**
@@ -166,67 +165,45 @@ class ValeSubrogado {
         return $this->paciente;
     }
 
-    /**
-     * Add lineasDeValeSubrogado
-     *
-     * @param \Saba\FarmaciaBundle\Entity\ValeSubrogadoTieneLineas $lineasDeValeSubrogado
-     * @return ValeSubrogado
-     */
-    public function addLineasDeValeSubrogado(\Saba\FarmaciaBundle\Entity\ValeSubrogadoTieneLineas $lineasDeValeSubrogado)
-    {
-        $lineasDeValeSubrogado->setValeSubrogado($this);
-        $this->lineasDeValeSubrogado[] = $lineasDeValeSubrogado;
 
-        return $this;
-    }
 
-    /**
-     * Remove lineasDeValeSubrogado
-     *
-     * @param \Saba\FarmaciaBundle\Entity\ValeSubrogadoTieneLineas $lineasDeValeSubrogado
-     */
-    public function removeLineasDeValeSubrogado(\Saba\FarmaciaBundle\Entity\ValeSubrogadoTieneLineas $lineasDeValeSubrogado)
-    {
-        $this->lineasDeValeSubrogado->removeElement($lineasDeValeSubrogado);
-    }
 
-    /**
-     * Get lineasDeValeSubrogado
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getLineasDeValeSubrogado()
-    {
-        return $this->lineasDeValeSubrogado;
-    }
-    
-    /**
-     * Get lineasDeValeSubrogado
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function setLineasDeValeSubrogado(\Doctrine\Common\Collections\ArrayCollection $lineas)
-    {
-        $this->addLineasDeValeSubrogado($linea);
-        return $this;
-    }
     
     public function __toString() {
         return (string)$this->getFolio() ?: "";
     }
-    
-    
+   
+
     /**
-     * @ORM\PrePersist
+     * Add lineas
+     *
+     * @param \Saba\FarmaciaBundle\Entity\LineaDeValeSubrogado $lineas
+     * @return ValeSubrogado
      */
-    public function prePersist(){
-        print $this->getFolio();
+    public function addLinea(\Saba\FarmaciaBundle\Entity\LineaDeValeSubrogado $lineas)
+    {
+        $this->lineas[] = $lineas;
+
+        return $this;
     }
 
     /**
-     * @ORM\PreUpdate
+     * Remove lineas
+     *
+     * @param \Saba\FarmaciaBundle\Entity\LineaDeValeSubrogado $lineas
      */
-    public function preUpdate(){
-        print $this->getFolio();
-    }    
+    public function removeLinea(\Saba\FarmaciaBundle\Entity\LineaDeValeSubrogado $lineas)
+    {
+        $this->lineas->removeElement($lineas);
+    }
+
+    /**
+     * Get lineas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLineas()
+    {
+        return $this->lineas;
+    }
 }

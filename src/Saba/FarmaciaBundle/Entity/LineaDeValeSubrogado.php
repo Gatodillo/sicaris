@@ -26,6 +26,12 @@ class LineaDeValeSubrogado {
     protected $id;
     
     /**
+     * @ORM\ManyToOne(targetEntity="ValeSubrogado", inversedBy="lineas")
+     * @ORM\JoinColumn(name="vale_subrogado_id") 
+     */
+    protected $valeSubrogado;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="Medicamento", cascade={"persist"})
      * @ORM\JoinColumn(name="medicamento_id", unique=false)
      */
@@ -122,5 +128,28 @@ class LineaDeValeSubrogado {
     
     public function __toString() {
         return $this->getId() ?: "";
+    }
+
+    /**
+     * Set valeSubrogado
+     *
+     * @param \Saba\FarmaciaBundle\Entity\ValeSubrogado $valeSubrogado
+     * @return LineaDeValeSubrogado
+     */
+    public function setValeSubrogado(\Saba\FarmaciaBundle\Entity\ValeSubrogado $valeSubrogado = null)
+    {
+        $this->valeSubrogado = $valeSubrogado;
+
+        return $this;
+    }
+
+    /**
+     * Get valeSubrogado
+     *
+     * @return \Saba\FarmaciaBundle\Entity\ValeSubrogado 
+     */
+    public function getValeSubrogado()
+    {
+        return $this->valeSubrogado;
     }
 }

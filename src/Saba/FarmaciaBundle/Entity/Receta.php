@@ -58,29 +58,29 @@ class Receta {
     
     
     /**
-     * @ORM\OneToMany(targetEntity="LineaDeReceta", mappedBy="receta",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="LineaDeReceta", mappedBy="receta", cascade={"persist"}, orphanRemoval=true)
      */
     protected $lineasDeReceta;
 
     /**
-     * @ORM\OneToOne(targetEntity="ValeSubrogado", cascade={"persist"})
-     * @ORM\JoinColumn(name="vale_subrogado_id", nullable=true)
+     * @ORM\OneToOne(targetEntity="ValeSubrogado", cascade={"all"}, orphanRemoval=true)
+     * @ORM\Column(name="vale_subrogado_id", nullable=true, type="integer")
      */
     protected $valeSubrogado;
 
     
     /**
-     * @ORM\ManyToOne(targetEntity="EstadoDeReceta", cascade={ "persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="EstadoDeReceta", cascade={ "persist"})
      */
     protected $estado;
     
     /**
-     * @ORM\ManyToOne(targetEntity="TipoDeReceta", cascade={ "persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="TipoDeReceta", cascade={ "persist"})
      */
     protected $tipoDeReceta;
     
     /**
-     * @ORM\ManyToOne(targetEntity="CentroDeCostos", cascade={ "persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="CentroDeCostos", cascade={ "persist"})
      * @ORM\JoinColumn(name="centro_de_costos_id")
      */
     protected $centroDeCostos;
@@ -278,11 +278,11 @@ class Receta {
     }
     
     public function setLineasDeReceta($lineasDeReceta){
-        $this->lineasDeReceta = new \Doctrine\Common\Collections\ArrayCollection();
-        
-        foreach($lineasDeReceta as $linea){
+        //$this->lineasDeReceta = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->lineasDeReceta = $lineasDeReceta;
+        /*foreach($lineasDeReceta as $linea){
             $this->addLineasDeRecetum($linea);
-        }
+        }*/
         
         return $this;
     }

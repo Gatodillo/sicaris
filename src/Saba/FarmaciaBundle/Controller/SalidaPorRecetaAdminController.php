@@ -9,28 +9,23 @@
 namespace Saba\FarmaciaBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Sonata\PageBundle\Exception\PageNotFoundException;
 
+use Saba\FarmaciaBundle\Entity\SalidaPorReceta;
+use Saba\FarmaciaBundle\Entity\Movimiento;
+use Saba\FarmaciaBundle\Form\Type\SalidaPorRecetaType;
+
 /**
- * Description of RecetaAdminController
+ * Description of SalidasPorReceta
  *
  * @author victor
  */
-class RecetaAdminController extends Controller{
-    /**
-* @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-*
-* @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
-*/
-    public function createAction()
-    {
-        
-       
-        
-        // the key used to lookup the template
+class SalidaPorRecetaAdminController extends Controller {
+    
+    public function createAction() {
+                // the key used to lookup the template
         $templateKey = 'edit';
 
         if (false === $this->admin->isGranted('CREATE')) {
@@ -55,7 +50,61 @@ class RecetaAdminController extends Controller{
                 
                 $repositorio = $this->getDoctrine()->getRepository('SabaFarmaciaBundle:EstadoDeReceta');
                 $estadoDeReceta = $repositorio->find( array( 'id' => 1 ));
-                $object->setEstado($estadoDeReceta);
+                $object->getReceta()->setEstado($estadoDeReceta);
+                
+                /**
+                 * Código personalizado.
+                 */
+                
+                foreach ($object->getReceta()->getLineasDeReceta() as $key => $lineasDeReceta){
+                    $medicamentoEnReceta = $lineasDeReceta->getMedicamento();
+                    $cantidadEnReceta = $lineasDeReceta->getCantidad();
+                    //$unidadDelMedicamentoEnReceta = $lineaDeReceta->getUnidad();
+                    $cantidadEnExistencia = $object
+                            ->getUbicacionOrigen()
+                            ->getExistenciaDe($object->getUbicacionOrigen(),$medicamentoEnReceta)
+                            ;
+                    if ($cantidadEnExistencia >= $cantidadEnReceta){
+                        $object->getUbicacionOrigen()
+                                ->updateExistencias(
+                                        $medicamentoEnReceta,
+                                        $cantidadEnReceta
+                                );
+                        $object->aniadirAMovimientos(
+                                $medicamentoEnReceta,
+                                $cantidadEnReceta
+                                );
+                    }else if ($cantidadEnExistencia > 0){
+                        $object->getUbicacionOrigen()
+                                ->updateExistencias(
+                                        $medicamentoEnReceta,
+                                        0
+                                );
+
+                        $object->aniadirAMovimientos($medicamentoEnReceta, 
+                                        $cantidadEnExistencia);
+                        $object->aniadirAValeSubrogado(
+                                $medicamentoEnReceta,
+                                $cantidadEnReceta -
+                                $cantidadEnExistencia
+                                );
+                    }else{
+                        $object->aniadirAValeSubrogado(
+                                $medicamentoEnReceta,
+                                $cantidadEnReceta
+                                );
+                    }
+                }
+                
+                
+                
+                /*
+                 * Fin del código personalizado.
+                 */
+                
+                
+                //$object->getValeSubrogado()->setRecetaOrigen($object->getReceta());
+                $this->admin->create($object->getValeSubrogado());
                 $this->admin->create($object);
 
                 if ($this->isXmlHttpRequest()) {
@@ -94,10 +143,9 @@ class RecetaAdminController extends Controller{
             'object' => $object,
         ));
     }
-    
-    public function editAction($id = null) {
-        //parent::editAction($id);
-        // the key used to lookup the template
+
+    public function editAction($id = null){
+            // the key used to lookup the template
         $templateKey = 'edit';
 
         $id = $this->get('request')->get($this->admin->getIdParameter());
@@ -124,22 +172,64 @@ class RecetaAdminController extends Controller{
 
             // persist if the form was valid and if in preview mode the preview was approved
             if ($isFormValid && (!$this->isInPreviewMode() || $this->isPreviewApproved())) {
-                
-                /**
-                 * Inicio de código personalizado
-                 * No es posible modificar una receta que ya tiene un vale subrogado.
-                 * Primero debe eliminarse el vale subrogado desde la interfaz para
-                 * administración de vales subrogados.
-                 */
-                if (null != $object->getValeSubrogado()){
-                    $this->addFlash('sonata_flash_error', $this->admin->trans('flash_edit_error', array('%name%' => $this->admin->toString($object)), 'SonataAdminBundle'));
 
+                /**
+                 * Código personalizado.
+                 */
+                
+                if (null != $object->getReceta()->getValeSubrogado()){
+                    $this->addFlash('sonata_flash_error', $this->admin->trans('flash_edit_error', array('%name%' => $this->admin->toString($object)), 'SonataAdminBundle'));
                     // redirect to edit mode
                     return $this->redirectTo($object);
                 }
-                /**
-                 * Fin de código personalizado
+                $object->clearMovimientos();
+                foreach ($object->getReceta()->getLineasDeReceta() as $key => $lineasDeReceta){
+                    $medicamentoEnReceta = $lineasDeReceta->getMedicamento();
+                    $cantidadEnReceta = $lineasDeReceta->getCantidad();
+                    //$unidadDelMedicamentoEnReceta = $lineaDeReceta->getUnidad();
+                    $cantidadEnExistencia = $object
+                            ->getUbicacionOrigen()
+                            ->getExistenciaDe($object->getUbicacionOrigen(),$medicamentoEnReceta)
+                            ;
+                    if ($cantidadEnExistencia >= $cantidadEnReceta){
+                        $object->getUbicacionOrigen()
+                                ->updateExistencias(
+                                        $medicamentoEnReceta,
+                                        $cantidadEnReceta
+                                );
+                        $object->aniadirAMovimientos(
+                                $medicamentoEnReceta,
+                                $cantidadEnReceta
+                                );
+                    }else if ($cantidadEnExistencia > 0){
+                        $object->getUbicacionOrigen()
+                                ->updateExistencias(
+                                        $medicamentoEnReceta,
+                                        0
+                                );
+
+                        $object->aniadirAMovimientos($medicamentoEnReceta, 
+                                        $cantidadEnExistencia);
+                        $object->aniadirAValeSubrogado(
+                                $medicamentoEnReceta,
+                                $cantidadEnReceta -
+                                $cantidadEnExistencia
+                                );
+                    }else{
+                        $object->aniadirAValeSubrogado(
+                                $medicamentoEnReceta,
+                                $cantidadEnReceta
+                                );
+                    }
+                }
+                
+                
+                
+                /*
+                 * Fin del código personalizado.
                  */
+                
+                
                 $this->admin->update($object);
 
                 if ($this->isXmlHttpRequest()) {
@@ -176,7 +266,16 @@ class RecetaAdminController extends Controller{
             'action' => 'edit',
             'form'   => $view,
             'object' => $object,
-        ));        
-        
+        ));
     }
 }
+
+/*
+         $medico = $this->getReceta()->getMedico();
+        $paciente = $this->getReceta()->getPaciente();
+        
+        
+ 
+ * 
+ 
+ */

@@ -13,7 +13,7 @@ services:
         arguments:
             - ~
             - Saba\FarmaciaBundle\Entity\SalidaPorReceta
-            - ~
+            - SabaFarmaciaBundle:SalidaPorRecetaAdmin
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]
 
@@ -28,6 +28,17 @@ services:
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]
 
+    sonata.admin.otras_entradas:
+        class: Saba\FarmaciaBundle\Admin\OtrasEntradasAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entradas", label: "Otras" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\OtrasEntradas
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]
+            
     sonata.admin.entradas_por_donacion:
         class: Saba\FarmaciaBundle\Admin\EntradaPorDonacionAdmin
         tags:
@@ -116,6 +127,28 @@ services:
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]                      
 
+    sonata.admin.movimientos_de_salida_por_receta:
+        class: Saba\FarmaciaBundle\Admin\MovimientoDeSalidaPorRecetaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Recetas", label: "Movimientos de salida por receta" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\MovimientoDeSalidaPorReceta
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]                      
+            
+    sonata.admin.movimientos_de_otras_entradas:
+        class: Saba\FarmaciaBundle\Admin\MovimientoDeOtrasEntradasAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Otras entradas", label: "Movimientos de otras entradas" }
+        arguments:
+            - ~
+            - Saba\FarmaciaBundle\Entity\MovimientoDeOtrasEntradas
+            - ~
+        calls:
+            - [ setTranslationDomain, [SabaFarmaciaBundle]]                      
+            
     sonata.admin.tipos_de_receta:
         class: Saba\FarmaciaBundle\Admin\TipoDeRecetaAdmin
         tags:

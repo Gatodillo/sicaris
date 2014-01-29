@@ -16,54 +16,19 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 
 /**
  * Description of ValeSubrogadoTieneLineasAdmin
- *
+ * @deprecated since version 0
  * @author victor
  */
 class ValeSubrogadoTieneLineasAdmin extends Admin {
-    
-    /*
-     * Campos que serán mostrado en los formularios para 
-     * desplegar o editar información.
-     */
     public function configureFormFields(FormMapper $formMapper) {
-      /*if ($this->hasRequest()) {
-            $link_parameters = array('context' => $this->getRequest()->get('context'));
-        } else {
-            $link_parameters = array();
-        }
-*/
-        $formMapper
-            ->add('lineaDeValeSubrogado', 'sonata_type_admin', array(
-                'required' => false,
-            ), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-            ))
-        ;      
-        
     }
     
-      // Fields to be shown on lists
-    protected function configureListFields(ListMapper $listMapper)
-    {
-        $listMapper
-            ->addIdentifier("valeSubrogado", null, array('label' => 'Folio'))    
-            ->addIdentifier("lineaDeValeSubrogado", null, array('label' => 'Receta'))
-            ;
+    protected function configureListFields(ListMapper $listMapper){
     }
     
-    public function preUpdate($object) {
-        parent::preUpdate($object);
-        foreach($object->getLineasDeValeSubrogado() as $lineaDeValeSubrogado ){
-           $lineaDeValeSubrogado->setValeSubrogado($object->getValeSubrogado());
-        }
+    public function preUpdate($object){
     }
     
     public function prePersist($object) {
-        parent::prePersist($object);
-        foreach($object->getLineasDeValeSubrogado() as $lineaDeValeSubrogado ){
-           $lineaDeValeSubrogado->setValeSubrogado($object->getValeSubrogado());
-        }
     }   
-    
 }

@@ -21,9 +21,15 @@ class SalidaPorReceta {
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $numero;
+    protected $id;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $numero;
+    
     
     /**
      * @ORM\OneToOne(targetEntity="Receta", cascade={"persist"})
@@ -32,14 +38,7 @@ class SalidaPorReceta {
     protected $receta;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Movimiento", cascade={ "persist", "remove"})
-     * @ORM\JoinTable(name="salida_por_receta_tiene_movimientos",
-     *     joinColumns={@ORM\JoinColumn(name="salidas_por_receta_id",
-     *         referencedColumnName="numero")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="movimientos_id",
-     *         referencedColumnName="id",
-     *         unique=true)}
-     *     )
+     * @ORM\OneToMany(targetEntity="MovimientoDeSalidaPorReceta", mappedBy="salidaPorReceta", cascade={ "persist", "remove"})
      */
     protected $movimientos;
     
@@ -65,170 +64,8 @@ class SalidaPorReceta {
         $this->movimientos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Get numero
-     *
-     * @return integer 
-     */
-    public function getNumero()
-    {
-        return $this->numero;
-    }
-    
-    
-    /**
-     * Get numero
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->numero;
-    }
-
-    /**
-     * Set receta
-     *
-     * @param \Saba\FarmaciaBundle\Entity\Receta $receta
-     * @return SalidaPorReceta
-     */
-    public function setReceta(\Saba\FarmaciaBundle\Entity\Receta $receta = null)
-    {
-        /*if ($receta->getValeSubrogado() == NULL){
-            return $this;
-        }*/
-        
-        $this->receta = $receta;
-        $medico = $this->getReceta()->getMedico();
-        $paciente = $this->getReceta()->getPaciente();
-        
-        foreach ($this->getReceta()->getLineasDeReceta() as $key => $lineasDeReceta){
-            $medicamentoEnReceta = $lineasDeReceta->getMedicamento();
-            $cantidadEnReceta = $lineasDeReceta->getCantidad();
-            //$unidadDelMedicamentoEnReceta = $lineaDeReceta->getUnidad();
-            $cantidadEnExistencia = $this
-                    ->getUbicacionOrigen()
-                    ->getExistenciaDe($this->getUbicacionOrigen(),$medicamentoEnReceta)
-                    ;
-            if ($cantidadEnExistencia >= $cantidadEnReceta){
-                $this->getUbicacionOrigen()
-                        ->updateExistencias(
-                                $medicamentoEnReceta,
-                                $cantidadEnReceta
-                        );
-                $this->aniadirAMovimientos(
-                        $medicamentoEnReceta,
-                        $cantidadEnReceta
-                        );
-            }else if ($cantidadEnExistencia > 0){
-                $this->getUbicacionOrigen()
-                        ->updateExistencias(
-                                $medicamentoEnReceta,
-                                0
-                        );
-
-                $this->aniadirAMovimientos($medicamentoEnReceta, 
-                                $cantidadEnExistencia);
-                $this->aniadirAValeSubrogado(
-                        $medicamentoEnReceta,
-                        $cantidadEnReceta -
-                        $cantidadEnExistencia
-                        );
-            }else{
-                $this->aniadirAValeSubrogado(
-                        $medicamentoEnReceta,
-                        $cantidadEnReceta
-                        );
-            }
-        }
-    }
-
-
-    /**
-     * Get receta
-     *
-     * @return \Saba\FarmaciaBundle\Entity\Receta 
-     */
-    public function getReceta()
-    {
-        return $this->receta;
-    }
-
-    /**
-     * Add movimientos
-     *
-     * @param \Saba\FarmaciaBundle\Entity\Movimiento $movimientos
-     * @return SalidaPorReceta
-     */
-    public function addMovimientos(\Saba\FarmaciaBundle\Entity\Movimiento $movimientos)
-    {
-        $this->movimientos[] = $movimientos;
-
-        return $this;
-    }
-
-    /**
-     * Remove movimientos
-     *
-     * @param \Saba\FarmaciaBundle\Entity\Movimiento $movimientos
-     */
-    public function removeMovimiento(\Saba\FarmaciaBundle\Entity\Movimiento $movimientos)
-    {
-        $this->movimientos->removeElement($movimientos);
-    }
-
-    /**
-     * Get movimientos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMovimientos()
-    {
-        return $this->movimientos;
-    }
-
-    /**
-     * Add movimientos
-     *
-     * @param \Saba\FarmaciaBundle\Entity\Movimiento $movimientos
-     * @return SalidaPorReceta
-     */
-    public function addMovimiento(\Saba\FarmaciaBundle\Entity\Movimiento $movimientos)
-    {
-        $this->movimientos[] = $movimientos;
-
-        return $this;
-    }
-
-    /**
-     * Set numero
-     *
-     * @param integer $numero
-     * @return SalidaPorReceta
-     */
-    public function setNumero($numero)
-    {
-        $this->numero = $numero;
-
-        return $this;
-    }
-    
-    /**
-     * @ORM\PrePersist
-     */
-    public function prePersist(){
-//        throw new \Exception();
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate(){
-//        throw new \Exception();
-    }
-    
     public function aniadirAMovimientos(Medicamento $medicamento, $cantidad){
-        $movimiento = new Movimiento();
+        $movimiento = new MovimientoDeSalidaPorReceta();
         
         $movimiento->setArticulo($medicamento);
         $movimiento->setCantidad($cantidad);
@@ -255,17 +92,129 @@ class SalidaPorReceta {
         $lineaDeValeSubrogado->setCantidad($cantidad);
         $lineaDeValeSubrogado->setUnidad("Caja");
             
-        $relacionValeSubrogadoTieneLineas = new ValeSubrogadoTieneLineas();
-        $relacionValeSubrogadoTieneLineas->setValeSubrogado($valeSubrogado);
-        $relacionValeSubrogadoTieneLineas->setLineaDeValeSubrogado($lineaDeValeSubrogado);
-            
-        $valeSubrogado->getLineasDeValeSubrogado()->add($relacionValeSubrogadoTieneLineas);
+        $valeSubrogado->getLineas()->add($lineaDeValeSubrogado);
        
         $this->getReceta()->setValeSubrogado($valeSubrogado);
         
         return $this;
     }
+        
+    
+    
+    
+    
+    /**
+     * Get numero
+     *
+     * @return integer 
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+    
+    
+    /**
+     * Get numero
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
+    /**
+     * Set receta
+     *
+     * @param \Saba\FarmaciaBundle\Entity\Receta $receta
+     * @return SalidaPorReceta
+     */
+    public function setReceta(\Saba\FarmaciaBundle\Entity\Receta $receta = null)
+    {
+        /*if ($receta->getValeSubrogado() == NULL){
+            return $this;
+        }*/
+        
+        $this->receta = $receta;
+
+    }
+
+
+    /**
+     * Get receta
+     *
+     * @return \Saba\FarmaciaBundle\Entity\Receta 
+     */
+    public function getReceta()
+    {
+        return $this->receta;
+    }
+
+    /**
+     * Add movimientos
+     *
+     * @param \Saba\FarmaciaBundle\Entity\MovimientoDeSalidaPorReceta $movimientos
+     * @return SalidaPorReceta
+     */
+    public function addMovimientos(\Saba\FarmaciaBundle\Entity\MovimientoDeSalidaPorReceta $movimientos)
+    {
+        $movimientos->setSalidaPorReceta($this);;
+        $this->movimientos[] = $movimientos;
+
+        return $this;
+    }
+
+    /**
+     * Remove movimientos
+     *
+     * @param \Saba\FarmaciaBundle\Entity\MovimientoDeSalidaPorReceta $movimientos
+     */
+    public function removeMovimiento(\Saba\FarmaciaBundle\Entity\MovimientoDeSalidaPorReceta $movimientos)
+    {
+        $this->movimientos->removeElement($movimientos);
+    }
+
+    public function clearMovimientos(){
+        $this->movimientos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    /**
+     * Get movimientos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMovimientos()
+    {
+        return $this->movimientos;
+    }
+
+    /**
+     * Add movimientos
+     *
+     * @param \Saba\FarmaciaBundle\Entity\Movimiento $movimientos
+     * @return SalidaPorReceta
+     */
+    public function addMovimiento(\Saba\FarmaciaBundle\Entity\MovimientoDeSalidaPorReceta $movimientos)
+    {
+        $movimientos->setSalidaPorReceta($this);
+        $this->movimientos[] = $movimientos;
+
+        return $this;
+    }
+
+    /**
+     * Set numero
+     *
+     * @param integer $numero
+     * @return SalidaPorReceta
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+    
     /**
      * Set ubicacionOrigen
      *
@@ -310,5 +259,22 @@ class SalidaPorReceta {
     public function getUbicacionDestino()
     {
         return $this->ubicacionDestino;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return SalidaPorReceta
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+    
+    public function __toString() {
+        return (string)($this->getNumero()) ?: "";
     }
 }

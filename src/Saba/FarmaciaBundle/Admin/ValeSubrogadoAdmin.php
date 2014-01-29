@@ -25,12 +25,12 @@ class ValeSubrogadoAdmin extends Admin {
     {
         $formMapper
             ->add('folio', 'text', array('label' => 'Folio'))
-            ->add('recetaOrigen.folio', 'text', array('label' => 'Receta', 'disabled' => true))    
+            ->add('receta', 'text', array('label' => 'Receta', 'disabled' => true))    
             ->add("medico", "sonata_type_model_list",array('required' => false))
             ->add("paciente", "sonata_type_model_list",array('required' => false))
             ->end()
             ->with("Medicamentos")    
-                ->add("lineasDeValeSubrogado", 'sonata_type_collection', array(
+                ->add("lineas", 'sonata_type_collection', array(
                     'by_reference' => false
                 ), array(
                     'edit' => 'inline',
@@ -53,7 +53,7 @@ class ValeSubrogadoAdmin extends Admin {
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier("recetaOrigen", null, array('label' => 'Receta'))    
+            ->addIdentifier("receta", null, array('label' => 'Receta'))    
             ->addIdentifier("folio", null, array('label' => 'Folio'))    
             ->addIdentifier("medico.cedula", null, array('label' => 'Médico'))
             ->addIdentifier("paciente.numeroDeAfiliacion", null, array('label' => 'Paciente'))

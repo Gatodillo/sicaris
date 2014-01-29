@@ -28,6 +28,13 @@ class SalidaPorRecetaAdmin extends Admin {
             ->add("receta", "sonata_type_model_list")
             ->add("ubicacionOrigen", "sonata_type_model_list")
             ->add("ubicacionDestino", "sonata_type_model_list")    
+            ->add("movimientos", "sonata_type_collection", array(
+                    'by_reference' => false
+                ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                    'sortable' => 'position',
+                ))
             ;
     }
     
@@ -49,14 +56,4 @@ class SalidaPorRecetaAdmin extends Admin {
             ;    
     }
     
-    public function prePersist($salidaPorReceta){
-       // throw new \Exception(__METHOD__);
-    }
-
-    public function preUpdate($salidaPorReceta){
-        //throw new \Exception(__METHOD__);
-        
-    }
-    
-   
 }
