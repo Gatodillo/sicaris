@@ -104,7 +104,6 @@ class SalidaPorRecetaAdminController extends Controller {
                 
                 
                 //$object->getValeSubrogado()->setRecetaOrigen($object->getReceta());
-                $this->admin->create($object->getValeSubrogado());
                 $this->admin->create($object);
 
                 if ($this->isXmlHttpRequest()) {
@@ -182,7 +181,7 @@ class SalidaPorRecetaAdminController extends Controller {
                     // redirect to edit mode
                     return $this->redirectTo($object);
                 }
-                $object->clearMovimientos();
+
                 foreach ($object->getReceta()->getLineasDeReceta() as $key => $lineasDeReceta){
                     $medicamentoEnReceta = $lineasDeReceta->getMedicamento();
                     $cantidadEnReceta = $lineasDeReceta->getCantidad();
@@ -195,11 +194,7 @@ class SalidaPorRecetaAdminController extends Controller {
                         $object->getUbicacionOrigen()
                                 ->updateExistencias(
                                         $medicamentoEnReceta,
-                                        $cantidadEnReceta
-                                );
-                        $object->aniadirAMovimientos(
-                                $medicamentoEnReceta,
-                                $cantidadEnReceta
+                                        ($cantidadEnExistencia - $cantidadEnReceta)
                                 );
                     }else if ($cantidadEnExistencia > 0){
                         $object->getUbicacionOrigen()
@@ -208,8 +203,6 @@ class SalidaPorRecetaAdminController extends Controller {
                                         0
                                 );
 
-                        $object->aniadirAMovimientos($medicamentoEnReceta, 
-                                        $cantidadEnExistencia);
                         $object->aniadirAValeSubrogado(
                                 $medicamentoEnReceta,
                                 $cantidadEnReceta -

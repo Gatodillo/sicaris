@@ -171,7 +171,7 @@ class OficioPorDonacion
      * @param \Saba\FarmaciaBundle\Entity\LineasDeOficioDeDonacion $lineas
      * @return OficioPorDonacion
      */
-    public function addLinea(\Saba\FarmaciaBundle\Entity\LineaDeOficioPorDonacion $lineas)
+    public function addLinea( $lineas)
     {
         $lineas->setOficio($this);
         $this->lineas[] = $lineas;
@@ -184,7 +184,7 @@ class OficioPorDonacion
      *
      * @param \Saba\FarmaciaBundle\Entity\LineasDeOficioDeDonacion $lineas
      */
-    public function removeLinea(\Saba\FarmaciaBundle\Entity\LineasDeOficioDeDonacion $lineas)
+    public function removeLinea($lineas)
     {
         $this->lineas->removeElement($lineas);
     }

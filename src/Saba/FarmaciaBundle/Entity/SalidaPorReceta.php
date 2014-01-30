@@ -38,7 +38,7 @@ class SalidaPorReceta {
     protected $receta;
     
     /**
-     * @ORM\OneToMany(targetEntity="MovimientoDeSalidaPorReceta", mappedBy="salidaPorReceta", cascade={ "persist", "remove"})
+     * @ORM\OneToMany(targetEntity="MovimientoDeSalidaPorReceta", mappedBy="salidaPorReceta", cascade={ "all"}, orphanRemoval=true)
      */
     protected $movimientos;
     

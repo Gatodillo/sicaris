@@ -260,7 +260,7 @@ class Proveedor
      * @param \Saba\FarmaciaBundle\Entity\Contacto $contactos
      * @return Proveedor
      */
-    public function addContacto(\Saba\FarmaciaBundle\Entity\Contacto $contactos)
+    public function addContacto($contactos)
     {
         $this->contactos[] = $contactos;
 
@@ -272,7 +272,7 @@ class Proveedor
      *
      * @param \Saba\FarmaciaBundle\Entity\Contacto $contactos
      */
-    public function removeContacto(\Saba\FarmaciaBundle\Entity\Contacto $contactos)
+    public function removeContacto($contactos)
     {
         $this->contactos->removeElement($contactos);
     }
@@ -293,7 +293,7 @@ class Proveedor
      * @param \Saba\FarmaciaBundle\Entity\TipoDeProveedor $tipoDeProveedor
      * @return Proveedor
      */
-    public function setTipoDeProveedor(\Saba\FarmaciaBundle\Entity\TipoDeProveedor $tipoDeProveedor = null)
+    public function setTipoDeProveedor($tipoDeProveedor = null)
     {
         $this->tipoDeProveedor = $tipoDeProveedor;
 
