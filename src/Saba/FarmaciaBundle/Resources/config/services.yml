@@ -415,3 +415,10 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [SabaFarmaciaBundle]]                                              
+            
+    sonata.admin.exporter:
+        class: Saba\FarmaciaBundle\Export\Exporter
+        calls:
+            - [ setKnpSnappyPdf, ["@knp_snappy.pdf"] ]
+            - [ setTemplateEngine, ["@templating"] ]
+    

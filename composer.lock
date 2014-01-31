@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "a69257b544527d765ea1e7f0dc9af023",
+    "hash": "b9c558f3b086fb32fc54f185b6fa38f4",
     "packages": [
         {
             "name": "dflydev/markdown",
@@ -426,12 +426,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "69fbd69b8b6136e212bdf866a502f4b4d3c110e6"
+                "reference": "1b76e216240e9ef677af55d4e89e4541b17d7878"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/69fbd69b8b6136e212bdf866a502f4b4d3c110e6",
-                "reference": "69fbd69b8b6136e212bdf866a502f4b4d3c110e6",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/1b76e216240e9ef677af55d4e89e4541b17d7878",
+                "reference": "1b76e216240e9ef677af55d4e89e4541b17d7878",
                 "shasum": ""
             },
             "require": {
@@ -444,7 +444,8 @@
             "require-dev": {
                 "doctrine/orm": "~2.3",
                 "symfony/validator": "~2.2",
-                "symfony/yaml": "~2.2"
+                "symfony/yaml": "~2.2",
+                "twig/twig": "~1"
             },
             "suggest": {
                 "doctrine/orm": "The Doctrine ORM integration is optional in the bundle.",
@@ -453,7 +454,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2.x-dev"
+                    "dev-master": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -487,7 +488,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2014-01-08 13:40:06"
+            "time": "2014-01-28 19:12:18"
         },
         {
             "name": "doctrine/inflector",
@@ -1268,6 +1269,111 @@
             "time": "2013-05-25 10:20:03"
         },
         {
+            "name": "knplabs/knp-snappy",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/snappy.git",
+                "reference": "1f56b336f8e158b57dcfce007234363cbb54192b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/snappy/zipball/1f56b336f8e158b57dcfce007234363cbb54192b",
+                "reference": "1f56b336f8e158b57dcfce007234363cbb54192b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "google/wkhtmltopdf-amd64": "Provide wkhtmltopdf-amd64 binary, use version `0.11.0-RC1` as dependency",
+                "google/wkhtmltopdf-i386": "Provide wkhtmltopdf-i386 binary, use version `0.11.0-RC1` as dependency",
+                "symfony/process": "Process Component of Symfony2."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Snappy": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/snappy/contributors"
+                }
+            ],
+            "description": "PHP5 library allowing thumbnail, snapshot or PDF generation from a url or a html page. Wrapper for wkhtmltopdf/wkhtmltoimage.",
+            "homepage": "http://github.com/KnpLabs/snappy",
+            "keywords": [
+                "knp",
+                "knplabs",
+                "pdf",
+                "snapshot",
+                "thumbnail",
+                "wkhtmltopdf"
+            ],
+            "time": "2013-09-06 14:16:50"
+        },
+        {
+            "name": "knplabs/knp-snappy-bundle",
+            "version": "dev-master",
+            "target-dir": "Knp/Bundle/SnappyBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpSnappyBundle.git",
+                "reference": "68f48977816fd829911c789663e22a9a62535079"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/KnpSnappyBundle/zipball/68f48977816fd829911c789663e22a9a62535079",
+                "reference": "68f48977816fd829911c789663e22a9a62535079",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-snappy": "*",
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": ">=2.0.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Bundle\\SnappyBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/KnpSnappyBundle/contributors"
+                }
+            ],
+            "description": "Easily create PDF and images in Symfony2 by converting Twig/HTML templates.",
+            "homepage": "http://github.com/KnpLabs/KnpSnappyBundle",
+            "keywords": [
+                "bundle",
+                "knp",
+                "knplabs",
+                "pdf",
+                "snappy"
+            ],
+            "time": "2014-01-02 11:20:45"
+        },
+        {
             "name": "kriswallsmith/assetic",
             "version": "v1.1.2",
             "source": {
@@ -1773,12 +1879,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "5e8c2ce9116cde7ccaa4220d60f38f1d53209d73"
+                "reference": "7e7245288e0eeb3e5dd8ad336783b8aeea1923df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/5e8c2ce9116cde7ccaa4220d60f38f1d53209d73",
-                "reference": "5e8c2ce9116cde7ccaa4220d60f38f1d53209d73",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/7e7245288e0eeb3e5dd8ad336783b8aeea1923df",
+                "reference": "7e7245288e0eeb3e5dd8ad336783b8aeea1923df",
                 "shasum": ""
             },
             "require": {
@@ -1845,36 +1951,37 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-01-21 09:04:46"
+            "time": "2014-01-30 08:36:39"
         },
         {
             "name": "sonata-project/block-bundle",
-            "version": "2.2.8",
+            "version": "2.2.9",
             "target-dir": "Sonata/BlockBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataBlockBundle.git",
-                "reference": "a7838e10007513c51868ce989389c8fa6bda24e3"
+                "reference": "657ae74116ec03cc91c23ce1f15390af3bf943bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/a7838e10007513c51868ce989389c8fa6bda24e3",
-                "reference": "a7838e10007513c51868ce989389c8fa6bda24e3",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/657ae74116ec03cc91c23ce1f15390af3bf943bf",
+                "reference": "657ae74116ec03cc91c23ce1f15390af3bf943bf",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "~2.3",
-                "knplabs/knp-menu-bundle": "~1.1",
                 "sonata-project/core-bundle": "~2.2",
                 "symfony/form": "~2.2",
-                "symfony/http-foundation": "~2.2"
+                "symfony/http-kernel": "~2.2"
             },
             "require-dev": {
-                "sonata-project/admin-bundle": "~2.2@dev",
+                "knplabs/knp-menu-bundle": "~1.1",
+                "sonata-project/admin-bundle": "~2.2",
                 "sonata-project/cache-bundle": "~2.1"
             },
             "suggest": {
-                "sonata-project/admin-bundle": "~2.2@dev",
+                "knplabs/knp-menu-bundle": "~1.1",
+                "sonata-project/admin-bundle": "~2.2",
                 "sonata-project/cache-bundle": "~2.1"
             },
             "type": "symfony-bundle",
@@ -1909,21 +2016,21 @@
                 "block",
                 "sonata"
             ],
-            "time": "2013-12-13 13:27:55"
+            "time": "2014-01-29 10:34:19"
         },
         {
             "name": "sonata-project/core-bundle",
-            "version": "2.2.3",
+            "version": "2.2.4",
             "target-dir": "Sonata/CoreBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "fadf268d4b2c23220b27c33389b6a6132085159e"
+                "reference": "991143570bf19ddd37f5bfb8af7382c4aa90de24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/fadf268d4b2c23220b27c33389b6a6132085159e",
-                "reference": "fadf268d4b2c23220b27c33389b6a6132085159e",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/991143570bf19ddd37f5bfb8af7382c4aa90de24",
+                "reference": "991143570bf19ddd37f5bfb8af7382c4aa90de24",
                 "shasum": ""
             },
             "require": {
@@ -1967,7 +2074,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2014-01-07 11:35:59"
+            "time": "2014-01-15 14:43:01"
         },
         {
             "name": "sonata-project/doctrine-extensions",
@@ -2024,19 +2131,30 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "0b5552f60698ac7cc24833d1789182f23797fd85"
+                "reference": "a8e4cb3723389b9ed60c83194d24026866ecd0a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/0b5552f60698ac7cc24833d1789182f23797fd85",
-                "reference": "0b5552f60698ac7cc24833d1789182f23797fd85",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/a8e4cb3723389b9ed60c83194d24026866ecd0a8",
+                "reference": "a8e4cb3723389b9ed60c83194d24026866ecd0a8",
                 "shasum": ""
             },
             "require": {
                 "doctrine/orm": "~2.3",
                 "sonata-project/admin-bundle": "~2.2,>=2.2.2",
                 "sonata-project/core-bundle": "~2.2@dev",
-                "symfony/symfony": "~2.2"
+                "sonata-project/exporter": "~1.3,>=1.3.1",
+                "symfony/console": "~2.2",
+                "symfony/doctrine-bridge": "~2.2",
+                "symfony/form": "~2.2",
+                "symfony/framework-bundle": "~2.2",
+                "symfony/security": "~2.2"
+            },
+            "require-dev": {
+                "simplethings/entity-audit-bundle": "~0.1"
+            },
+            "suggest": {
+                "simplethings/entity-audit-bundle": "If you want to support for versioning of entities and their associations."
             },
             "type": "symfony-bundle",
             "extra": {
@@ -2073,7 +2191,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2014-01-15 17:24:02"
+            "time": "2014-01-24 14:05:29"
         },
         {
             "name": "sonata-project/easy-extends-bundle",
@@ -2293,12 +2411,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "feea02716ba997f863c6b69ab0208978a1b603aa"
+                "reference": "0a9d21cf75ddd976a9fe6de53f7b646e71d5baab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/feea02716ba997f863c6b69ab0208978a1b603aa",
-                "reference": "feea02716ba997f863c6b69ab0208978a1b603aa",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/0a9d21cf75ddd976a9fe6de53f7b646e71d5baab",
+                "reference": "0a9d21cf75ddd976a9fe6de53f7b646e71d5baab",
                 "shasum": ""
             },
             "require": {
@@ -2353,7 +2471,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2014-01-22 18:40:51"
+            "time": "2014-01-29 16:08:48"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2577,17 +2695,17 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v2.3.4",
+            "version": "v2.3.5",
             "target-dir": "Symfony/Bundle/SwiftmailerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/SwiftmailerBundle.git",
-                "reference": "f5e5d12629c26a835c7aa1d74e2e041486b92d93"
+                "reference": "fcefa9dbd5a1ed20547b0f8a2afd5ad6837ea321"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/f5e5d12629c26a835c7aa1d74e2e041486b92d93",
-                "reference": "f5e5d12629c26a835c7aa1d74e2e041486b92d93",
+                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/fcefa9dbd5a1ed20547b0f8a2afd5ad6837ea321",
+                "reference": "fcefa9dbd5a1ed20547b0f8a2afd5ad6837ea321",
                 "shasum": ""
             },
             "require": {
@@ -2628,7 +2746,7 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "time": "2013-08-22 13:32:58"
+            "time": "2013-11-21 12:29:01"
         },
         {
             "name": "symfony/symfony",
@@ -2902,7 +3020,8 @@
         "sonata-project/doctrine-orm-admin-bundle": 20,
         "sonata-project/admin-bundle": 20,
         "sonata-project/user-bundle": 20,
-        "sonata-project/easy-extends-bundle": 20
+        "sonata-project/easy-extends-bundle": 20,
+        "knplabs/knp-snappy-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

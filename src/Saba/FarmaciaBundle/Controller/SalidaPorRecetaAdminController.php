@@ -314,6 +314,7 @@ class SalidaPorRecetaAdminController extends Controller {
             'object' => $object,
         ));
     }
+
 }
 
 /*

@@ -57,4 +57,9 @@ class SalidaPorRecetaAdmin extends Admin {
             ;    
     }
     
+    public function getExportFormats()
+    {
+        return array_merge(parent::getExportFormats(), array('pdf'));
+    }
+    
 }
