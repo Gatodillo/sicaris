@@ -24,30 +24,7 @@ class LineaDeReceta {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
-    
-    /*
-     *
-     * @ORM\OneToOne(targetEntity="Medicamento")
-     * 
-     */
-    /**
-     * @ORM\ManyToOne(targetEntity="Medicamento", cascade={"persist"})
-     * @ORM\JoinColumn(name="medicamento_id", unique=false)
-     */
-    protected $medicamento;
-    
-    /**
-     * @ORM\Column(type="integer")
-     */
-    protected $cantidad;
-    
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="UnidadDeMedida")
-     */
-    protected $unidad;
- 
+
     /**
      * @ORM\ManyToOne(targetEntity="Receta", inversedBy="lineasDeReceta")
      * 
@@ -55,17 +32,16 @@ class LineaDeReceta {
     protected $receta;
     
     /**
-     * Set id
-     *
-     * @param integer $id
-     * @return LineasDeReceta
+     * @ORM\ManyToOne(targetEntity="Medicamento")
+     * @ORM\JoinColumn(name="medicamento_id", unique=false)
      */
-    public function setId($id)
-    {
-        $this->id = $id;
+    protected $medicamento;
 
-        return $this;
-    }
+    /**
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $indicaciones;
 
     /**
      * Get id
@@ -78,74 +54,27 @@ class LineaDeReceta {
     }
 
     /**
-     * Set cantidad
+     * Set indicaciones
      *
-     * @param integer $cantidad
-     * @return LineasDeReceta
+     * @param string $indicaciones
+     * @return LineaDeReceta
      */
-    public function setCantidad($cantidad)
+    public function setIndicaciones($indicaciones)
     {
-        $this->cantidad = $cantidad;
+        $this->indicaciones = $indicaciones;
 
         return $this;
     }
 
     /**
-     * Get cantidad
-     *
-     * @return integer 
-     */
-    public function getCantidad()
-    {
-        return $this->cantidad;
-    }
-
-    /**
-     * Set unidad
-     *
-     * @param string $unidad
-     * @return LineasDeReceta
-     */
-    public function setUnidad($unidad)
-    {
-        $this->unidad = $unidad;
-
-        return $this;
-    }
-
-    /**
-     * Get unidad
+     * Get indicaciones
      *
      * @return string 
      */
-    public function getUnidad()
+    public function getIndicaciones()
     {
-        return $this->unidad;
+        return $this->indicaciones;
     }
-
-    /**
-     * Set medicamento
-     *
-     * @param \Saba\FarmaciaBundle\Entity\Medicamento $medicamento
-     * @return LineasDeReceta
-     */
-    public function setMedicamento( $medicamento = null)
-    {
-        $this->medicamento = $medicamento;
-
-        return $this;
-    }
-
-    /**
-     * Get medicamento
-     *
-     * @return \Saba\FarmaciaBundle\Entity\Medicamento 
-     */
-    public function getMedicamento()
-    {
-        return $this->medicamento;
-    }
-
 
     /**
      * Set receta
@@ -168,5 +97,28 @@ class LineaDeReceta {
     public function getReceta()
     {
         return $this->receta;
+    }
+
+    /**
+     * Set medicamento
+     *
+     * @param \Saba\FarmaciaBundle\Entity\Medicamento $medicamento
+     * @return LineaDeReceta
+     */
+    public function setMedicamento(\Saba\FarmaciaBundle\Entity\Medicamento $medicamento = null)
+    {
+        $this->medicamento = $medicamento;
+
+        return $this;
+    }
+
+    /**
+     * Get medicamento
+     *
+     * @return \Saba\FarmaciaBundle\Entity\Medicamento 
+     */
+    public function getMedicamento()
+    {
+        return $this->medicamento;
     }
 }

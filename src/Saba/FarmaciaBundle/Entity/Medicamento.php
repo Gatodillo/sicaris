@@ -17,9 +17,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @author victor
  * @IgnoreAnnotation("author")
  * @ORM\Entity
- * @ORM\Table(name="medicamentos")
+ * @ORM\Table(name="medicamentos",
+ *  uniqueConstraints={@ORM\UniqueConstraint(name="unique_medicamento",
+ *  columns={"nombre_generico","concentracion","forma_farmaceutica_id"})})
  */
-class Medicamento extends Articulo {
+class Medicamento{
     
     /**
      *
@@ -29,6 +31,25 @@ class Medicamento extends Articulo {
      */
     protected $id;
  
+    /**
+     *
+     * @ORM\Column(name="nombre_generico")
+     */
+    private $nombreGenerico;
+    
+    /**
+     *
+     * @ORM\Column(type="string")
+     */
+    private $concentracion;
+    
+    /**
+     * 
+     * @ORM\ManyToOne(targetEntity="FormaFarmaceutica")
+     * @ORM\JoinColumn(name="forma_farmaceutica_id")
+     */
+    private $formaFarmaceutica;
+    
    /**
      * 
      * @ORM\ManyToOne(targetEntity="Familia", cascade={"persist"})
@@ -44,19 +65,119 @@ class Medicamento extends Articulo {
      * 
      * @ORM\ManyToOne(targetEntity="Especialidad", cascade={"persist"})
      */
-    private $especialidad;    
+    private $especialidad;
     
     /**
-     * @ORM\OneToMany(targetEntity="VarianteDeMedicamento", mappedBy="medicamento", cascade={"persist"})
+     * 
+     * @ORM\Column(type="string")
      */
-    private $variantes;
-
+    private $nivel;
     
-    public function __construct()
-    {
-        $this->variantes = new \Doctrine\Common\Collections\ArrayCollection();
+    /**
+     *
+     * @ORM\Column(nullable=true)
+     */
+    private $indicaciones;
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Articulo", mappedBy="medicamento", cascade={"all"}); 
+     */
+    private $nombresComerciales;
+    
+    
+    
+    public function __toString() {
+        return ($this->getNombreGenerico() . " " . $this->getConcentracion() 
+                . " " . $this->getFormaFarmaceutica())?: "";
     }
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->nombresComerciales = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombreGenerico
+     *
+     * @param string $nombreGenerico
+     * @return Medicamento
+     */
+    public function setNombreGenerico($nombreGenerico)
+    {
+        $this->nombreGenerico = $nombreGenerico;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreGenerico
+     *
+     * @return string 
+     */
+    public function getNombreGenerico()
+    {
+        return $this->nombreGenerico;
+    }
+
+    /**
+     * Set concentracion
+     *
+     * @param string $concentracion
+     * @return Medicamento
+     */
+    public function setConcentracion($concentracion)
+    {
+        $this->concentracion = $concentracion;
+
+        return $this;
+    }
+
+    /**
+     * Get concentracion
+     *
+     * @return string 
+     */
+    public function getConcentracion()
+    {
+        return $this->concentracion;
+    }
+
+    /**
+     * Set formaFarmaceutica
+     *
+     * @param \Saba\FarmaciaBundle\Entity\FormaFarmaceutica $formaFarmaceutica
+     * @return Medicamento
+     */
+    public function setFormaFarmaceutica(\Saba\FarmaciaBundle\Entity\FormaFarmaceutica $formaFarmaceutica = null)
+    {
+        $this->formaFarmaceutica = $formaFarmaceutica;
+
+        return $this;
+    }
+
+    /**
+     * Get formaFarmaceutica
+     *
+     * @return \Saba\FarmaciaBundle\Entity\FormaFarmaceutica 
+     */
+    public function getFormaFarmaceutica()
+    {
+        return $this->formaFarmaceutica;
+    }
 
     /**
      * Set subfamilia
@@ -84,10 +205,10 @@ class Medicamento extends Articulo {
     /**
      * Set grupo
      *
-     * @param \Saba\FarmaciaBundle\Entity\UnidadDeMedida $grupo
+     * @param \Saba\FarmaciaBundle\Entity\GrupoDeMedicamento $grupo
      * @return Medicamento
      */
-    public function setGrupo(\Saba\FarmaciaBundle\Entity\UnidadDeMedida $grupo = null)
+    public function setGrupo(\Saba\FarmaciaBundle\Entity\GrupoDeMedicamento $grupo = null)
     {
         $this->grupo = $grupo;
 
@@ -97,7 +218,7 @@ class Medicamento extends Articulo {
     /**
      * Get grupo
      *
-     * @return \Saba\FarmaciaBundle\Entity\UnidadDeMedida 
+     * @return \Saba\FarmaciaBundle\Entity\GrupoDeMedicamento 
      */
     public function getGrupo()
     {
@@ -126,53 +247,85 @@ class Medicamento extends Articulo {
     {
         return $this->especialidad;
     }
-    
-    public function __toString() {
-        return ($this->getNombreGenerico() . " " . $this->getCodigoDeBarras()) ?: "";
-    }
 
     /**
-     * Add variantes
+     * Add nombresComerciales
      *
-     * @param \Saba\FarmaciaBundle\Entity\VarianteDeMedicamento $variante
+     * @param \Saba\FarmaciaBundle\Entity\Articulo $nombresComerciales
      * @return Medicamento
      */
-    public function addVariante(\Saba\FarmaciaBundle\Entity\VarianteDeMedicamento $variante)
+    public function addNombresComerciale(\Saba\FarmaciaBundle\Entity\Articulo $nombresComerciales)
     {
-        $variante->setMedicamento($this);
-        $this->variantes[] = $variante;
+        $nombresComerciales->setMedicamento($this);
+        $this->nombresComerciales[] = $nombresComerciales;
 
         return $this;
     }
 
     /**
-     * Remove variantes
+     * Remove nombresComerciales
      *
-     * @param \Saba\FarmaciaBundle\Entity\VarianteDeMedicamento $variante
+     * @param \Saba\FarmaciaBundle\Entity\Articulo $nombresComerciales
      */
-    public function removeVariante(\Saba\FarmaciaBundle\Entity\VarianteDeMedicamento $variante)
+    public function removeNombresComerciale(\Saba\FarmaciaBundle\Entity\Articulo $nombresComerciales)
     {
-        $this->variantes->removeElement($variante);
+        $nombresComerciales->setMedicamento(null);
+        $this->nombresComerciales->removeElement($nombresComerciales);
     }
 
     /**
-     * Get variantes
+     * Get nombresComerciales
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getVariantes()
+    public function getNombresComerciales()
     {
-        return $this->variantes;
+        return $this->nombresComerciales;
     }
 
     /**
-     * Get id
+     * Set indicaciones
      *
-     * @return integer 
+     * @param string $indicaciones
+     * @return Medicamento
      */
-    public function getId()
+    public function setIndicaciones($indicaciones)
     {
-        return $this->id;
+        $this->indicaciones = $indicaciones;
+
+        return $this;
     }
 
+    /**
+     * Get indicaciones
+     *
+     * @return string 
+     */
+    public function getIndicaciones()
+    {
+        return $this->indicaciones;
+    }
+
+    /**
+     * Set nivel
+     *
+     * @param string $nivel
+     * @return Medicamento
+     */
+    public function setNivel($nivel)
+    {
+        $this->nivel = $nivel;
+
+        return $this;
+    }
+
+    /**
+     * Get nivel
+     *
+     * @return string 
+     */
+    public function getNivel()
+    {
+        return $this->nivel;
+    }
 }

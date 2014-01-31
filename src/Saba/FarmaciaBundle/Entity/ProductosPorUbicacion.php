@@ -34,7 +34,7 @@ class ProductosPorUbicacion {
     protected $ubicacion;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Medicamento")
+     * @ORM\ManyToOne(targetEntity="Articulo")
      */
     protected $producto;
     
@@ -106,7 +106,7 @@ class ProductosPorUbicacion {
      * @param \Saba\FarmaciaBundle\Entity\Productos $productos
      * @return ProductosPorUbicacion
      */
-    public function setProducto(\Saba\FarmaciaBundle\Entity\Medicamento $producto = null)
+    public function setProducto(\Saba\FarmaciaBundle\Entity\Articulo$producto = null)
     {
         $this->producto = $producto;
 
@@ -116,7 +116,7 @@ class ProductosPorUbicacion {
     /**
      * Get productos
      *
-     * @return \Saba\FarmaciaBundle\Entity\Medicamento 
+     * @return \Saba\FarmaciaBundle\Entity\Articulo
      */
     public function getProducto()
     {

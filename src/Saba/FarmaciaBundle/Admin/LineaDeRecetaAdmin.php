@@ -26,9 +26,8 @@ class LineaDeRecetaAdmin extends Admin{
      */
     public function configureFormFields(FormMapper $formMapper){
         $formMapper
-                ->add('medicamento', 'sonata_type_model_list', array('label' => 'Medicamento' ))
-                ->add('cantidad','text')
-                ->add('unidad', null, array('label'=>'Unidad'))
+                ->add('medicamento', null, array('label' => 'Medicamento' ))
+                ->add('indicaciones', null, array('label' => 'Indicaciones' ))
                 ;
     }
     
@@ -44,8 +43,7 @@ class LineaDeRecetaAdmin extends Admin{
     public function configureListFields(ListMapper $listMapper){
         $listMapper
                 ->add('medicamento', null, array("label" => "Medicamento")) 
-                ->add('cantidad', null, array('label'=>'Cantidad'))
-                ->add('unidad', null, array('label'=>'Unidad'))
+                ->add('indicaciones', null, array("label" => "Indicaciones")) 
                 ;
     }
 }

@@ -18,6 +18,7 @@ use Saba\FarmaciaBundle\Entity\Movimiento;
 use Saba\FarmaciaBundle\Form\Type\SalidaPorRecetaType;
 
 /**
+ * TODO: Validación de cantidades en movimientos.
  * Description of SalidasPorReceta
  *
  * @author victor
@@ -49,49 +50,57 @@ class SalidaPorRecetaAdminController extends Controller {
             if ($isFormValid && (!$this->isInPreviewMode() || $this->isPreviewApproved())) {
                 
                 $repositorio = $this->getDoctrine()->getRepository('SabaFarmaciaBundle:EstadoDeReceta');
-                $estadoDeReceta = $repositorio->find( array( 'id' => 1 ));
-                $object->getReceta()->setEstado($estadoDeReceta);
+                $estado = $repositorio->find( array( 'id' => 1 ));
+                $object->setEstado($estado);
                 
                 /**
                  * Código personalizado.
                  */
                 
-                foreach ($object->getReceta()->getLineasDeReceta() as $key => $lineasDeReceta){
-                    $medicamentoEnReceta = $lineasDeReceta->getMedicamento();
-                    $cantidadEnReceta = $lineasDeReceta->getCantidad();
-                    //$unidadDelMedicamentoEnReceta = $lineaDeReceta->getUnidad();
+                //foreach ($object->getReceta()->getLineasDeReceta() as $key => $movimiento){
+                foreach ($object->getMovimientos() as $movimiento){
+                    $articuloEnMovimiento = $movimiento->getArticulo();
+                    $medicamentoEnMovimiento = $articuloEnMovimiento->getMedicamento();
+                    $cantidadEnMovimiento = $movimiento->getCantidad();
+                    
+
+                    if (!$object->geReceta()
+                            ->tieneMedicamento($medicamentoEnMovimiento)){
+                        $object->removeMovimiento($movimiento);
+                    }
+                    
                     $cantidadEnExistencia = $object
                             ->getUbicacionOrigen()
-                            ->getExistenciaDe($object->getUbicacionOrigen(),$medicamentoEnReceta)
+                            ->getExistenciaDe($object->getUbicacionOrigen(),$medicamentoEnMovimiento)
                             ;
-                    if ($cantidadEnExistencia >= $cantidadEnReceta){
+                    if ($cantidadEnExistencia >= $cantidadEnMovimiento){
                         $object->getUbicacionOrigen()
                                 ->updateExistencias(
-                                        $medicamentoEnReceta,
-                                        $cantidadEnReceta
+                                        $medicamentoEnMovimiento,
+                                        $cantidadEnMovimiento
                                 );
                         $object->aniadirAMovimientos(
-                                $medicamentoEnReceta,
-                                $cantidadEnReceta
+                                $medicamentoEnMovimiento,
+                                $cantidadEnMovimiento
                                 );
                     }else if ($cantidadEnExistencia > 0){
                         $object->getUbicacionOrigen()
                                 ->updateExistencias(
-                                        $medicamentoEnReceta,
+                                        $medicamentoEnMovimiento,
                                         0
                                 );
 
-                        $object->aniadirAMovimientos($medicamentoEnReceta, 
+                        $object->aniadirAMovimientos($medicamentoEnMovimiento, 
                                         $cantidadEnExistencia);
                         $object->aniadirAValeSubrogado(
-                                $medicamentoEnReceta,
-                                $cantidadEnReceta -
+                                $medicamentoEnMovimiento,
+                                $cantidadEnMovimiento -
                                 $cantidadEnExistencia
                                 );
                     }else{
                         $object->aniadirAValeSubrogado(
-                                $medicamentoEnReceta,
-                                $cantidadEnReceta
+                                $medicamentoEnMovimiento,
+                                $cantidadEnMovimiento
                                 );
                     }
                 }
@@ -174,49 +183,93 @@ class SalidaPorRecetaAdminController extends Controller {
 
                 /**
                  * Código personalizado.
+                 * TODO: Definir los estados de este documento.
+                 * y eliminar el uso del método getEstado()->getId()
                  */
-                
+                $estado = $object->getEstado()->getId();
                 if (null != $object->getReceta()->getValeSubrogado()){
                     $this->addFlash('sonata_flash_error', $this->admin->trans('flash_edit_error', array('%name%' => $this->admin->toString($object)), 'SonataAdminBundle'));
                     // redirect to edit mode
                     return $this->redirectTo($object);
                 }
 
-                foreach ($object->getReceta()->getLineasDeReceta() as $key => $lineasDeReceta){
-                    $medicamentoEnReceta = $lineasDeReceta->getMedicamento();
-                    $cantidadEnReceta = $lineasDeReceta->getCantidad();
+                /*Se hace una doble recorrido del arreglo de movimientos.
+                 * En la primer iteración. se busca que todos los medicamentos 
+                 * existan en la reseta. Aquellos que no, son eliminados sin más.
+                 */
+                foreach ($object->getMovimientos() as $movimiento){
+                    $articuloEnMovimiento = $movimiento->getArticulo();
+                    $medicamentoEnMovimiento = $articuloEnMovimiento->getMedicamento();
+                    $cantidadEnMovimiento = $movimiento->getCantidad();
+                    
+                    
                     //$unidadDelMedicamentoEnReceta = $lineaDeReceta->getUnidad();
+                    
+                     if (!$object->getReceta()
+                            ->tieneMedicamento($medicamentoEnMovimiento)){
+                        $object->removeMovimiento($movimiento);
+                        $this->addFlash('sonata_flash_error', $this->admin->trans('flash_edit_error', array('%name%' => $this->admin->toString($object)), 'SonataAdminBundle'));
+                    }
+                    $this->admin->update($object);
+                }
+                
+                foreach ($object->getMovimientos() as $movimiento){
+                    $articuloEnMovimiento = $movimiento->getArticulo();
+                    $medicamentoEnMovimiento = $articuloEnMovimiento->getMedicamento();
+                    $cantidadEnMovimiento = $movimiento->getCantidad();
+                    
+                    
+                    //$unidadDelMedicamentoEnReceta = $lineaDeReceta->getUnidad();
+                    
+                     if (!$object->getReceta()
+                            ->tieneMedicamento($medicamentoEnMovimiento)){
+                        $object->removeMovimiento($movimiento);
+                        $this->admin->update($object);
+                        $this->addFlash('sonata_flash_error', $this->admin->trans('flash_edit_error', array('%name%' => $this->admin->toString($object)), 'SonataAdminBundle'));
+                        return $this->redirectTo($object);
+                    }
+                    
                     $cantidadEnExistencia = $object
                             ->getUbicacionOrigen()
-                            ->getExistenciaDe($object->getUbicacionOrigen(),$medicamentoEnReceta)
+                            ->getExistenciaDe($object->getUbicacionOrigen(),$articuloEnMovimiento)
                             ;
-                    if ($cantidadEnExistencia >= $cantidadEnReceta){
+                    if ($estado == 2 && $cantidadEnExistencia >= $cantidadEnMovimiento){
                         $object->getUbicacionOrigen()
                                 ->updateExistencias(
-                                        $medicamentoEnReceta,
-                                        ($cantidadEnExistencia - $cantidadEnReceta)
+                                        $articuloEnMovimiento,
+                                        ($cantidadEnExistencia - $cantidadEnMovimiento)
                                 );
-                    }else if ($cantidadEnExistencia > 0){
+                    }else if ($estado == 2 && $cantidadEnExistencia > 0){
                         $object->getUbicacionOrigen()
                                 ->updateExistencias(
-                                        $medicamentoEnReceta,
+                                        $articuloEnMovimiento,
                                         0
                                 );
-
+                        $movimiento->setCantidad($cantidadEnExistencia);
                         $object->aniadirAValeSubrogado(
-                                $medicamentoEnReceta,
-                                $cantidadEnReceta -
+                                $medicamentoEnMovimiento,
+                                $cantidadEnMovimiento -
                                 $cantidadEnExistencia
                                 );
-                    }else{
+                    }else if ($estado == 2 && $cantidadEnExistencia == 0) {
+                        $movimiento->setCantidad(0);
+                        $object->removeMovimiento($movimiento);
                         $object->aniadirAValeSubrogado(
-                                $medicamentoEnReceta,
-                                $cantidadEnReceta
+                                $medicamentoEnMovimiento,
+                                $cantidadEnMovimiento
                                 );
                     }
                 }
                 
-                
+                /*
+                 * Si el estado de la salida cambia a 2) Confirmada, la receta
+                 * cambia su estado a 2) Confirmada.
+                 */
+                if ($estado == 2){
+                    $repositorio = $this->getDoctrine()->getRepository('SabaFarmaciaBundle:EstadoDeReceta');
+                    $estado = $repositorio->find( array( 'id' => 2 ));
+                    $object->getReceta()->setEstado($estado);
+                }
                 
                 /*
                  * Fin del código personalizado.

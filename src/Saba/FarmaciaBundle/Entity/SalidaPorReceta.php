@@ -38,7 +38,7 @@ class SalidaPorReceta {
     protected $receta;
     
     /**
-     * @ORM\OneToMany(targetEntity="MovimientoDeSalidaPorReceta", mappedBy="salidaPorReceta", cascade={ "all"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="MovimientoDeSalidaPorReceta", mappedBy="salidaPorReceta", cascade={"all"}, orphanRemoval=true)
      */
     protected $movimientos;
     
@@ -55,7 +55,12 @@ class SalidaPorReceta {
     protected $ubicacionDestino;
     
     
-   
+    /**
+     * @ORM\ManyToOne(targetEntity="EstadoDeReceta");
+     * @ORM\JoinColumn(name="estado_id",nullable=false)
+     */
+   protected $estado;
+           
     /**
      * Constructor
      */
@@ -82,7 +87,7 @@ class SalidaPorReceta {
                 ? $this->getReceta()->getValeSubrogado() 
                 : new ValeSubrogado();
         
-        $valeSubrogado->setRecetaOrigen($this->getReceta());
+        $valeSubrogado->setReceta($this->getReceta());
         $valeSubrogado->setMedico($this->getReceta()->getMedico());
         $valeSubrogado->setPaciente($this->getReceta()->getPaciente());
         $valeSubrogado->setFolio($this->getReceta()->getFolio());
@@ -92,7 +97,7 @@ class SalidaPorReceta {
         $lineaDeValeSubrogado->setCantidad($cantidad);
         $lineaDeValeSubrogado->setUnidad("Caja");
             
-        $valeSubrogado->getLineas()->add($lineaDeValeSubrogado);
+        $valeSubrogado->addLinea($lineaDeValeSubrogado);
        
         $this->getReceta()->setValeSubrogado($valeSubrogado);
         
@@ -172,6 +177,7 @@ class SalidaPorReceta {
      */
     public function removeMovimiento(\Saba\FarmaciaBundle\Entity\MovimientoDeSalidaPorReceta $movimientos)
     {
+        $movimientos->setSalidaPorReceta(null);
         $this->movimientos->removeElement($movimientos);
     }
 
@@ -276,5 +282,28 @@ class SalidaPorReceta {
     
     public function __toString() {
         return (string)($this->getNumero()) ?: "";
+    }
+
+    /**
+     * Set estado
+     *
+     * @param \Saba\FarmaciaBundle\Entity\EstadoDeReceta $estado
+     * @return SalidaPorReceta
+     */
+    public function setEstado(\Saba\FarmaciaBundle\Entity\EstadoDeReceta $estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return \Saba\FarmaciaBundle\Entity\EstadoDeReceta 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
     }
 }

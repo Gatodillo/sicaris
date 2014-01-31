@@ -26,27 +26,21 @@ class MedicamentoAdmin extends Admin {
     {
         $formMapper
             ->add('nombreGenerico', 'text', array('label' => 'Nombre genérico'))
-            ->add('descripcion',null,array('label'=>'Descripción'))
-            ->add('unidadDeMedida',null,array('label'=>'Unidad de medida'))
-            ->add("codigoDeBarras", 'text', array('label' => 'Código de barras'))
+            ->add("concentracion", null , array('label' => 'Concentración'))    
+            ->add("formaFarmaceutica", null , array('label' => 'Forma farmacéutica'))
+            ->add("subfamilia", null, array('label' => 'Subfamilia'))                
             ->add("grupo", null , array('label' => 'Grupo'))
             ->add("especialidad", null , array('label' => 'Especialidad'))
-            ->add("subfamilia", 'sonata_type_model_list' , array('label' => 'Subfamilia'))                
-            ->add('estaActivo',null,array('label'=>'Activo'))
-            ->add("variantes", 'sonata_type_collection', array(
-                    'by_reference' => false
-                ), array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                    'sortable' => 'position',
-                ))
+            ->add("indicaciones", null , array('label' => 'Indicaciones'))
+            ->add("nivel", null , array('label' => 'Nivel'))
+            ->add("nombresComerciales", null, array('by_reference' => null,'multiple'=>true, 'expanded'=>false))    
         ;
     }
     
     // Campos que serán mostrados en los formularios con los filtros
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $variantes = $this
+        /*$variantes = $this
                 ->modelManager
                 ->createQuery('SabaFarmaciaBundle:VarianteDeMedicamento', 'vm')
                 ->orderBy('vm.nombreComercial', 'ASC')
@@ -58,7 +52,7 @@ class MedicamentoAdmin extends Admin {
             $opciones[$variante->getId()] = $variante->getNombreComercial();
         }
         
-        /*->add('variantes', null, array('label' => 'Nombre Comercial'), null, array(
+        ->add('variantes', null, array('label' => 'Nombre Comercial'), null, array(
                 'expanded' => true,
                 'multiple' => true,
                 'query_builder' => function (\Doctrine\ORM\EntityRepository $repository) {
@@ -69,9 +63,8 @@ class MedicamentoAdmin extends Admin {
             
         $datagridMapper
             ->add('nombreGenerico', null, array('label' => 'Nombre genérico'))
-            ->add('variantes', null, array('label' => 'Variantes'))    
-            ->add("codigoDeBarras", null, array('label' => 'Código de barras'))
-            ->add('estaActivo',null,array('label'=>'Activo'))                
+            ->add("formaFarmaceutica", null, array('label' => 'Forma farmacéutica'))
+            ->add("subfamilia", null, array('label' => 'Subfamilia'))
         ;
     }
     
@@ -79,10 +72,27 @@ class MedicamentoAdmin extends Admin {
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('nombreGenerico', null, array('label' => 'Nombre genérico'))
-            ->addIdentifier("codigoDeBarras", null, array('label' => 'Código de barras'))
-            ->add('estaActivo',null,array('label'=>'Activo'))                
-
+            ->addIdentifier('nombreGenerico', null, array(
+                'label' => 'Nombre genérico',
+                'routes' => array('name' => 'show')))
+            ->addIdentifier('concentracion', null, array('label' => 'Concentración',
+                'routes' => array('name' => 'show')))
+            ->addIdentifier('formaFarmaceutica', null, array('label' => 'Forma farmacéutica',
+                'routes' => array('name' => 'show')))
+            ->addIdentifier('subfamilia.familia', null, array('label' => 'Familia',
+                'routes' => array('name' => 'show')))
+            ->addIdentifier('subfamilia', null, array('label' => 'Subfamilia',
+                'routes' => array('name' => 'show')))
+            ->addIdentifier('grupo', null, array('label' => 'Grupo',
+                'routes' => array('name' => 'show')))
+            ->addIdentifier('especialidad', null, array('label' => 'Especialidad',
+                'routes' => array('name' => 'show')))
+            ->addIdentifier('nivel', null, array('label' => 'Nivel',
+                'routes' => array('name' => 'show')))
+            ->addIdentifier('indicaciones', null, array('label' => 'Indicaciones',
+                'routes' => array('name' => 'show')))
+                
+                
         ;
     }
 }

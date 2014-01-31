@@ -28,6 +28,7 @@ class SalidaPorRecetaAdmin extends Admin {
             ->add("receta", "sonata_type_model_list")
             ->add("ubicacionOrigen", "sonata_type_model_list")
             ->add("ubicacionDestino", "sonata_type_model_list")    
+            ->add("estado", null, array("label" => "Situación"))        
             ->add("movimientos", "sonata_type_collection", array(
                     'by_reference' => false
                 ), array(

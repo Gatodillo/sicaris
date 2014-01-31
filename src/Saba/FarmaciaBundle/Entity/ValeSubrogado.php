@@ -182,6 +182,7 @@ class ValeSubrogado {
      */
     public function addLinea(\Saba\FarmaciaBundle\Entity\LineaDeValeSubrogado $lineas)
     {
+        $lineas->setValeSubrogado($this);
         $this->lineas[] = $lineas;
 
         return $this;

@@ -154,6 +154,8 @@ sonata_user:
     manager_type: orm # can be orm or mongodb
     
 sonata_admin:
+    title:      Admazán
+    title_logo: images/logo_sii_ayuda.png
     security:
         handler: sonata.admin.security.handler.acl
         # acl security information

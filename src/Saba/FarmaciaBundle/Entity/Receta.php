@@ -63,8 +63,8 @@ class Receta {
     protected $lineasDeReceta;
 
     /**
-     * @ORM\OneToOne(targetEntity="ValeSubrogado", cascade={"all"}, orphanRemoval=true)
-     * @ORM\Column(name="vale_subrogado_id", nullable=true, type="integer")
+     * @ORM\OneToOne(targetEntity="ValeSubrogado", cascade={"all"})
+     * @ORM\JoinColumn(name="vale_subrogado_id", nullable=true)
      */
     protected $valeSubrogado;
 
@@ -76,6 +76,7 @@ class Receta {
     
     /**
      * @ORM\ManyToOne(targetEntity="TipoDeReceta", cascade={ "persist"})
+     * @ORM\JoinColumn(name="tipo_de_receta_id")
      */
     protected $tipoDeReceta;
     
@@ -85,7 +86,22 @@ class Receta {
      */
     protected $centroDeCostos;
     
-    
+    /*
+     * Si $medicamento == null entonces return false, porque se está intentando 
+     * dar salida a un artículo que no es un medicamento.
+     * 
+     * Si $receta no contiene $medicamento entonces return false.
+     */
+    public function tieneMedicamento($medicamento){
+        if (null == $medicamento) return false;
+        foreach ($this->getLineasDeReceta() as $linea){
+            $medicamentoEnReceta = $linea->getMedicamento();
+            if ($medicamentoEnReceta->getId() == $medicamento->getId()){
+                return true;
+            }
+        }
+        return false;
+    }
     /**
      * Constructor
      */

@@ -249,7 +249,7 @@ class Movimiento {
         if ( null == $this->getArticulo()){
             return "";
         }
-        return (" Artículo: " . $this->getArticulo()->getNombreGenerico() . " Cantidad: " . $this->cantidad );
+        return (" Artículo: " . $this->getArticulo()->getNombreComercial() . " Cantidad: " . $this->cantidad );
     }
     
      /**

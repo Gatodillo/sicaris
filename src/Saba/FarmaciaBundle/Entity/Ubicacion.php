@@ -117,7 +117,7 @@ class Ubicacion {
         return $this->getNombre() ?: "";
     }
     
-    public function getExistenciaDe(Ubicacion $ubicacion, Medicamento $medicamento){
+    public function getExistenciaDe(Ubicacion $ubicacion, Articulo $medicamento){
         foreach ($this->productos as $productosEnUbicacion ){
             if ($productosEnUbicacion->getProducto()->getCodigoDeBarras()
                     === $medicamento->getCodigoDeBarras()){
@@ -127,7 +127,7 @@ class Ubicacion {
         return 0;
     }
     
-    public function updateExistencias(Medicamento $medicamento, $cantidad){
+    public function updateExistencias(Articulo $medicamento, $cantidad){
         foreach ($this->productos as $productosEnUbicacion ){
             if ($productosEnUbicacion->getProducto()->getCodigoDeBarras()
                     === $medicamento->getCodigoDeBarras()){

@@ -26,9 +26,7 @@ class ArticuloAdmin extends Admin{
      */
     public function configureFormFields(FormMapper $form) {
         parent::configureFormFields($form);
-        $form->add('nombreGenerico', null, array('label'=>'Nombre genérico'))
-                ->add('descripcion',null,array('label'=>'Descripción'))
-                ->add('unidadDeMedida',null,array('label'=>'Unidad de medida'))
+        $form->add('nombreComercial', null, array('label'=>'Nombre comercial'))
                 ->add('codigoDeBarras',null,array('label'=>'Código de barras'))
                 ->add('estaActivo',null,array('label'=>'Activo'))
                 ;
@@ -40,9 +38,7 @@ class ArticuloAdmin extends Admin{
      */
     public function configureShowFields(ShowMapper $filter) {
         parent::configureShowFields($filter);
-        $filter->add('nombreGenerico', null, array('label'=>'Nombre genérico'))
-                ->add('descripcion',null,array('label'=>'Descripción'))
-                ->add('unidadDeMedida',null,array('label'=>'Unidad de medida'))
+        $filter->add('nombreComercial', null, array('label'=>'Nombre comercial'))
                 ->add('codigoDeBarras',null,array('label'=>'Código de barras'))
                 ->add('estaActivo',null,array('label'=>'Activo'))
                 ;
@@ -54,12 +50,8 @@ class ArticuloAdmin extends Admin{
      */
     public function configureListFields(ListMapper $list) {
         parent::configureListFields($list);
-        $list->add('nombreGenerico', null, 
-                array('label'=>'Nombre genérico',
-                    'route'=> array('name'=>'show')))
-                ->addIdentifier('descripcion',null,array('label'=>'Descripción',
-                    'route'=> array('name'=>'show')))
-                ->addIdentifier('unidadDeMedida',null,array('label'=>'Unidad de medida',
+        $list->add('nombreComercial', null, 
+                array('label'=>'Nombre comercial',
                     'route'=> array('name'=>'show')))
                 ->addIdentifier('codigoDeBarras',null,array('label'=>'Código de barras',
                     'route'=> array('name'=>'show')))
@@ -71,9 +63,7 @@ class ArticuloAdmin extends Admin{
      * Campos que será desplegados al filtrar los datos de los artículos.
      */
     public function configureDatagridFilters(DatagridMapper $datagrid){
-        $datagrid->add('nombreGenerico', null, array('label'=>'Nombre genérico'))
-                ->add('descripcion',null,array('label'=>'Descripción'))
-                ->add('unidadDeMedida',null,array('label'=>'Unidad de medida'))
+        $datagrid->add('nombreComercial', null, array('label'=>'Nombre comercial'))
                 ->add('codigoDeBarras',null,array('label'=>'Código de barras'))
                 ;
     }
